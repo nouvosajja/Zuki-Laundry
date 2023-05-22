@@ -61,20 +61,29 @@ class _HomePageState extends State<HomePage> {
                   width: 20,
                 ),
 
-              Container(
-
-              alignment: Alignment.topRight,
-                  height: 45,
-                  width: 45,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: NetworkImage(
-                              "https://studiolorier.com/wp-content/uploads/2018/10/Profile-Round-Sander-Lorier.jpg")),
-                      borderRadius: BorderRadius.circular(25),
-                      border: Border.all(
-                          color: Colors.white,
-                          style: BorderStyle.solid,
-                          width: 2))),
+                Padding(
+                              padding: EdgeInsets.only(right: 10),
+                              child: Material(
+                                child: InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const profile()),
+                                      );
+                                    },
+                                    child: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(20.0),
+                                        ),
+                                        child: Image.asset(
+                                            "asset/image/profile.jpg"),
+                                        width: 45,
+                                        height: 45)),
+                              ),
+                            ),
               ],
             ),
 
