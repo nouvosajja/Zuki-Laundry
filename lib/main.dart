@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zuki_laundry/Login/screen.dart';
 import 'package:zuki_laundry/intro.dart';
+import 'package:zuki_laundry/profile.dart';
 
 void main() {
   runApp(const MyApp());

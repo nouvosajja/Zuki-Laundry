@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:iconly/iconly.dart';
+import 'package:zuki_laundry/Chat/screen.dart';
 import 'package:zuki_laundry/History/dalamProses.dart';
 import 'package:zuki_laundry/History/history.dart';
 
@@ -56,20 +58,24 @@ class _HomePageState extends State<HomePage> {
                   width: 37,
                 ),
 
-              Container(
-
-              alignment: Alignment.topRight,
-                  height: 35,
-                  width: 35,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: NetworkImage(
-                              "https://cdn.pixabay.com/photo/2021/07/25/08/03/account-6491185_960_720.png")),
-                      borderRadius: BorderRadius.circular(25),
-                      border: Border.all(
-                          color: Colors.white,
-                          style: BorderStyle.solid,
-                          width: 2))),
+              InkWell(
+                child: Container(
+              
+                alignment: Alignment.topRight,
+                    height: 35,
+                    width: 35,
+                    child: Icon(IconlyLight.chat, size: 30,),
+                    
+                    ),
+                    onTap: () {
+                    Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => ChatScreen()
+                                  ),
+                               );
+                  },
+              ),
+                  
               ],
             ),
 

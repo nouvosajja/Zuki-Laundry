@@ -56,8 +56,9 @@ class _introState extends State<intro> {
         ),
       ),
       floatingActionButton: Container(
-        margin: const EdgeInsets.only(bottom: 180),
+        margin: const EdgeInsets.only(bottom: 180, right: 92),
         child: FloatingActionButton.extended(
+          backgroundColor: Color.fromRGBO(250, 121, 228, 1),
           label: const Text(
             "Get Started",
             style: TextStyle(
@@ -66,7 +67,8 @@ class _introState extends State<intro> {
               color: Colors.white,
             ),
           ),
-          extendedPadding: EdgeInsets.symmetric(horizontal: 35, vertical: 15),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
+          extendedPadding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
           onPressed: () {
             Navigator.pushReplacement(
                 context, MaterialPageRoute(builder: (context) => bottom_nav()));

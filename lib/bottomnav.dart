@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zuki_laundry/Chat/screen.dart';
 import 'package:zuki_laundry/Home/homepage.dart';
+import 'package:zuki_laundry/profile.dart';
 import 'package:zuki_laundry/tabbar.dart';
 
 
@@ -25,9 +26,9 @@ class _bottom_navState extends State<bottom_nav> {
       case 0:
         return const HomePage();
       case 1:
-        return const ChatScreen();
-      default:
         return const Tabbar();
+      default:
+        return const profile();
     }
   }
 
@@ -65,23 +66,23 @@ class _bottom_navState extends State<bottom_nav> {
               BottomNavigationBarItem(
                 icon: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4),
-                    child: Icon(Icons.chat)
-                ),
-                label: 'Chat',
-                activeIcon: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 4),
-                    child: Icon(Icons.chat)
-                ),
-              ),
-              BottomNavigationBarItem(
-                icon: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 4),
                     child: Icon(Icons.history)
                 ),
                 label: 'History',
                 activeIcon: Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4),
                     child: Icon(Icons.history)
+                ),
+              ),
+              BottomNavigationBarItem(
+                icon: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: Icon(Icons.person)
+                ),
+                label: 'Akun',
+                activeIcon: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: Icon(Icons.person)
                 ),
               ),
 
