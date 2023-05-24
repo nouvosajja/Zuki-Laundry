@@ -62,6 +62,10 @@ flutter:
     - asset/image/zuki.png
     - asset/image/reguler.png
     - asset/image/kilat.png
+    - asset/image/wp.png
+    - asset/image/splash.png
+    - asset/image/poster.png
+    - asset/image/splash 1.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:zuki_laundry/History/dalamProses.dart';
+import 'package:zuki_laundry/History/history.dart';
 
 
 
@@ -10,24 +12,17 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int myIndex = 0;
+  List<Widget> widgetList = const [
+    HomePage(),
+    History(),
+    Proses()
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
-          ),
-        ),
-        child: BottomNavigationBar(
-          items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-            BottomNavigationBarItem(icon: Icon(Icons.mark_unread_chat_alt), label: "Chat"),
-            BottomNavigationBarItem(icon: Icon(Icons.work_history), label: "History"),
-          ],
-        ),
-      ),
+      
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
@@ -52,24 +47,24 @@ class _HomePageState extends State<HomePage> {
               children: [
                 Container(
                   width: 240,
-                  child: Text(
+                  child: const Text(
                     "Selamat datang di Zuki Laundry!", maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
                   ),
                 ),
 
                 SizedBox(
-                  width: 20,
+                  width: 37,
                 ),
 
               Container(
 
               alignment: Alignment.topRight,
-                  height: 45,
-                  width: 45,
+                  height: 35,
+                  width: 35,
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           image: NetworkImage(
-                              "https://studiolorier.com/wp-content/uploads/2018/10/Profile-Round-Sander-Lorier.jpg")),
+                              "https://cdn.pixabay.com/photo/2021/07/25/08/03/account-6491185_960_720.png")),
                       borderRadius: BorderRadius.circular(25),
                       border: Border.all(
                           color: Colors.white,
