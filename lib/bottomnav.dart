@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zuki_laundry/Chat/screen.dart';
 import 'package:zuki_laundry/Home/homepage.dart';
-import 'package:zuki_laundry/profile.dart';
+import 'package:zuki_laundry/profile/profile.dart';
 import 'package:zuki_laundry/tabbar.dart';
 
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:zuki_laundry/DetailPage/detail.dart';
 import 'package:zuki_laundry/Login/screen.dart';
 import 'package:zuki_laundry/intro.dart';
-import 'package:zuki_laundry/profile.dart';
+import 'package:zuki_laundry/profile/profile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: detail(),
+
+      home: HomePage(),
     );
   }
 }
