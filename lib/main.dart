@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:zuki_laundry/DetailPage/detailReguler.dart';
 import 'package:zuki_laundry/Login/screen.dart';
 import 'package:zuki_laundry/intro.dart';
-import 'package:zuki_laundry/profile.dart';
+import 'package:zuki_laundry/profile/profile.dart';
 
 void main() {
   runApp(const MyApp());
