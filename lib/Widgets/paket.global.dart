@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:zuki_laundry/DetailPage/detailKilat.dart';
+import 'package:zuki_laundry/DetailPage/detailreguler.dart';
 
 class Paket extends StatelessWidget {
   const Paket({super.key});
@@ -64,16 +66,24 @@ class Paket extends StatelessWidget {
                     ),
                     child: Stack(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 15),
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Image.asset(
-                              'asset/image/reguler.png',
-                              height: 60,
-                              width: 60,
+                        InkWell(
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 15),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Image.asset(
+                                'asset/image/reguler.png',
+                                height: 60,
+                                width: 60,
+                              ),
                             ),
                           ),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const detail_reguler()),
+                            );
+                          },
                         ),
                         Padding(
                         padding: const EdgeInsets.only(top: 80, left: 27),
@@ -88,7 +98,7 @@ class Paket extends StatelessWidget {
                   child: Container(
                     width: 155,
                     child: Text(
-                      "Solusi untuk kebutuhan mendadak anda", textAlign: TextAlign.left, maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.white),
+                      "Pakaian bersih dan wangi maksimal", textAlign: TextAlign.left, maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.white),
                     ),
                   ),
                 ),
@@ -97,7 +107,6 @@ class Paket extends StatelessWidget {
 
             Row(
               children: [
-
                 Padding(
                   padding: const EdgeInsets.only(top: 0, left: 30),
                   child: Container(
@@ -127,16 +136,24 @@ class Paket extends StatelessWidget {
                     ),
                     child: Stack(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 15),
-                          child: Align(
-                            alignment: Alignment.center,
-                            child: Image.asset(
-                              'asset/image/kilat.png',
-                              height: 60,
-                              width: 60,
+                        InkWell(
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 15),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Image.asset(
+                                'asset/image/kilat.png',
+                                height: 60,
+                                width: 60,
+                              ),
                             ),
                           ),
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => const detail_kilat()),
+                            );
+                          },
                         ),
                         Padding(
                             padding: const EdgeInsets.only(top: 80, left: 35),

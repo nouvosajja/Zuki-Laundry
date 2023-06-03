@@ -51,6 +51,8 @@ class _bottom_navState extends State<bottom_nav> {
             type: BottomNavigationBarType.fixed,
             iconSize: 24,
             showUnselectedLabels: false,
+            unselectedItemColor: Colors.grey,
+            selectedItemColor: Color.fromRGBO(25, 164, 206, 1),
             items: [
               BottomNavigationBarItem(
                 icon: Padding(
