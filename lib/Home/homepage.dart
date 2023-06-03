@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
                       onTap: () {
                       Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => ChatScreen()
+                                    MaterialPageRoute(builder: (context) => chat_screen()
                                     ),
                                  );
                     },
@@ -104,14 +104,13 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             
-          bubble(),
+            bubble(),
 
-          Paket()
+            Paket()
             ]
-    )
+        )
+      ),
     ),
-    ),
-
     );
   }
 }

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zuki_laundry/Chat/screen.dart';
 import 'package:zuki_laundry/DetailPage/detailReguler.dart';
+import 'package:zuki_laundry/Home/homepage.dart';
 import 'package:zuki_laundry/Login/screen.dart';
+import 'package:zuki_laundry/bottomnav.dart';
 import 'package:zuki_laundry/intro.dart';
 import 'package:zuki_laundry/profile/profile.dart';
 
@@ -16,10 +19,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: intro(),
+      
+      home: bottom_nav(),
     );
   }
 }
