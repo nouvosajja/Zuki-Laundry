@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:zuki_laundry/Chat/screen.dart';
 import 'package:zuki_laundry/Home/homepage.dart';
+import 'package:zuki_laundry/beforeLogin.dart';
 import 'package:zuki_laundry/profile/profile.dart';
 import 'package:zuki_laundry/tabbar.dart';
-
 
 class bottom_nav extends StatefulWidget {
   const bottom_nav({Key? key}) : super(key: key);
@@ -28,7 +28,7 @@ class _bottom_navState extends State<bottom_nav> {
       case 1:
         return const Tabbar();
       default:
-        return const profile();
+        return const before_login();
     }
   }
 
@@ -56,41 +56,33 @@ class _bottom_navState extends State<bottom_nav> {
             items: [
               BottomNavigationBarItem(
                 icon: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 4),
-                    child: Icon(Icons.home)
-                ),
+                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: Icon(Icons.home)),
                 label: 'Home',
                 activeIcon: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 4),
-                    child: Icon(Icons.home)
-                ),
+                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: Icon(Icons.home)),
               ),
               BottomNavigationBarItem(
                 icon: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 4),
-                    child: Icon(Icons.history)
-                ),
+                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: Icon(Icons.history)),
                 label: 'History',
                 activeIcon: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 4),
-                    child: Icon(Icons.history)
-                ),
+                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: Icon(Icons.history)),
               ),
               BottomNavigationBarItem(
                 icon: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 4),
-                    child: Icon(Icons.person)
-                ),
+                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: Icon(Icons.person)),
                 label: 'Akun',
                 activeIcon: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 4),
-                    child: Icon(Icons.person)
-                ),
+                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: Icon(Icons.person)),
               ),
-
-
             ],
           ),
-));
+        ));
   }
 }

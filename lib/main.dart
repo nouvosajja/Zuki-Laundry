@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:zuki_laundry/Chat/screen.dart';
-import 'package:zuki_laundry/DetailPage/detailReguler.dart';
-import 'package:zuki_laundry/Home/homepage.dart';
-import 'package:zuki_laundry/Login/screen.dart';
+import 'package:zuki_laundry/beforeLogin.dart';
 import 'package:zuki_laundry/bottomnav.dart';
 import 'package:zuki_laundry/intro.dart';
 import 'package:zuki_laundry/profile/profile.dart';
+import 'package:zuki_laundry/tabbar.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       
-      home: bottom_nav(),
+      home: intro(),
     );
   }
 }

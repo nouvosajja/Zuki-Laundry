@@ -24,24 +24,6 @@ class _profileState extends State<profile> {
             Container(height: 140, width: double.infinity),
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: []),
             Padding(
-              padding: const EdgeInsets.only(top: 40, left: 20),
-              child: Material(
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => bottom_nav()
-                                  ),
-                               );
-                  },
-                  child: Container(
-                    child: Icon(Icons.arrow_back_ios,
-                        size: 40, color: Color.fromARGB(255, 0, 0, 0)),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
               padding: const EdgeInsets.only(top: 42, left: 140),
               child: Container(
                 width: 290,
@@ -311,14 +293,14 @@ class _profileState extends State<profile> {
               ),
             ),
             new Padding(
-              padding: const EdgeInsets.only(top: 515, left: 5),
+              padding: const EdgeInsets.only(top: 540, left: 5),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     elevation: 0,
                     backgroundColor: Color.fromARGB(0, 0, 0, 0),
                     foregroundColor: Color.fromARGB(224, 0, 0, 0)),
                 child: Text(
-                  'Keamanan & kebijakan privasi',
+                  'Keamanan & \nkebijakan privasi',
                   style: TextStyle(
                     fontSize: 23,
                     fontWeight: FontWeight.bold,
@@ -328,13 +310,13 @@ class _profileState extends State<profile> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 555, left: 20),
+              padding: const EdgeInsets.only(top: 610, left: 20),
               child: Container(
                 child: Icon(Icons.privacy_tip, size: 38, color: Colors.blue),
               ),
             ),
             new Padding(
-              padding: const EdgeInsets.only(top: 550, left: 50),
+              padding: const EdgeInsets.only(top: 605, left: 50),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     elevation: 0,

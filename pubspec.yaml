@@ -71,6 +71,9 @@ flutter:
     - asset/image/splash 1.png
     - asset/image/bubble2.png
     - asset/image/bubble1.png
+    - asset/image/profile.png
+    - asset/image/before_login.png
+    - asset/image/keamanan.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
