@@ -17,7 +17,7 @@ class _before_loginState extends State<before_login> {
       body: Column(
         children: [
           SizedBox(
-            height: 90,
+            height: 140,
           ),
           Row(
             children: [

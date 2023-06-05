@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zuki_laundry/Login/screen.dart';
 import 'package:zuki_laundry/beforeLogin.dart';
 import 'package:zuki_laundry/bottomnav.dart';
 import 'package:zuki_laundry/intro.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       
-      home: intro(),
+      home: LoginScreen(),
     );
   }
 }

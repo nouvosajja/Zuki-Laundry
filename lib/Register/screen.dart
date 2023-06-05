@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:zuki_laundry/Login/screen.dart';
-import 'package:zuki_laundry/Widgets/button.global.dart';
+import 'package:zuki_laundry/Register/continue.dart';
 import 'package:zuki_laundry/Widgets/text.form.global.dart';
+import 'package:zuki_laundry/bottomnav.dart';
 
 
 
@@ -77,8 +78,37 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           textInputType: TextInputType.text, 
                           obscure: true
                         ),
-                        const SizedBox(height: 10),
-                        const ButtonGlobal(),
+                        Padding(
+                            padding: EdgeInsets.only(
+                              top: 30,
+                            ),
+                            child: Container(
+                              height: 50,
+                              width: 300,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const ContinueScreen()),
+                                  );
+                                },
+                                child: Text(
+                                  'Continue',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w900,
+                                  ),
+                                ),
+                                style: ElevatedButton.styleFrom(
+                                  primary: Color.fromRGBO(0, 163, 255, 1),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
                         Container(
                           height: 50,
                           alignment: Alignment.center,
@@ -88,6 +118,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               const Text(
                                 'Sudah punya akun?',
                               ),
+                              SizedBox(width: 2.5,),
                               InkWell(
                                 child: const Text(
                                   'Login',
