@@ -19,7 +19,7 @@ class _kebijakanState extends State<kebijakan> {
               Stack(
                 children: [
                   const SizedBox(height: 140, width: double.infinity),
-                  const Column(
+                  Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: []),
                   Padding(

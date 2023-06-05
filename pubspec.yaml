@@ -75,6 +75,7 @@ flutter:
     - asset/image/profile.png
     - asset/image/before_login.png
     - asset/image/keamanan.png
+    - asset/image/GoPay.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

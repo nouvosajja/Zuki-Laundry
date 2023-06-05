@@ -18,11 +18,8 @@ class _paymentState extends State<Pembayaran> {
             children: [
               Container(
                 // riwayatVPc (338:157)
-                padding: EdgeInsets.fromLTRB(34, 48, 34, 97),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Color(0xffffffff),
-                ),
+            padding: EdgeInsets.only(top: 60, left: 25),
+
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -31,26 +28,25 @@ class _paymentState extends State<Pembayaran> {
                       margin: EdgeInsets.fromLTRB(0, 0, 0, 48),
                       child: Row(
                         children: [
-                          Container(
-                              // vectorVH8 (338:176)
-                              ),
-                          Material(
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.pop(context);
-                              },
-                              child: Container(
-                                child: Image.asset("asset/image/back.png"),
-                                width: 30,
-                                height: 30,
-                              ),
+                          IconButton(
+                            icon: Icon(
+                              Icons.arrow_back,
+                              color: Colors.black,
+                              size: 35,
                             ),
+                            onPressed: () {
+                              Navigator.pop(
+                                context,
+                              );
+                            },
+                          ),
+                          SizedBox(
+                            width: 25,
                           ),
                           Text(
-                            // pembayaranapN (338:175)
-                            '      Pembayaran',
+                            'Pembayaran',
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 25,
                               fontWeight: FontWeight.w700,
                               height: 1.5,
                               color: Color(0xff000000),
@@ -402,74 +398,29 @@ class _paymentState extends State<Pembayaran> {
                         ),
                       ),
                     ),
-                    Container(
-                      // autogroupfwg6pjx (UTvQEEemgzSNeQVv1BFWG6)
-                      width: 142,
-                      height: 45,
-                      decoration: BoxDecoration(
-                        color: Color(0xff19a4ce),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Stack(
-                        children: [
-                          Positioned(
-                            // bayarYfx (338:211)
-                            left: 32,
-                            top: 4,
-                            child: Align(
-                              child: SizedBox(
-                                width: 77,
-                                height: 38,
-                                child: Text(
-                                  'Bayar',
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.w700,
-                                    height: 1.5,
-                                    color: Color(0xffffffff),
-                                  ),
-                                ),
-                              ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 30),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            
+                          },
+                          child: Text(
+                            'Bayar',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700,
                             ),
                           ),
-                          Positioned(
-                            // rectangle94dxJ (338:212)
-                            left: 0,
-                            top: 0,
-                            child: Align(
-                              child: SizedBox(
-                                width: 142,
-                                height: 45,
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: Color(0xff19a4ce),
-                                  ),
-                                ),
-                              ),
+                          style: ElevatedButton.styleFrom(
+                            primary: Color.fromRGBO(25, 164, 206, 1),
+                            minimumSize: Size(150, 50),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
                             ),
                           ),
-                          Positioned(
-                            // bayarwi6 (338:213)
-                            left: 32,
-                            top: 4,
-                            child: Align(
-                              child: SizedBox(
-                                width: 77,
-                                height: 38,
-                                child: Text(
-                                  'Bayar',
-                                  style: TextStyle(
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.w700,
-                                    height: 1.5,
-                                    color: Color(0xffffffff),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+                        ),
                       ),
                     ),
                   ],

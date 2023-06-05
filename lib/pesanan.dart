@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zuki_laundry/bottomnav.dart';
+import 'package:zuki_laundry/pembayaran.dart';
 
 class Pesanan extends StatefulWidget {
   const Pesanan({super.key});
@@ -209,13 +210,19 @@ class _PesananState extends State<Pesanan> {
               ),
             ),
           ),
-          // make button bayar
           Padding(
             padding: const EdgeInsets.only(top: 30),
             child: Align(
               alignment: Alignment.center,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => Pembayaran(),
+                    ),
+                  );
+                },
                 child: Text(
                   'Bayar',
                   style: TextStyle(
