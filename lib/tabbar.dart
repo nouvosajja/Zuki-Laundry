@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zuki_laundry/History/dalamProses.dart';
-import 'package:zuki_laundry/History/history.dart';
+import 'package:zuki_laundry/History/riwayat.dart';
 
 class Tabbar extends StatefulWidget {
   const Tabbar({super.key});
@@ -32,23 +32,26 @@ class _TabbarState extends State<Tabbar>with SingleTickerProviderStateMixin {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Riwayat', style: TextStyle(color: Colors.black),),
+          toolbarHeight: 100,
+          title: const Text('Riwayat', style: TextStyle(color: Colors.black, fontWeight: FontWeight.w900, fontSize: 30),),
           backgroundColor: Colors.transparent,
           elevation: 0,
           automaticallyImplyLeading: false,
-
         ),
         body:  SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
             SizedBox(
-              height: 50,
-              width: 250,
+              height: 30,
+              width: 280,
               child: AppBar(
                 elevation: 0,
                 backgroundColor: Colors.transparent,
                 flexibleSpace: TabBar(
+                  indicatorSize: TabBarIndicatorSize.label,
+                  indicatorWeight: 2,
+                  indicatorColor: Color.fromRGBO(25, 164, 206, 1),
                   unselectedLabelColor: Colors.grey,
                   labelColor: Colors.black,
                   controller: controller,
@@ -56,11 +59,11 @@ class _TabbarState extends State<Tabbar>with SingleTickerProviderStateMixin {
                   Container(
                     height: 50,
                     child: 
-                  Center(child: Text('Riwayat'))), 
+                  Center(child: Text('Riwayat', style: TextStyle(fontWeight: FontWeight.w600),))), 
                   Container(
                     height: 50,
                     child: 
-                  Center(child: Text('Dalam Proses'))), ],
+                  Center(child: Text('Dalam Proses', style: TextStyle(fontWeight: FontWeight.w600),))), ],
                 ),
                 automaticallyImplyLeading: false,
               ),
@@ -69,7 +72,7 @@ class _TabbarState extends State<Tabbar>with SingleTickerProviderStateMixin {
               child: TabBarView(
                 controller: controller,
                 children: [
-              History(),
+              Riwayat(),
               Proses(),
             ], ))
           ],)

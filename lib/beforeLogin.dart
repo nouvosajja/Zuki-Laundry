@@ -14,19 +14,11 @@ class _before_loginState extends State<before_login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: 90,
-        title: Text(
-          'Profile',
-          style: TextStyle(
-              fontSize: 30, fontWeight: FontWeight.w800, color: Colors.black),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
       body: Column(
         children: [
+          SizedBox(
+            height: 90,
+          ),
           Row(
             children: [
               Padding(
@@ -44,7 +36,7 @@ class _before_loginState extends State<before_login> {
               Column(
                 children: [
                   SizedBox(
-                    height: 90,
+                    height: 50,
                   ),
                   Text("Guest",
                       style: TextStyle(
@@ -141,17 +133,17 @@ class _before_loginState extends State<before_login> {
           SizedBox(
             height: 61,
           ),
-          Center(
-            child: Container(
-              width: 290,
-              child: Text(
-                "Keamanan & \nKebijakan Privasi",
-                textAlign: TextAlign.center,
-                maxLines: 3,
-                style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
-              ),
-            ),
-          ),
+          // Center(
+          //   child: Container(
+          //     width: 290,
+          //     child: Text(
+          //       "Keamanan & \nKebijakan Privasi",
+          //       textAlign: TextAlign.center,
+          //       maxLines: 3,
+          //       style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
+          //     ),
+          //   ),
+          // ),
           SizedBox(
             height: 20,
           ),

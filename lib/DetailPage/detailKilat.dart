@@ -21,9 +21,8 @@ class _detail_kilatState extends State<detail_kilat> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.push(
+            Navigator.pop(
               context,
-              MaterialPageRoute(builder: (context) => const bottom_nav()),
             );
           },
           color: Colors.black,

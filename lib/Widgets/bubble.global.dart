@@ -8,53 +8,61 @@ class bubble extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          height: 320,
+          height: 350,
         ),
-
         Positioned(
-              top: 20,
-              left: 100,
-                child: Container(
-                  margin: EdgeInsets.only(),
-                  child: Image.asset("asset/image/bubble2.png"),
-                )
-            ),
-
-            Positioned(
               top: 20,
               left: 120,
                 child: Container(
                   margin: EdgeInsets.only(),
-                  child: Image.asset("asset/image/bubble1.png"),
-                )
-            ),
-
-            Positioned(
-              top: 160,
-              left: 55,
-                child: Container(
-                  margin: EdgeInsets.only(),
                   child: Image.asset("asset/image/bubble2.png"),
                 )
             ),
 
             Positioned(
-              top: 150,
-              left: 20,
+              top: 20,
+              left: 140,
                 child: Container(
                   margin: EdgeInsets.only(),
                   child: Image.asset("asset/image/bubble1.png"),
+                )
+            ),
+
+            Positioned(
+              top: 190,
+              left: 65,
+                child: Container(
+                  margin: EdgeInsets.only(),
+                  child: Image.asset("asset/image/bubble1.png"),
+                )
+            ),
+
+            Positioned(
+              top: 205,
+              left: 35,
+                child: Container(
+                  margin: EdgeInsets.only(),
+                  child: Image.asset("asset/image/bubble3.png"),
+                )
+            ),
+
+            Positioned(
+              top: 177,
+              left: 45,
+                child: Container(
+                  margin: EdgeInsets.only(),
+                  child: Image.asset("asset/image/bubble2.png"),
                 )
             ),
 
             
 
         Positioned(
-          top: 35,
-          left: 20,
+          top: 45,
+          left: 40,
           child:  Container(
-          width: 120, // Menyesuaikan ukuran lingkaran
-          height: 120, // Menyesuaikan ukuran lingkaran
+          width: 140, // Menyesuaikan ukuran lingkaran
+          height: 140, // Menyesuaikan ukuran lingkaran
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: Color.fromRGBO(25, 164, 206, 1),
@@ -62,23 +70,23 @@ class bubble extends StatelessWidget {
           child: Center(
             child: Text(
                     'Kilat\nCuci Setrika / 12 jam :\nRp . 20.000/Kg\n uci Setrika / 1 hari :\nRp . 17.000/Kg\nSetrika / 1 hari :\nRp . 10.000/Kg',
-                    style: TextStyle(fontSize: 8, fontWeight: FontWeight.bold, color: Colors.white),
+                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.white),
                     textAlign: TextAlign.center,
                   ),
           ),
         ),),
 
         Positioned(
-              top: 160,
-              left: 210,
+              top: 155,
+              left: 200,
                 child: Container(
                   margin: EdgeInsets.only(),
-                  child: Image.asset("asset/image/bubble2.png"),
+                  child: Image.asset("asset/image/bubble3.png"),
                 )
             ),
 
             Positioned(
-              top: 130,
+              top: 125,
               left: 220,
                 child: Container(
                   margin: EdgeInsets.only(),
@@ -87,7 +95,16 @@ class bubble extends StatelessWidget {
             ),
 
             Positioned(
-              top: 270,
+              top: 130,
+              left: 260,
+                child: Container(
+                  margin: EdgeInsets.only(),
+                  child: Image.asset("asset/image/bubble2.png"),
+                )
+            ),
+
+            Positioned(
+              top: 310,
               left: 300,
                 child: Container(
                   margin: EdgeInsets.only(),
@@ -96,7 +113,7 @@ class bubble extends StatelessWidget {
             ),
 
             Positioned(
-              top: 275,
+              top: 320,
               left: 265,
                 child: Container(
                   margin: EdgeInsets.only(),
@@ -105,19 +122,19 @@ class bubble extends StatelessWidget {
             ),
 
         Positioned(
-          top: 150,
-          left: 220,
+          top: 170,
+          left: 190,
           child:  Container(
-          width: 120, // Menyesuaikan ukuran lingkaran
-          height: 120, // Menyesuaikan ukuran lingkaran
+          width: 140, // Menyesuaikan ukuran lingkaran
+          height: 140, // Menyesuaikan ukuran lingkaran
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: Color.fromRGBO(25, 164, 206, 1),
           ),
           child: Center(
             child: Text(
-                    'Reguler\nCuci Setrika / 3 hari :\nRp . 12.000/Kg\n uci Setrika / 5 hari :\nRp . 9.000/Kg\nCuci Setrika / 7 hari :\nRp . 6.000/Kg',
-                    style: TextStyle(fontSize: 8, fontWeight: FontWeight.bold, color: Colors.white),
+                    'Reguler\nCuci Setrika / 3 hari :\nRp . 12.000/Kg\n Cuci Setrika / 5 hari :\nRp . 9.000/Kg\nCuci Setrika / 7 hari :\nRp . 6.000/Kg',
+                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.white),
                     textAlign: TextAlign.center,
                   ),
           ),

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:zuki_laundry/Chat/screen.dart';
 import 'package:zuki_laundry/History/dalamProses.dart';
-import 'package:zuki_laundry/History/history.dart';
+import 'package:zuki_laundry/History/riwayat.dart';
 import 'package:zuki_laundry/Widgets/bubble.global.dart';
 import 'package:zuki_laundry/Widgets/paket.global.dart';
 
@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   int myIndex = 0;
   List<Widget> widgetList = const [
     HomePage(),
-    History(),
+    Riwayat(),
     Proses()
   ];
 
@@ -99,13 +99,14 @@ class _HomePageState extends State<HomePage> {
               child: Container(
                 width: 290,
                 child: Text(
-                  " Tempat yang tepat untuk mencuci pakaian dengan cepat dan tetap menjaga kebersihan serta kualitas cucian yang optimal ", textAlign: TextAlign.center, maxLines: 3, style: TextStyle(fontWeight: FontWeight.normal, fontSize: 11),
+                  " Tempat yang tepat untuk mencuci pakaian dengan cepat dan tetap menjaga kebersihan serta kualitas cucian yang optimal ", textAlign: TextAlign.center, maxLines: 3, style: TextStyle(fontWeight: FontWeight.normal, fontSize: 13),
                 ),
               ),
             ),
-            
+            SizedBox(
+              height: 20,
+            ),
             bubble(),
-
             Paket()
             ]
         )

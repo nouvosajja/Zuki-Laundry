@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zuki_laundry/pesanan.dart';
 
 class Proses extends StatefulWidget {
   const Proses({super.key});
@@ -16,104 +17,124 @@ class _ProsesState extends State<Proses> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Stack(
-                children: [
-                  Container(height: 140, width: double.infinity),
-                  Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const SizedBox(
-                          height: 30,
-                        ),
-                      ]),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 60, left: 15),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 50),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const Pesanan()),
+                      );
+                    },
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Color(0xFF2196F3),
+                        color: Color.fromRGBO(25, 164, 206, 1),
                       ),
                       width: 330, // mengatur lebar maksimal
-                      height: 182, // mengatur tinggi// mengatur warna background
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 90, left: 65),
-                    child: Container(
-                      width: 290,
-                      child: Text(
-                        "Reguler",
-                        textAlign: TextAlign.left,
-                        maxLines: 3,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22,
-                            color: Colors.white),
+                      height: 195, // mengatur tinggi// mengatur warna background
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(top: 20, left: 20),
+                                child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    "Reguler",
+                                    style: TextStyle(
+                                        fontSize: 30,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.only(top: 10, left: 100),
+                                child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    "Rp 36.000",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w300,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10, left: 20),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                "3 kg",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w300,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 5, left: 20),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                "Siap Diambil",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 5, left: 20),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                "08 Mei",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w300,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ),
+                          //make line
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                top: 10, right: 20, left: 20),
+                            child: Container(
+                              width: 292,
+                              height: 2,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 10, left: 160),
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text(
+                                "Menunggu Konfirmasi",
+                                style: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.normal,
+                                    color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 90, left: 210),
-                    child: Container(
-                      width: 290,
-                      child: Text(
-                        "Rp 36.000",
-                        textAlign: TextAlign.left,
-                        maxLines: 3,
-                        style: TextStyle(
-                            fontWeight: FontWeight.normal,
-                            fontSize: 18,
-                            color: Colors.white),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 122, left: 65),
-                    child: Container(
-                      width: 290,
-                      child: Text(
-                        "3 kg",
-                        textAlign: TextAlign.left,
-                        maxLines: 3,
-                        style: TextStyle(
-                            fontWeight: FontWeight.normal,
-                            fontSize: 14,
-                            color: Colors.white),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 150, left: 65),
-                    child: Container(
-                      width: 290,
-                      child: Text(
-                        "Diambil",
-                        textAlign: TextAlign.left,
-                        maxLines: 3,
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
-                            color: Colors.white),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 180, left: 65),
-                    child: Container(
-                      width: 290,
-                      child: Text(
-                        "03 Mei",
-                        textAlign: TextAlign.left,
-                        maxLines: 3,
-                        style: TextStyle(
-                            fontWeight: FontWeight.normal,
-                            fontSize: 14,
-                            color: Colors.white),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              )
             ],
           ),
         ),

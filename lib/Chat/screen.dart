@@ -91,9 +91,8 @@ class _chat_screenState extends State<chat_screen> {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.push(
+            Navigator.pop(
               context,
-              MaterialPageRoute(builder: (context) => const bottom_nav()),
             );
           },
           color: Colors.black,
@@ -131,7 +130,7 @@ class _chat_screenState extends State<chat_screen> {
                     ),
                   ),
                 ),
-              ),
+              ),  
             ),
             itemBuilder: ((context, Message _messages) => Align(
               alignment: _messages.isSentByMe 

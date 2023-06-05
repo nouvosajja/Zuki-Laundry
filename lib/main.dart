@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:zuki_laundry/beforeLogin.dart';
 import 'package:zuki_laundry/bottomnav.dart';
 import 'package:zuki_laundry/intro.dart';
+import 'package:zuki_laundry/pesanan.dart';
 import 'package:zuki_laundry/profile/profile.dart';
 import 'package:zuki_laundry/tabbar.dart';
 
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       
-      home: intro(),
+      home: Pesanan(),
     );
   }
 }
