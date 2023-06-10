@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:zuki_laundry/DetailPage/detailKilat.dart';
 import 'package:zuki_laundry/DetailPage/detailreguler.dart';
 
@@ -16,7 +14,7 @@ class Paket extends StatelessWidget {
           Padding(
               padding: const EdgeInsets.only(top: 50),
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(40),
                     topRight: Radius.circular(40),
@@ -30,13 +28,13 @@ class Paket extends StatelessWidget {
                   child: Center(
                     child: Column(
                       children: [
-                        Text(
+                        const Text(
                           'Silahkan pilih paket yang telah kami sediakan',
                           style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white),
                           textAlign: TextAlign.center,
                         ),
-                        Padding(
-              padding: const EdgeInsets.only(top: 20),
+                        const Padding(
+              padding: EdgeInsets.only(top: 20),
               child: Divider(
                 thickness: 3,
                 color: Colors.white,
@@ -60,7 +58,7 @@ class Paket extends StatelessWidget {
                           color: Colors.grey.withOpacity(0.5),
                           spreadRadius: 2,
                           blurRadius: 7,
-                          offset: Offset(0, 3),
+                          offset: const Offset(0, 3),
                         ),
                       ],
                     ),
@@ -72,7 +70,7 @@ class Paket extends StatelessWidget {
                             child: Align(
                               alignment: Alignment.center,
                               child: Image.asset(
-                                'asset/image/reguler.png',
+                                'asset/images/reguler.png',
                                 height: 60,
                                 width: 60,
                               ),
@@ -85,8 +83,8 @@ class Paket extends StatelessWidget {
                             );
                           },
                         ),
-                        Padding(
-                        padding: const EdgeInsets.only(top: 80, left: 27),
+                        const Padding(
+                        padding: EdgeInsets.only(top: 80, left: 27),
                         child: Text("Reguler", style: TextStyle(fontWeight: FontWeight.bold),)
                         ),
                       ],
@@ -94,10 +92,10 @@ class Paket extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top: 0, left: 20),
+                  padding: const EdgeInsets.only(top: 40, left: 20),
                   child: Container(
                     width: 155,
-                    child: Text(
+                    child: const Text(
                       "Pakaian bersih dan wangi maksimal", textAlign: TextAlign.left, maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.white),
                     ),
                   ),
@@ -111,7 +109,7 @@ class Paket extends StatelessWidget {
                   padding: const EdgeInsets.only(top: 0, left: 30),
                   child: Container(
                     width: 155,
-                    child: Text(
+                    child: const Text(
                       "Solusi untuk kebutuhan mendadak anda", textAlign: TextAlign.right, maxLines: 2, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.white),
                     ),
                   ),
@@ -130,7 +128,7 @@ class Paket extends StatelessWidget {
                           color: Colors.grey.withOpacity(0.5),
                           spreadRadius: 2,
                           blurRadius: 7,
-                          offset: Offset(0, 3),
+                          offset: const Offset(0, 3),
                         ),
                       ],
                     ),
@@ -142,7 +140,7 @@ class Paket extends StatelessWidget {
                             child: Align(
                               alignment: Alignment.center,
                               child: Image.asset(
-                                'asset/image/kilat.png',
+                                'asset/images/lightning.png',
                                 height: 60,
                                 width: 60,
                               ),
@@ -155,8 +153,8 @@ class Paket extends StatelessWidget {
                             );
                           },
                         ),
-                        Padding(
-                            padding: const EdgeInsets.only(top: 80, left: 35),
+                        const Padding(
+                            padding: EdgeInsets.only(top: 80, left: 35),
                             child: Text("Kilat", style: TextStyle(fontWeight: FontWeight.bold),)
                         ),
                       ],

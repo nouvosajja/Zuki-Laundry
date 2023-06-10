@@ -18,18 +18,18 @@ class _paymentState extends State<Pembayaran> {
             children: [
               Container(
                 // riwayatVPc (338:157)
-            padding: EdgeInsets.only(top: 60, left: 25),
+            padding: const EdgeInsets.only(top: 60, left: 25),
 
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
                       // autogroupfaaj9yx (UTvPVbDAQ3Srs2WsLbFAAJ)
-                      margin: EdgeInsets.fromLTRB(0, 0, 0, 48),
+                      margin: const EdgeInsets.fromLTRB(0, 0, 0, 48),
                       child: Row(
                         children: [
                           IconButton(
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.arrow_back,
                               color: Colors.black,
                               size: 35,
@@ -40,10 +40,10 @@ class _paymentState extends State<Pembayaran> {
                               );
                             },
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 25,
                           ),
-                          Text(
+                          const Text(
                             'Pembayaran',
                             style: TextStyle(
                               fontSize: 25,
@@ -57,8 +57,8 @@ class _paymentState extends State<Pembayaran> {
                     ),
                     Container(
                       // pesanansiapdiantar73c (338:217)
-                      margin: EdgeInsets.fromLTRB(0, 0, 0, 7),
-                      child: Text(
+                      margin: const EdgeInsets.fromLTRB(0, 0, 0, 7),
+                      child: const Text(
                         'Pesanan siap diantar',
                         style: TextStyle(
                           fontSize: 20,
@@ -70,11 +70,11 @@ class _paymentState extends State<Pembayaran> {
                     ),
                     Container(
                       // selesaikanpesananandasekarangj (338:216)
-                      margin: EdgeInsets.fromLTRB(0, 0, 0, 44),
-                      constraints: BoxConstraints(
+                      margin: const EdgeInsets.fromLTRB(0, 0, 0, 44),
+                      constraints: const BoxConstraints(
                         maxWidth: 196,
                       ),
-                      child: Text(
+                      child: const Text(
                         'Selesaikan pesanan anda sekarang juga',
                         style: TextStyle(
                           fontSize: 15,
@@ -86,12 +86,12 @@ class _paymentState extends State<Pembayaran> {
                     ),
                     Container(
                       // autogrouprsdc7xi (UTvPgW4eaA3Hb7M7GsRSdc)
-                      margin: EdgeInsets.fromLTRB(0, 0, 0, 63),
+                      margin: const EdgeInsets.fromLTRB(0, 0, 0, 63),
                       width: double.infinity,
                       height: 148,
                       child: Stack(
                         children: [
-                          Positioned(
+                          const Positioned(
                             // kgexe (338:166)
                             left: 20,
                             top: 44,
@@ -111,7 +111,7 @@ class _paymentState extends State<Pembayaran> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             // meiiSi (338:167)
                             left: 20,
                             top: 87,
@@ -131,7 +131,7 @@ class _paymentState extends State<Pembayaran> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             // rp36000Pok (338:168)
                             left: 207,
                             top: 0,
@@ -162,9 +162,9 @@ class _paymentState extends State<Pembayaran> {
                                 child: Container(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
-                                    color: Color(0xff19a7ce),
+                                    color: const Color(0xff19a7ce),
                                     boxShadow: [
-                                      BoxShadow(
+                                      const BoxShadow(
                                         color: Color(0x3f000000),
                                         offset: Offset(0, 4),
                                         blurRadius: 2,
@@ -175,7 +175,7 @@ class _paymentState extends State<Pembayaran> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             // siapdiambilkni (338:178)
                             left: 20,
                             top: 68,
@@ -195,7 +195,7 @@ class _paymentState extends State<Pembayaran> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             // menunggupembayaranfPt (338:179)
                             left: 109,
                             top: 118,
@@ -215,7 +215,7 @@ class _paymentState extends State<Pembayaran> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             // regulerMnW (338:180)
                             left: 20,
                             top: 10,
@@ -235,7 +235,7 @@ class _paymentState extends State<Pembayaran> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             // kgUML (338:181)
                             left: 20,
                             top: 48,
@@ -255,7 +255,7 @@ class _paymentState extends State<Pembayaran> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             // meincv (338:182)
                             left: 20,
                             top: 91,
@@ -275,7 +275,7 @@ class _paymentState extends State<Pembayaran> {
                               ),
                             ),
                           ),
-                          Positioned(
+                          const Positioned(
                             // rp360006tW (338:183)
                             left: 207,
                             top: 4,
@@ -306,7 +306,7 @@ class _paymentState extends State<Pembayaran> {
                                 child: Container(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(2),
-                                    color: Color(0xffffffff),
+                                    color: const Color(0xffffffff),
                                   ),
                                 ),
                               ),
@@ -317,7 +317,7 @@ class _paymentState extends State<Pembayaran> {
                     ),
                     Container(
                       // autogroupctyivMk (UTvPypu7bc1GzyxyJ3cTYi)
-                      margin: EdgeInsets.fromLTRB(0, 0, 103, 32),
+                      margin: const EdgeInsets.fromLTRB(0, 0, 103, 32),
                       width: double.infinity,
                       height: 53,
                       child: Row(
@@ -325,7 +325,7 @@ class _paymentState extends State<Pembayaran> {
                         children: [
                           Container(
                             // gopayeHk (338:198)
-                            margin: EdgeInsets.fromLTRB(0, 0, 5, 1),
+                            margin: const EdgeInsets.fromLTRB(0, 0, 5, 1),
                             width: 50,
                             height: 50,
                             child: Image.asset(
@@ -344,7 +344,7 @@ class _paymentState extends State<Pembayaran> {
                                 Container(
                                   // gopaytxn (338:201)
                                   width: double.infinity,
-                                  child: Text(
+                                  child: const Text(
                                     'GoPay',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
@@ -358,7 +358,7 @@ class _paymentState extends State<Pembayaran> {
                                 Container(
                                   // saldorp50000q7L (338:202)
                                   width: double.infinity,
-                                  child: Text(
+                                  child: const Text(
                                     'Saldo :  Rp 50.000',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
@@ -375,7 +375,7 @@ class _paymentState extends State<Pembayaran> {
                         ],
                       ),
                     ),
-                    Text(
+                    const Text(
                       // totaltagihanZZ8 (338:214)
                       'Total tagihan',
                       style: TextStyle(
@@ -387,8 +387,8 @@ class _paymentState extends State<Pembayaran> {
                     ),
                     Container(
                       // rp36000ust (338:215)
-                      margin: EdgeInsets.fromLTRB(0, 0, 0, 34),
-                      child: Text(
+                      margin: const EdgeInsets.fromLTRB(0, 0, 0, 34),
+                      child: const Text(
                         'Rp 36.000',
                         style: TextStyle(
                           fontSize: 25,
@@ -399,14 +399,14 @@ class _paymentState extends State<Pembayaran> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 30),
+                      padding: const EdgeInsets.only(),
                       child: Align(
                         alignment: Alignment.center,
                         child: ElevatedButton(
                           onPressed: () {
                             
                           },
-                          child: Text(
+                          child: const Text(
                             'Bayar',
                             style: TextStyle(
                               fontSize: 20,
@@ -414,8 +414,8 @@ class _paymentState extends State<Pembayaran> {
                             ),
                           ),
                           style: ElevatedButton.styleFrom(
-                            primary: Color.fromRGBO(25, 164, 206, 1),
-                            minimumSize: Size(150, 50),
+                            primary: const Color.fromRGBO(25, 164, 206, 1),
+                            minimumSize: const Size(150, 50),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20),
                             ),

@@ -21,7 +21,7 @@ class _gantiPassState extends State<gantiPass> {
                   Container(height: 140, width: double.infinity),
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: []),
+                      children: const []),
                   Padding(
                     padding: const EdgeInsets.only(top: 40, left: 20),
                     child: Material(
@@ -29,10 +29,8 @@ class _gantiPassState extends State<gantiPass> {
                         onTap: () {
                           Navigator.pop(context);
                         },
-                        child: Container(
-                          child: Icon(Icons.arrow_back_ios,
-                              size: 40, color: Color.fromARGB(255, 0, 0, 0)),
-                        ),
+                        child: const Icon(Icons.arrow_back_ios,
+                            size: 40, color: Color.fromARGB(255, 0, 0, 0)),
                       ),
                     ),
                   ),
@@ -40,7 +38,7 @@ class _gantiPassState extends State<gantiPass> {
                     padding: const EdgeInsets.only(top: 48, left: 95),
                     child: Container(
                       width: 290,
-                      child: Text(
+                      child: const Text(
                         "Ganti Password",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 23),

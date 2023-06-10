@@ -21,7 +21,7 @@ class _alamatState extends State<alamat> {
                   Container(height: 140, width: double.infinity),
                   Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: []),
+                      children: const []),
                   Padding(
                     padding: const EdgeInsets.only(top: 40, left: 20),
                     child: Material(
@@ -29,10 +29,8 @@ class _alamatState extends State<alamat> {
                         onTap: () {
                           Navigator.pop(context);
                         },
-                        child: Container(
-                          child: Icon(Icons.arrow_back_ios,
-                              size: 40, color: Color.fromARGB(255, 0, 0, 0)),
-                        ),
+                        child: const Icon(Icons.arrow_back_ios,
+                            size: 40, color: Color.fromARGB(255, 0, 0, 0)),
                       ),
                     ),
                   ),
@@ -40,7 +38,7 @@ class _alamatState extends State<alamat> {
                     padding: const EdgeInsets.only(top: 42, left: 140),
                     child: Container(
                       width: 290,
-                      child: Text(
+                      child: const Text(
                         "Alamat",
                         style: TextStyle(
                             fontWeight: FontWeight.bold, fontSize: 30),

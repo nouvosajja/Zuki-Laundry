@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grouped_list/grouped_list.dart';
 import 'package:intl/intl.dart';
-import 'package:zuki_laundry/bottomnav.dart';
 
 class chat_screen extends StatefulWidget {
   const chat_screen({super.key});
@@ -11,7 +10,7 @@ class chat_screen extends StatefulWidget {
 }
 
 class _chat_screenState extends State<chat_screen> {
-  List<Message> _messages = [
+  final List<Message> _messages = [
     Message(
       text: 'i\'m fine, thanks, how about you?',
       date: DateTime.now().subtract(
@@ -89,7 +88,7 @@ class _chat_screenState extends State<chat_screen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(
               context,
@@ -110,20 +109,20 @@ class _chat_screenState extends State<chat_screen> {
             useStickyGroupSeparators: true,
             floatingHeader: true,
             elements: _messages,
-            groupBy: (_messages) => DateTime(
-              _messages.date.year,
-              _messages.date.month,
-              _messages.date.day,
+            groupBy: (messages) => DateTime(
+              messages.date.year,
+              messages.date.month,
+              messages.date.day,
             ),
-            groupHeaderBuilder: (Message _messages) => SizedBox(
+            groupHeaderBuilder: (Message messages) => SizedBox(
               height: 40,
               child: Center(
                 child: Card(
-                  color: Color.fromRGBO(25, 164, 206, 1),
+                  color: const Color.fromRGBO(25, 164, 206, 1),
                   child: Padding(
                     padding: const EdgeInsets.all(8),
                     child: Text(
-                      DateFormat.yMMMd().format(_messages.date),
+                      DateFormat.yMMMd().format(messages.date),
                       style: const TextStyle(color: Colors.white,
                       ),
                       
@@ -132,15 +131,15 @@ class _chat_screenState extends State<chat_screen> {
                 ),
               ),  
             ),
-            itemBuilder: ((context, Message _messages) => Align(
-              alignment: _messages.isSentByMe 
+            itemBuilder: ((context, Message messages) => Align(
+              alignment: messages.isSentByMe 
                 ? Alignment.centerRight 
                 : Alignment.centerLeft,
               child: Card(
                 elevation: 8,
                 child: Padding(
                   padding: const EdgeInsets.all(12),
-                  child: Text(_messages.text),
+                  child: Text(messages.text),
                 )
               ),
             )),

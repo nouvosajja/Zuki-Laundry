@@ -28,7 +28,7 @@ class _MyWidgetState extends State<Riwayat> {
               Container(width: double.infinity),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+                children: const [
                   SizedBox(
                     height: 30,
                   ),
@@ -40,7 +40,7 @@ class _MyWidgetState extends State<Riwayat> {
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Colors.grey,
                         width: 2,
                       ),
@@ -73,9 +73,9 @@ class _MyWidgetState extends State<Riwayat> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 60, left: 40),
-                child: Container(
+              const Padding(
+                padding: EdgeInsets.only(top: 60, left: 40),
+                child: SizedBox(
                   width: 290,
                   child: Text(
                     "Reguler",
@@ -88,9 +88,9 @@ class _MyWidgetState extends State<Riwayat> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 20, left: 40),
-                child: Container(
+              const Padding(
+                padding: EdgeInsets.only(top: 20, left: 40),
+                child: SizedBox(
                   width: 290,
                   child: Text(
                     "3 kg",
@@ -103,9 +103,9 @@ class _MyWidgetState extends State<Riwayat> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 30, left: 40),
-                child: Container(
+              const Padding(
+                padding: EdgeInsets.only(top: 30, left: 40),
+                child: SizedBox(
                   width: 290,
                   child: Text(
                     "Kilat",
@@ -118,9 +118,9 @@ class _MyWidgetState extends State<Riwayat> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(top: 20, left: 40),
-                child: Container(
+              const Padding(
+                padding: EdgeInsets.only(top: 20, left: 40),
+                child: SizedBox(
                   width: 290,
                   child: Text(
                     "0 Kg",
@@ -135,14 +135,14 @@ class _MyWidgetState extends State<Riwayat> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 60, left: 30),
-                child: Container(
+                child: SizedBox(
                   width: 180,
                   child: TextButton(
                     style: TextButton.styleFrom(
                       backgroundColor: Colors.grey,
                     ),
                     onPressed: () {},
-                    child: Text(
+                    child: const Text(
                       "Dapatkan Promo",
                       style: TextStyle(
                         color: Color(0xffffffff),

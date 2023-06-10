@@ -30,16 +30,16 @@ class _ProsesState extends State<Proses> {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Color.fromRGBO(25, 164, 206, 1),
+                        color: const Color.fromRGBO(25, 164, 206, 1),
                       ),
                       width: 330, // mengatur lebar maksimal
                       height: 195, // mengatur tinggi// mengatur warna background
                       child: Column(
                         children: [
                           Row(
-                            children: [
+                            children: const [
                               Padding(
-                                padding: const EdgeInsets.only(top: 20, left: 20),
+                                padding: EdgeInsets.only(top: 20, left: 20),
                                 child: Align(
                                   alignment: Alignment.centerLeft,
                                   child: Text(
@@ -53,7 +53,7 @@ class _ProsesState extends State<Proses> {
                               ),
                               Padding(
                                 padding:
-                                    const EdgeInsets.only(top: 10, left: 100),
+                                    EdgeInsets.only(top: 10, left: 100),
                                 child: Align(
                                   alignment: Alignment.centerLeft,
                                   child: Text(
@@ -67,8 +67,8 @@ class _ProsesState extends State<Proses> {
                               ),
                             ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10, left: 20),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 10, left: 20),
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
@@ -80,8 +80,8 @@ class _ProsesState extends State<Proses> {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 5, left: 20),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 5, left: 20),
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
@@ -93,8 +93,8 @@ class _ProsesState extends State<Proses> {
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 5, left: 20),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 5, left: 20),
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
@@ -116,8 +116,8 @@ class _ProsesState extends State<Proses> {
                               color: Colors.white,
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10, left: 160),
+                          const Padding(
+                            padding: EdgeInsets.only(top: 10, left: 160),
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(

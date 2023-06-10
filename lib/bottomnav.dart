@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:zuki_laundry/Chat/screen.dart';
 import 'package:zuki_laundry/Home/homepage.dart';
-import 'package:zuki_laundry/beforeLogin.dart';
 import 'package:zuki_laundry/profile/profile.dart';
 import 'package:zuki_laundry/tabbar.dart';
 
 class bottom_nav extends StatefulWidget {
+  static String routeName = "/homepage";
   const bottom_nav({Key? key}) : super(key: key);
 
   @override
@@ -28,18 +27,27 @@ class _bottom_navState extends State<bottom_nav> {
       case 1:
         return const Tabbar();
       default:
-        return const before_login();
+        return const profile();
     }
   }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: _body(),
+        // body: _widgetOptions.elementAt(isLogin ? 2 : _selectedIndex),
         bottomNavigationBar: Container(
           color: Colors.white,
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: BottomNavigationBar(
+            // currentIndex: isLogin ? 1 : 0,
+            //   onTap: (index) {
+            //     setState(() {
+            //       isLogin = index == 3;
+            //     },
+            //   );
+            // },
             currentIndex: currentIndex,
             onTap: (value) {
               setState(() {
@@ -52,33 +60,33 @@ class _bottom_navState extends State<bottom_nav> {
             iconSize: 24,
             showUnselectedLabels: false,
             unselectedItemColor: Colors.grey,
-            selectedItemColor: Color.fromRGBO(25, 164, 206, 1),
-            items: [
+            selectedItemColor: const Color.fromRGBO(25, 164, 206, 1),
+            items: const [
               BottomNavigationBarItem(
                 icon: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    padding: EdgeInsets.symmetric(vertical: 4),
                     child: Icon(Icons.home)),
                 label: 'Home',
                 activeIcon: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    padding: EdgeInsets.symmetric(vertical: 4),
                     child: Icon(Icons.home)),
               ),
               BottomNavigationBarItem(
                 icon: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    padding: EdgeInsets.symmetric(vertical: 4),
                     child: Icon(Icons.history)),
                 label: 'History',
                 activeIcon: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    padding: EdgeInsets.symmetric(vertical: 4),
                     child: Icon(Icons.history)),
               ),
               BottomNavigationBarItem(
                 icon: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    padding: EdgeInsets.symmetric(vertical: 4),
                     child: Icon(Icons.person)),
                 label: 'Akun',
                 activeIcon: Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    padding: EdgeInsets.symmetric(vertical: 4),
                     child: Icon(Icons.person)),
               ),
             ],

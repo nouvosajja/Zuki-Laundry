@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:zuki_laundry/Home/homepage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zuki_laundry/Login/screen.dart';
 import 'package:zuki_laundry/Widgets/text.form.global.dart';
-import 'package:zuki_laundry/bottomnav.dart';
+import 'package:zuki_laundry/model/register_model.dart';
 import 'package:zuki_laundry/profile/kebijakanPrivasi.dart';
+import 'package:http/http.dart' as http;
+
+
 
 class ContinueScreen extends StatefulWidget {
-  const ContinueScreen({Key? key}) : super(key: key);
-
+  ContinueScreen({Key? key, required this.name, required  this.email, required  this.password}) : super(key: key);
+  final String name, email, password;
   @override
   State<ContinueScreen> createState() => _ContinueScreenState();
 }
@@ -15,6 +18,38 @@ class ContinueScreen extends StatefulWidget {
 class _ContinueScreenState extends State<ContinueScreen> {
   final TextEditingController nomerController = TextEditingController();
   final TextEditingController alamatController = TextEditingController();
+
+  registerData() async {
+    if (widget.name.isNotEmpty &&
+        widget.email.isNotEmpty &&
+        widget.password.isNotEmpty &&
+        nomerController.text.isNotEmpty &&
+        alamatController.text.isNotEmpty) {
+      var response = await http.post(Uri.parse("http://zukilaundry.bardiman.com/api/register"), body: {
+        "name": "${widget.name}",
+        "email": "${widget.email}",
+        "password": "${widget.password}",
+        "nomer": "${nomerController.text}",
+        "alamat": "${alamatController.text}"
+      });
+      print("Status Code : ${response.statusCode}");
+      print(response.body);
+
+      if (response.statusCode == 200) {
+               RegisterModel user = registerModelFromJson(response.body);
+
+        SharedPreferences pref = await SharedPreferences.getInstance();
+        pref.setString('token', user.data.token);
+        //pindah page
+      } else {
+        ScaffoldMessenger.of(context)
+            .showSnackBar(SnackBar(content: Text("Email Sudah Terdaftar")));
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Isi Semua Kolom dengan benar")));
+    }
+  }
 
   bool loadingBallAppear = false;
 
@@ -79,11 +114,12 @@ class _ContinueScreenState extends State<ContinueScreen> {
                               width: 300,
                               child: ElevatedButton(
                                 onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const bottom_nav()),
-                                  );
+                                  registerData();
+                                  // Navigator.push(
+                                  //   context,
+                                  //   MaterialPageRoute(
+                                  //       builder: (context) => const bottom_nav()),
+                                  // );
                                 },
                                 child: Text(
                                   'Register',
@@ -101,17 +137,19 @@ class _ContinueScreenState extends State<ContinueScreen> {
                               ),
                             ),
                           ),
-
-                          // const ButtonGlobal(),
-                          Column(
+                          Container(
+                          height: 50,
+                          alignment: Alignment.center,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              SizedBox(height: 20),
-                              Text(
-                                'Dengan melanjutkan, anda menyetujui',
+                              const Text(
+                                'Sudah punya akun?',
                               ),
+                              SizedBox(width: 2.5,),
                               InkWell(
                                 child: const Text(
-                                  'Kebijakan Privasi',
+                                  'Login',
                                   style: TextStyle(
                                     color: Colors.blue,
                                     fontWeight: FontWeight.bold,
@@ -121,12 +159,40 @@ class _ContinueScreenState extends State<ContinueScreen> {
                                 onTap: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(
-                                        builder: (context) => kebijakan()),
-                                  );
+                                    MaterialPageRoute(builder: (context) => LoginScreen()
+                                    ),
+                                 );
                                 },
                               ),
                             ],
+                          ),
+                        ),
+
+                          Center(
+                            child: Column(
+                              children: [
+                                Text(
+                                  'Dengan melanjutkan, anda menyetujui',
+                                ),
+                                InkWell(
+                                  child: const Text(
+                                    'Kebijakan Privasi',
+                                    style: TextStyle(
+                                      color: Colors.blue,
+                                      fontWeight: FontWeight.bold,
+                                      decoration: TextDecoration.underline,
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => kebijakan()),
+                                    );
+                                  },
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       )),

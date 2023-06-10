@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zuki_laundry/bottomnav.dart';
+import 'package:zuki_laundry/Guest/bottomnav_guest.dart';
 import 'package:zuki_laundry/profile/alamat.dart';
 import 'package:zuki_laundry/profile/editProfile.dart';
 import 'package:zuki_laundry/profile/gantiPass.dart';
 import 'package:zuki_laundry/profile/kebijakanPrivasi.dart';
 import 'package:zuki_laundry/profile/metodePembayaran.dart';
-import 'kebijakanPrivasi.dart';
 
 class profile extends StatefulWidget {
+  static String routeName = "/profilescreen";
   const profile({super.key});
 
   @override
@@ -24,7 +26,7 @@ class _profileState extends State<profile> {
         Stack(
           children: [
             Container(height: 140, width: double.infinity),
-            Column(crossAxisAlignment: CrossAxisAlignment.start, children: []),
+            Column(crossAxisAlignment: CrossAxisAlignment.start, children: const []),
             Padding(
               padding: const EdgeInsets.only(top: 40, left: 20),
               child: Material(
@@ -32,13 +34,11 @@ class _profileState extends State<profile> {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => bottom_nav()),
+                      MaterialPageRoute(builder: (context) => const bottom_nav()),
                     );
                   },
-                  child: Container(
-                    child: Icon(Icons.arrow_back_ios,
-                        size: 40, color: Color.fromARGB(255, 0, 0, 0)),
-                  ),
+                  child: const Icon(Icons.arrow_back_ios,
+                      size: 40, color: Color.fromARGB(255, 0, 0, 0)),
                 ),
               ),
             ),
@@ -46,47 +46,45 @@ class _profileState extends State<profile> {
               padding: const EdgeInsets.only(top: 42, left: 140),
               child: Container(
                 width: 290,
-                child: Text(
+                child: const Text(
                   "Profil",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 120, left: 50),
+              padding: const EdgeInsets.only(top: 120, left: 50),
               child: Material(
                 child: Container(
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50.0),
                         border: Border.all(
                           width: 5,
-                          color: Color.fromRGBO(25, 164, 206, 1),
+                          color: const Color.fromRGBO(25, 164, 206, 1),
                         )),
-                    child: Image.asset("asset/image/profile.png"),
                     width: 80,
-                    height: 80),
+                    height: 80,
+                    child: Image.asset("asset/image/profile.png")),
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 115, left: 105),
+              padding: const EdgeInsets.only(top: 115, left: 105),
               child: Container(
                 width: 30,
                 height: 30,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: Color.fromRGBO(25, 164, 206, 1),
                 ),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 120, left: 111),
-              child: Container(
-                child: Icon(Icons.edit_rounded,
-                    size: 18, color: Color.fromARGB(255, 255, 255, 255)),
-              ),
+            const Padding(
+              padding: EdgeInsets.only(top: 120, left: 111),
+              child: Icon(Icons.edit_rounded,
+                  size: 18, color: Color.fromARGB(255, 255, 255, 255)),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 125, left: 160),
+            const Padding(
+              padding: EdgeInsets.only(top: 125, left: 160),
               child: Text(
                 "David",
                 style: TextStyle(
@@ -101,10 +99,10 @@ class _profileState extends State<profile> {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     elevation: 0,
-                    backgroundColor: Color.fromARGB(0, 0, 0, 0),
-                    foregroundColor: Color.fromARGB(224, 0, 0, 0)),
+                    backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+                    foregroundColor: const Color.fromARGB(224, 0, 0, 0)),
                 child: Container(
-                  child: Icon(
+                  child: const Icon(
                     Icons.settings,
                     size: 28,
                     color: Color.fromRGBO(25, 164, 206, 1),
@@ -119,8 +117,8 @@ class _profileState extends State<profile> {
                 },
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 160, left: 160),
+            const Padding(
+              padding: EdgeInsets.only(top: 160, left: 160),
               child: Text(
                 "0123456789",
                 style: TextStyle(
@@ -129,8 +127,8 @@ class _profileState extends State<profile> {
                     color: Color.fromARGB(255, 97, 97, 97)),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 210, left: 30),
+            const Padding(
+              padding: EdgeInsets.only(top: 210, left: 30),
               child: Text(
                 "Akun",
                 style: TextStyle(
@@ -142,7 +140,7 @@ class _profileState extends State<profile> {
             Padding(
               padding: const EdgeInsets.only(top: 255, left: 20),
               child: Container(
-                child: Icon(
+                child: const Icon(
                   Icons.location_on,
                   size: 38,
                   color: Color.fromRGBO(25, 164, 206, 1),
@@ -154,9 +152,9 @@ class _profileState extends State<profile> {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     elevation: 0,
-                    backgroundColor: Color.fromARGB(0, 0, 0, 0),
-                    foregroundColor: Color.fromARGB(224, 0, 0, 0)),
-                child: Text(
+                    backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+                    foregroundColor: const Color.fromARGB(224, 0, 0, 0)),
+                child: const Text(
                   'Alamat',
                   style: TextStyle(
                     fontSize: 20,
@@ -173,7 +171,7 @@ class _profileState extends State<profile> {
             Padding(
               padding: const EdgeInsets.only(top: 305, left: 20),
               child: Container(
-                child: Icon(
+                child: const Icon(
                   Icons.credit_card_rounded,
                   size: 38,
                   color: Color.fromRGBO(25, 164, 206, 1),
@@ -185,10 +183,10 @@ class _profileState extends State<profile> {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     elevation: 0,
-                    backgroundColor: Color.fromARGB(0, 0, 0, 0),
-                    foregroundColor: Color.fromARGB(224, 0, 0, 0)),
-                child: Text(
-                  'metode Pembayaran',
+                    backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+                    foregroundColor: const Color.fromARGB(224, 0, 0, 0)),
+                child: const Text(
+                  'Metode Pembayaran',
                   style: TextStyle(
                     fontSize: 20,
                   ),
@@ -205,7 +203,7 @@ class _profileState extends State<profile> {
             Padding(
               padding: const EdgeInsets.only(top: 350, left: 20),
               child: Container(
-                child: Icon(
+                child: const Icon(
                   Icons.password,
                   size: 38,
                   color: Color.fromRGBO(25, 164, 206, 1),
@@ -217,9 +215,9 @@ class _profileState extends State<profile> {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     elevation: 0,
-                    backgroundColor: Color.fromARGB(0, 0, 0, 0),
-                    foregroundColor: Color.fromARGB(224, 0, 0, 0)),
-                child: Text(
+                    backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+                    foregroundColor: const Color.fromARGB(224, 0, 0, 0)),
+                child: const Text(
                   'Ganti Password',
                   style: TextStyle(
                     fontSize: 20,
@@ -236,7 +234,7 @@ class _profileState extends State<profile> {
             Padding(
               padding: const EdgeInsets.only(top: 395, left: 20),
               child: Container(
-                child: Icon(
+                child: const Icon(
                   Icons.history,
                   size: 38,
                   color: Color.fromRGBO(25, 164, 206, 1),
@@ -248,9 +246,9 @@ class _profileState extends State<profile> {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     elevation: 0,
-                    backgroundColor: Color.fromARGB(0, 0, 0, 0),
-                    foregroundColor: Color.fromARGB(224, 0, 0, 0)),
-                child: Text(
+                    backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+                    foregroundColor: const Color.fromARGB(224, 0, 0, 0)),
+                child: const Text(
                   'Riwayat',
                   style: TextStyle(
                     fontSize: 20,
@@ -265,11 +263,11 @@ class _profileState extends State<profile> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 440, left: 22),
+              padding: const EdgeInsets.only(top: 440, left: 22),
               child: Container(
                 width: 33,
                 height: 33,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: Color.fromRGBO(25, 164, 206, 1),
                 ),
@@ -278,7 +276,7 @@ class _profileState extends State<profile> {
             Padding(
               padding: const EdgeInsets.only(top: 441, left: 25),
               child: Container(
-                child: Icon(Icons.attach_money,
+                child: const Icon(Icons.attach_money,
                     size: 30, color: Color.fromARGB(255, 255, 255, 255)),
               ),
             ),
@@ -287,9 +285,9 @@ class _profileState extends State<profile> {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     elevation: 0,
-                    backgroundColor: Color.fromARGB(0, 0, 0, 0),
-                    foregroundColor: Color.fromARGB(224, 0, 0, 0)),
-                child: Text(
+                    backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+                    foregroundColor: const Color.fromARGB(224, 0, 0, 0)),
+                child: const Text(
                   'Poin',
                   style: TextStyle(
                     fontSize: 20,
@@ -306,7 +304,7 @@ class _profileState extends State<profile> {
             Padding(
               padding: const EdgeInsets.only(top: 485, left: 20),
               child: Container(
-                child: Icon(Icons.logout, size: 38, color: Colors.red),
+                child: const Icon(Icons.logout, size: 38, color: Colors.red),
               ),
             ),
             new Padding(
@@ -314,15 +312,23 @@ class _profileState extends State<profile> {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     elevation: 0,
-                    backgroundColor: Color.fromARGB(0, 0, 0, 0),
-                    foregroundColor: Color.fromARGB(223, 255, 0, 0)),
-                child: Text(
+                    backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+                    foregroundColor: const Color.fromARGB(223, 255, 0, 0)),
+                child: const Text(
                   'Keluar',
                   style: TextStyle(
                     fontSize: 20,
                   ),
                 ),
-                onPressed: () {},
+                onPressed: () async {
+                  final SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+                  prefs.setString("token", "");
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const bottom_nav_guest()),
+                  );
+                },
               ),
             ),
             new Padding(
@@ -330,9 +336,9 @@ class _profileState extends State<profile> {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     elevation: 0,
-                    backgroundColor: Color.fromARGB(0, 0, 0, 0),
-                    foregroundColor: Color.fromARGB(224, 0, 0, 0)),
-                child: Text(
+                    backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+                    foregroundColor: const Color.fromARGB(224, 0, 0, 0)),
+                child: const Text(
                   'Keamanan & kebijakan privasi',
                   style: TextStyle(
                     fontSize: 17,
@@ -345,7 +351,7 @@ class _profileState extends State<profile> {
             Padding(
               padding: const EdgeInsets.only(top: 570, left: 20),
               child: Container(
-                child: Icon(
+                child: const Icon(
                   Icons.privacy_tip,
                   size: 32,
                   color: Color.fromRGBO(25, 164, 206, 1),
@@ -357,9 +363,9 @@ class _profileState extends State<profile> {
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     elevation: 0,
-                    backgroundColor: Color.fromARGB(0, 0, 0, 0),
-                    foregroundColor: Color.fromARGB(224, 0, 0, 0)),
-                child: Text(
+                    backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+                    foregroundColor: const Color.fromARGB(224, 0, 0, 0)),
+                child: const Text(
                   'Keamanan & kebijakan privasi',
                   style: TextStyle(
                     fontSize: 18,

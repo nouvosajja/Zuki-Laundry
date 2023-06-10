@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zuki_laundry/Login/screen.dart';
 import 'package:zuki_laundry/Register/screen.dart';
-import 'package:zuki_laundry/bottomnav.dart';
 
 class before_login extends StatefulWidget {
   const before_login({super.key});
@@ -14,27 +13,41 @@ class _before_loginState extends State<before_login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.pop(
+              context,
+            );
+          },
+          color: Colors.black,
+          iconSize: 30,
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
       body: Column(
         children: [
-          SizedBox(
-            height: 140,
+          const SizedBox(
+            height: 60,
           ),
           Row(
             children: [
               Padding(
-                padding: EdgeInsets.only(top: 53, left: 50),
+                padding: const EdgeInsets.only(top: 53, left: 50),
                 child: Material(
-                  child: Container(
-                      child: Image.asset("asset/image/before_login.png"),
+                  child: SizedBox(
                       width: 131,
-                      height: 131),
+                      height: 131,
+                      child: Image.asset("asset/image/before_login.png")),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 width: 15,
               ),
               Column(
-                children: [
+                children: const [
                   SizedBox(
                     height: 50,
                   ),
@@ -47,11 +60,11 @@ class _before_loginState extends State<before_login> {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 34,
           ),
-          Center(
-            child: Container(
+          const Center(
+            child: SizedBox(
               width: 290,
               child: Text(
                 "Masuk atau daftarkan akun \nanda disini",
@@ -62,7 +75,7 @@ class _before_loginState extends State<before_login> {
             ),
           ),
           //make button login and register no fill and stroke 3 with row and onpressed
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           Row(
@@ -74,12 +87,12 @@ class _before_loginState extends State<before_login> {
                   height: 50,
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Color.fromRGBO(25, 164, 206, 1),
+                      color: const Color.fromRGBO(25, 164, 206, 1),
                       width: 3,
                     ),
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       "Masuk",
                       style: TextStyle(
@@ -96,7 +109,7 @@ class _before_loginState extends State<before_login> {
                   );
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 width: 20,
               ),
               InkWell(
@@ -105,12 +118,12 @@ class _before_loginState extends State<before_login> {
                   height: 50,
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Color.fromRGBO(25, 164, 206, 1),
+                      color: const Color.fromRGBO(25, 164, 206, 1),
                       width: 3,
                     ),
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       "Daftar",
                       textAlign: TextAlign.center,
@@ -124,13 +137,13 @@ class _before_loginState extends State<before_login> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => RegisterScreen()),
+                    MaterialPageRoute(builder: (context) => const RegisterScreen()),
                   );
                 },
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 61,
           ),
           // Center(
@@ -144,7 +157,7 @@ class _before_loginState extends State<before_login> {
           //     ),
           //   ),
           // ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Row(
@@ -159,7 +172,7 @@ class _before_loginState extends State<before_login> {
                   height: 28,
                 ),
               ),
-              Text(
+              const Text(
                 "Keamanan & Kebijakan Privasi",
                 style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
               ),

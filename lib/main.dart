@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:zuki_laundry/Login/screen.dart';
-import 'package:zuki_laundry/beforeLogin.dart';
-import 'package:zuki_laundry/bottomnav.dart';
-import 'package:zuki_laundry/intro.dart';
-import 'package:zuki_laundry/pembayaran.dart';
-import 'package:zuki_laundry/pesanan.dart';
-import 'package:zuki_laundry/profile/profile.dart';
-import 'package:zuki_laundry/tabbar.dart';
+import 'package:zuki_laundry/IntroAnim.dart';
+import 'package:zuki_laundry/route/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,9 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      
-      home: LoginScreen(),
+      routes: routes,
+      home: const intro_anim(),
     );
   }
 }
-

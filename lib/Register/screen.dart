@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zuki_laundry/Login/screen.dart';
 import 'package:zuki_laundry/Register/continue.dart';
 import 'package:zuki_laundry/Widgets/text.form.global.dart';
-import 'package:zuki_laundry/bottomnav.dart';
+
+
 
 
 
 class RegisterScreen extends StatefulWidget {
+   static String routeName = "/registerscreen";
+
   const RegisterScreen({Key? key}) : super(key: key);
 
   @override
@@ -14,9 +18,12 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController nameController = TextEditingController();
+TextEditingController ctrusername = new TextEditingController();
+  TextEditingController ctremail = new TextEditingController();
+  TextEditingController ctrpassword = new TextEditingController();
+
+
+
 
   
   bool loadingBallAppear = false;
@@ -59,21 +66,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         const SizedBox(height: 30),
                         /// Name Input
                         TextFormGlobal(
-                          controller: nameController, 
+                          controller: ctrusername, 
                           text: 'Name', 
                           textInputType: TextInputType.emailAddress, 
                           obscure: false
                           ),
                         /// Email Input
                         TextFormGlobal(
-                          controller: emailController, 
+                          controller: ctremail, 
                           text: 'Email', 
                           textInputType: TextInputType.emailAddress, 
                           obscure: false
                           ),
                         /// Password Input
                         TextFormGlobal(
-                          controller: passwordController, 
+                          controller: ctrpassword, 
                           text: 'Password', 
                           textInputType: TextInputType.text, 
                           obscure: true
@@ -87,10 +94,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               width: 300,
                               child: ElevatedButton(
                                 onPressed: () {
+                                  // postData();
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const ContinueScreen()),
+                                        builder: (context) =>  ContinueScreen(name: ctrusername.text, email: ctremail.text, password: ctrpassword.text,)),
                                   );
                                 },
                                 child: Text(

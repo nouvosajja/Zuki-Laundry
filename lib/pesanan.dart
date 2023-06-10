@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:zuki_laundry/bottomnav.dart';
 import 'package:zuki_laundry/pembayaran.dart';
 
 class Pesanan extends StatefulWidget {
@@ -16,35 +15,34 @@ class _PesananState extends State<Pesanan> {
       body: Column(
         children: [
           Container(
-            padding: EdgeInsets.only(top: 60, left: 25),
-            child : 
-            Row(
-                children: [
-                  IconButton(
-                    icon: Icon(
-                      Icons.arrow_back,
-                      color: Colors.black,
-                      size: 35,
-                    ),
-                    onPressed: () {
-                      Navigator.pop(
-                        context,
-                      );
-                    },
+            padding: const EdgeInsets.only(top: 60, left: 25),
+            child: Row(
+              children: [
+                IconButton(
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    color: Colors.black,
+                    size: 35,
                   ),
-                  SizedBox(width: 25),
-                  Text(
-                    'Detail Pesanan',
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.w700,
-                    ),
+                  onPressed: () {
+                    Navigator.pop(
+                      context,
+                    );
+                  },
+                ),
+                const SizedBox(width: 25),
+                const Text(
+                  'Detail Pesanan',
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.w700,
                   ),
-                ],
-              ),
+                ),
+              ],
+            ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 30, left: 40),
+          const Padding(
+            padding: EdgeInsets.only(top: 30, left: 40),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -56,8 +54,8 @@ class _PesananState extends State<Pesanan> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 30, left: 40),
+          const Padding(
+            padding: EdgeInsets.only(top: 30, left: 40),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -69,14 +67,12 @@ class _PesananState extends State<Pesanan> {
               ),
             ),
           ),
-          SizedBox(
-            height: 30
-          ),
+          const SizedBox(height: 30),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Row(
               // make text diambil & selesai
-              children: [
+              children: const [
                 Text(
                   'Diambil',
                   style: TextStyle(
@@ -99,7 +95,7 @@ class _PesananState extends State<Pesanan> {
             padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Row(
               // make text diambil & selesai
-              children: [
+              children: const [
                 Text(
                   '08 Mei 2023',
                   style: TextStyle(
@@ -119,8 +115,8 @@ class _PesananState extends State<Pesanan> {
             ),
           ),
           // make text info pesanan
-          Padding(
-            padding: const EdgeInsets.only(top: 30, left: 40),
+          const Padding(
+            padding: EdgeInsets.only(top: 30, left: 40),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -132,8 +128,8 @@ class _PesananState extends State<Pesanan> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 30, left: 40),
+          const Padding(
+            padding: EdgeInsets.only(top: 30, left: 40),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -145,8 +141,8 @@ class _PesananState extends State<Pesanan> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 5, left: 40),
+          const Padding(
+            padding: EdgeInsets.only(top: 5, left: 40),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -158,8 +154,8 @@ class _PesananState extends State<Pesanan> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 30, left: 40),
+          const Padding(
+            padding: EdgeInsets.only(top: 30, left: 40),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -171,8 +167,8 @@ class _PesananState extends State<Pesanan> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 5, left: 40),
+          const Padding(
+            padding: EdgeInsets.only(top: 5, left: 40),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -184,8 +180,8 @@ class _PesananState extends State<Pesanan> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 30, left: 40),
+          const Padding(
+            padding: EdgeInsets.only(top: 30, left: 40),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -197,8 +193,8 @@ class _PesananState extends State<Pesanan> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 5, left: 40),
+          const Padding(
+            padding: EdgeInsets.only(top: 5, left: 40),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -219,31 +215,27 @@ class _PesananState extends State<Pesanan> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Pembayaran(),
+                      builder: (context) => const Pembayaran(),
                     ),
                   );
                 },
-                child: Text(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromRGBO(25, 164, 206, 1),
+                  minimumSize: const Size(150, 50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                child: const Text(
                   'Bayar',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                style: ElevatedButton.styleFrom(
-                  primary: Color.fromRGBO(25, 164, 206, 1),
-                  minimumSize: Size(150, 50),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                ),
               ),
             ),
           ),
-          
-
-
-          
         ],
       ),
     );

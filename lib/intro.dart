@@ -1,19 +1,22 @@
+
 import 'package:flutter/material.dart';
-import 'package:zuki_laundry/bottomnav.dart';
+import 'package:zuki_laundry/Guest/bottomnav_guest.dart';
 
 class intro extends StatefulWidget {
-  const intro({super.key});
+  const intro({Key? key}) : super(key: key);
 
   @override
   State<intro> createState() => _introState();
 }
 
 class _introState extends State<intro> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        height: MediaQuery.of(context).size.height, 
+        height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -25,7 +28,7 @@ class _introState extends State<intro> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(height: 160,),
+              const SizedBox(height: 160,),
               Image.asset('asset/image/splash 1.png'),
               Container(
                 margin: const EdgeInsets.only(top: 45),
@@ -56,9 +59,12 @@ class _introState extends State<intro> {
         ),
       ),
       floatingActionButton: Container(
-        margin: const EdgeInsets.only(bottom: 180, right: 92),
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        alignment: Alignment.bottomCenter,
+        padding: const EdgeInsets.only(bottom: 180, left: 40),
         child: FloatingActionButton.extended(
-          backgroundColor: Color.fromRGBO(250, 121, 228, 1),
+          backgroundColor: const Color.fromRGBO(250, 121, 228, 1),
           label: const Text(
             "Get Started",
             style: TextStyle(
@@ -67,13 +73,23 @@ class _introState extends State<intro> {
               color: Colors.white,
             ),
           ),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
-          extendedPadding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-          onPressed: () {
-            Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => bottom_nav()));
-          },
-        ),) 
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          extendedPadding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+          onPressed: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const bottom_nav_guest(),
+            ),
+          )
+        ),
+      ),
     );
   }
 }
+
+
+
+
+
