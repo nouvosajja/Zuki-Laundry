@@ -70,7 +70,7 @@ class _before_loginState extends State<before_login> {
                 "Masuk atau daftarkan akun \nanda disini",
                 textAlign: TextAlign.center,
                 maxLines: 3,
-                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15),
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
               ),
             ),
           ),

@@ -40,7 +40,9 @@ class _HomePageState extends State<HomePage_guest> {
                               "Selamat datang di Zuki Laundry!",
                               maxLines: 2,
                               style: TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 22),
+                                  fontWeight: FontWeight.bold, fontSize: 22,
+                                  fontFamily: 'Poppins',
+                                  ),
                             ),
                           ),
                           Padding(

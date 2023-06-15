@@ -28,21 +28,6 @@ class _profileState extends State<profile> {
             Container(height: 140, width: double.infinity),
             Column(crossAxisAlignment: CrossAxisAlignment.start, children: const []),
             Padding(
-              padding: const EdgeInsets.only(top: 40, left: 20),
-              child: Material(
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const bottom_nav()),
-                    );
-                  },
-                  child: const Icon(Icons.arrow_back_ios,
-                      size: 40, color: Color.fromARGB(255, 0, 0, 0)),
-                ),
-              ),
-            ),
-            Padding(
               padding: const EdgeInsets.only(top: 42, left: 140),
               child: Container(
                 width: 290,
@@ -59,19 +44,20 @@ class _profileState extends State<profile> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(50.0),
                         border: Border.all(
-                          width: 5,
+                          width: 4,
                           color: const Color.fromRGBO(25, 164, 206, 1),
                         )),
                     width: 80,
                     height: 80,
-                    child: Image.asset("asset/image/profile.png")),
+                    child: Image.asset("asset/image/profile.png"),
+                    padding: EdgeInsets.all(2),),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 115, left: 105),
+              padding: const EdgeInsets.only(top: 120, left: 110),
               child: Container(
-                width: 30,
-                height: 30,
+                width: 25,
+                height: 25,
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: Color.fromRGBO(25, 164, 206, 1),
@@ -79,9 +65,9 @@ class _profileState extends State<profile> {
               ),
             ),
             const Padding(
-              padding: EdgeInsets.only(top: 120, left: 111),
+              padding: EdgeInsets.only(top: 124, left: 115),
               child: Icon(Icons.edit_rounded,
-                  size: 18, color: Color.fromARGB(255, 255, 255, 255)),
+                  size: 16, color: Color.fromARGB(255, 255, 255, 255)),
             ),
             const Padding(
               padding: EdgeInsets.only(top: 125, left: 160),
@@ -90,21 +76,20 @@ class _profileState extends State<profile> {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 30,
-                  color: Color.fromRGBO(25, 164, 206, 1),
+                  color: Colors.black,
                 ),
               ),
             ),
-            new Padding(
-              padding: const EdgeInsets.only(top: 110, left: 252),
+            Padding(
+              padding: const EdgeInsets.only(top: 105, left: 220),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     elevation: 0,
-                    backgroundColor: const Color.fromARGB(0, 0, 0, 0),
-                    foregroundColor: const Color.fromARGB(224, 0, 0, 0)),
+                    backgroundColor: const Color.fromARGB(0, 0, 0, 0)),
                 child: Container(
                   child: const Icon(
                     Icons.settings,
-                    size: 28,
+                    size: 24,
                     color: Color.fromRGBO(25, 164, 206, 1),
                   ),
                 ),
@@ -147,7 +132,7 @@ class _profileState extends State<profile> {
                 ),
               ),
             ),
-            new Padding(
+            Padding(
               padding: const EdgeInsets.only(top: 250, left: 60),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -178,7 +163,7 @@ class _profileState extends State<profile> {
                 ),
               ),
             ),
-            new Padding(
+            Padding(
               padding: const EdgeInsets.only(top: 300, left: 60),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -210,7 +195,7 @@ class _profileState extends State<profile> {
                 ),
               ),
             ),
-            new Padding(
+            Padding(
               padding: const EdgeInsets.only(top: 345, left: 60),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -241,7 +226,7 @@ class _profileState extends State<profile> {
                 ),
               ),
             ),
-            new Padding(
+            Padding(
               padding: const EdgeInsets.only(top: 390, left: 60),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -280,7 +265,7 @@ class _profileState extends State<profile> {
                     size: 30, color: Color.fromARGB(255, 255, 255, 255)),
               ),
             ),
-            new Padding(
+            Padding(
               padding: const EdgeInsets.only(top: 435, left: 60),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -307,7 +292,7 @@ class _profileState extends State<profile> {
                 child: const Icon(Icons.logout, size: 38, color: Colors.red),
               ),
             ),
-            new Padding(
+            Padding(
               padding: const EdgeInsets.only(top: 480, left: 60),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -331,23 +316,23 @@ class _profileState extends State<profile> {
                 },
               ),
             ),
-            new Padding(
-              padding: const EdgeInsets.only(top: 520, left: 10),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    backgroundColor: const Color.fromARGB(0, 0, 0, 0),
-                    foregroundColor: const Color.fromARGB(224, 0, 0, 0)),
-                child: const Text(
-                  'Keamanan & kebijakan privasi',
-                  style: TextStyle(
-                    fontSize: 17,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                onPressed: () {},
-              ),
-            ),
+            // new Padding(
+            //   padding: const EdgeInsets.only(top: 520, left: 10),
+            //   child: ElevatedButton(
+            //     style: ElevatedButton.styleFrom(
+            //         elevation: 0,
+            //         backgroundColor: const Color.fromARGB(0, 0, 0, 0),
+            //         foregroundColor: const Color.fromARGB(224, 0, 0, 0)),
+            //     child: const Text(
+            //       'Keamanan & kebijakan privasi',
+            //       style: TextStyle(
+            //         fontSize: 17,
+            //         fontWeight: FontWeight.bold,
+            //       ),
+            //     ),
+            //     onPressed: () {},
+            //   ),
+            // ),
             Padding(
               padding: const EdgeInsets.only(top: 570, left: 20),
               child: Container(
@@ -358,7 +343,7 @@ class _profileState extends State<profile> {
                 ),
               ),
             ),
-            new Padding(
+             Padding(
               padding: const EdgeInsets.only(top: 563, left: 50),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(

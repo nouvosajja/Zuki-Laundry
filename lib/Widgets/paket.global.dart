@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:zuki_laundry/DetailPage/detailKilat.dart';
-import 'package:zuki_laundry/DetailPage/detailreguler.dart';
+import 'package:zuki_laundry/Home/DetailPage/detailKilat.dart';
+import 'package:zuki_laundry/Home/DetailPage/detailReguler.dart';
 
 class Paket extends StatelessWidget {
   const Paket({super.key});
