@@ -113,8 +113,8 @@ class _gantiPassState extends State<gantiPass> {
                               padding: EdgeInsets.zero,
                             ),
                             child: Container(
-                              width: 163,
-                              height: 55,
+                              width: 155,
+                              height: 45,
                               decoration: BoxDecoration(
                                 color: Color(0xff00a3ff),
                                 borderRadius: BorderRadius.circular(27),
@@ -124,8 +124,8 @@ class _gantiPassState extends State<gantiPass> {
                                   'Verifikasi',
                                   style: TextStyle(
                                     fontSize: 25,
-                                    fontWeight: FontWeight.w700,
-                                    height: 1.5,
+                                    fontWeight: FontWeight.w500,
+                                    height: 1.4,
                                     color: Color(0xffffffff),
                                   ),
                                 ),
