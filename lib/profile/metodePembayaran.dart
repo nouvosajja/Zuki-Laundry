@@ -19,7 +19,7 @@ class _metodePembayaranState extends State<metodePembayaran> {
               Stack(
                 children: [
                   const SizedBox(height: 140, width: double.infinity),
-                Column(
+                  const Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: []),
                   Padding(
@@ -48,10 +48,10 @@ class _metodePembayaranState extends State<metodePembayaran> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 110, left: 20),
+                    padding: EdgeInsets.only(top: 120, left: 30),
                     child: Container(
-                      width: 70,
-                      height: 70,
+                      width: 50,
+                      height: 50,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Color.fromRGBO(25, 164, 206, 1),
@@ -59,14 +59,14 @@ class _metodePembayaranState extends State<metodePembayaran> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 120, left: 30),
+                    padding: const EdgeInsets.only(top: 126, left: 36),
                     child: Container(
                       child: Icon(Icons.wallet,
-                          size: 48, color: Color.fromARGB(255, 255, 255, 255)),
+                          size: 38, color: Color.fromARGB(255, 255, 255, 255)),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 120, left: 85),
+                    padding: const EdgeInsets.only(top: 120, left: 75),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           elevation: 0,
@@ -75,26 +75,26 @@ class _metodePembayaranState extends State<metodePembayaran> {
                       child: Text(
                         'GoPay',
                         style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold),
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                       onPressed: () {},
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 120, left: 190),
+                    padding: const EdgeInsets.only(top: 120, left: 155),
                     child: Container(
                       child: Icon(
                         Icons.add_circle_rounded,
-                        size: 30,
+                        size: 25,
                         color: Color.fromRGBO(25, 164, 206, 1),
                       ),
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 200, left: 20),
+                    padding: EdgeInsets.only(top: 200, left: 30),
                     child: Container(
-                      width: 70,
-                      height: 70,
+                      width: 50,
+                      height: 50,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Color.fromRGBO(149, 25, 206, 1),
@@ -102,10 +102,10 @@ class _metodePembayaranState extends State<metodePembayaran> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 209.5, left: 30),
+                    padding: EdgeInsets.only(top: 210, left: 40),
                     child: Container(
-                      width: 50,
-                      height: 50,
+                      width: 30,
+                      height: 30,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Color.fromRGBO(255, 255, 255, 1),
@@ -113,10 +113,10 @@ class _metodePembayaranState extends State<metodePembayaran> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 217, left: 37.5),
+                    padding: EdgeInsets.only(top: 217, left: 47),
                     child: Container(
-                      width: 35,
-                      height: 35,
+                      width: 15,
+                      height: 15,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: Color.fromRGBO(149, 25, 206, 1),
@@ -124,7 +124,7 @@ class _metodePembayaranState extends State<metodePembayaran> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 210, left: 85),
+                    padding: const EdgeInsets.only(top: 200, left: 75),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           elevation: 0,
@@ -133,33 +133,33 @@ class _metodePembayaranState extends State<metodePembayaran> {
                       child: Text(
                         'OVO',
                         style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold),
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                       onPressed: () {},
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 205, left: 165),
+                    padding: const EdgeInsets.only(top: 200, left: 135),
                     child: Container(
                       child: Icon(
                         Icons.add_circle_rounded,
-                        size: 30,
+                        size: 25,
                         color: Color.fromRGBO(25, 164, 206, 1),
                       ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 280, left: 20),
+                    padding: const EdgeInsets.only(top: 280, left: 30),
                     child: Container(
                       child: Icon(
                         Icons.credit_card,
-                        size: 70,
+                        size: 50,
                         color: Color.fromRGBO(25, 164, 206, 1),
                       ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 290, left: 85),
+                    padding: const EdgeInsets.only(top: 280, left: 75),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           elevation: 0,
@@ -168,17 +168,17 @@ class _metodePembayaranState extends State<metodePembayaran> {
                       child: Text(
                         'Debit',
                         style: TextStyle(
-                            fontSize: 25, fontWeight: FontWeight.bold),
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                       onPressed: () {},
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(top: 285, left: 170),
+                    padding: const EdgeInsets.only(top: 280, left: 145),
                     child: Container(
                       child: Icon(
                         Icons.add_circle_rounded,
-                        size: 30,
+                        size: 25,
                         color: Color.fromRGBO(25, 164, 206, 1),
                       ),
                     ),
