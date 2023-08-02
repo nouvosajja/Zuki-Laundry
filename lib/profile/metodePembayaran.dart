@@ -19,7 +19,7 @@ class _metodePembayaranState extends State<metodePembayaran> {
               Stack(
                 children: [
                   const SizedBox(height: 140, width: double.infinity),
-                  const Column(
+                  Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: []),
                   Padding(

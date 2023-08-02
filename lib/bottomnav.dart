@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:iconly/iconly.dart';
+import 'package:zuki_laundry/Chat/screen.dart';
 import 'package:zuki_laundry/Home/homepage.dart';
 import 'package:zuki_laundry/profile/profile.dart';
 import 'package:zuki_laundry/tabbar.dart';
@@ -26,6 +28,8 @@ class _bottom_navState extends State<bottom_nav> {
         return const HomePage();
       case 1:
         return const Tabbar();
+      case 2:
+        return const chat_screen();
       default:
         return const profile();
     }
@@ -41,13 +45,6 @@ class _bottom_navState extends State<bottom_nav> {
           color: Colors.white,
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: BottomNavigationBar(
-            // currentIndex: isLogin ? 1 : 0,
-            //   onTap: (index) {
-            //     setState(() {
-            //       isLogin = index == 3;
-            //     },
-            //   );
-            // },
             currentIndex: currentIndex,
             onTap: (value) {
               setState(() {
@@ -79,6 +76,15 @@ class _bottom_navState extends State<bottom_nav> {
                 activeIcon: Padding(
                     padding: EdgeInsets.symmetric(vertical: 4),
                     child: Icon(Icons.history)),
+              ),
+              BottomNavigationBarItem(
+                icon: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 4),
+                    child: Icon(IconlyLight.chat)),
+                label: 'Chat',
+                activeIcon: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 4),
+                    child: Icon(IconlyLight.chat)),
               ),
               BottomNavigationBarItem(
                 icon: Padding(

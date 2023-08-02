@@ -16,62 +16,6 @@ class _chat_screenState extends State<chat_screen> {
       date: DateTime.now().subtract(
         const Duration(days: 0, minutes: 3),
       ),
-      isSentByMe: false,
-    ),
-    Message(
-      text: 'Hello there, how are you?',
-      date: DateTime.now().subtract(
-        const Duration(days: 0, minutes: 2),
-      ),
-      isSentByMe: true,
-    ),
-    Message(
-      text: 'Hiiiiii',
-      date: DateTime.now().subtract(
-        const Duration(days: 0, minutes: 1),
-      ),
-      isSentByMe: false,
-    ),
-    Message(
-      text: 'Aaaa its okayy',
-      date: DateTime.now().subtract(
-        const Duration(days: 1, minutes: 3),
-      ),
-      isSentByMe: true,
-    ),
-    Message(
-      text: 'Awww thank you! 😊',
-      date: DateTime.now().subtract(
-        const Duration(days: 1, minutes: 2),
-      ),
-      isSentByMe: false,
-    ),
-    Message(
-      text: 'Happy birthday!',
-      date: DateTime.now().subtract(
-        const Duration(days: 1, minutes: 1),
-      ),
-      isSentByMe: true,
-    ),
-    Message(
-      text: 'I\'m fine, thanks',
-      date: DateTime.now().subtract(
-        const Duration(days: 3, minutes: 4),
-      ),
-      isSentByMe: true,
-    ),
-    Message(
-      text: 'How are you?',
-      date: DateTime.now().subtract(
-        const Duration(days: 3, minutes: 3),
-      ),
-      isSentByMe: false,
-    ),
-    Message(
-      text: 'Hello',
-      date: DateTime.now().subtract(
-        const Duration(days: 3, minutes: 2),
-      ),
       isSentByMe: true,
     ),
     Message(
@@ -81,7 +25,7 @@ class _chat_screenState extends State<chat_screen> {
       ),
       isSentByMe: false,
     ),
-  ].reversed.toList();
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -101,72 +45,68 @@ class _chat_screenState extends State<chat_screen> {
         elevation: 0,
         title: const Text('Chat', style: TextStyle(color: Colors.black),),
       ),
-      body: Column(children: [
-        Expanded(
-          child: GroupedListView<Message, DateTime>(
-            padding: const EdgeInsets.all(8),
-            // order: GroupedListOrder.DESC,
-            useStickyGroupSeparators: true,
-            floatingHeader: true,
-            elements: _messages,
-            groupBy: (messages) => DateTime(
-              messages.date.year,
-              messages.date.month,
-              messages.date.day,
-            ),
-            groupHeaderBuilder: (Message messages) => SizedBox(
-              height: 40,
-              child: Center(
-                child: Card(
-                  color: const Color.fromRGBO(25, 164, 206, 1),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8),
-                    child: Text(
-                      DateFormat.yMMMd().format(messages.date),
-                      style: const TextStyle(color: Colors.white,
+      body: Column(
+        children: [
+          Expanded(
+            child: GroupedListView<Message, DateTime>(
+              padding: const EdgeInsets.all(8),
+              useStickyGroupSeparators: true,
+              floatingHeader: true,
+              elements: _messages,
+              groupBy: (messages) => DateTime(
+                messages.date.year,
+                messages.date.month,
+                messages.date.day,
+              ),
+              groupHeaderBuilder: (Message messages) => SizedBox(
+                height: 40,
+                child: Center(
+                  child: Card(
+                    color: const Color.fromRGBO(25, 164, 206, 1),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Text(
+                        DateFormat.yMMMd().format(messages.date),
+                        style: const TextStyle(color: Colors.white),
                       ),
-                      
                     ),
                   ),
-                ),
-              ),  
-            ),
-            itemBuilder: ((context, Message messages) => Align(
-              alignment: messages.isSentByMe 
-                ? Alignment.centerRight 
-                : Alignment.centerLeft,
-              child: Card(
-                elevation: 8,
-                child: Padding(
-                  padding: const EdgeInsets.all(12),
-                  child: Text(messages.text),
-                )
+                ),  
               ),
-            )),
+              itemBuilder: ((context, Message messages) => Align(
+                alignment: messages.isSentByMe 
+                  ? Alignment.centerRight 
+                  : Alignment.centerLeft,
+                child: Card(
+                  elevation: 8,
+                  child: Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Text(messages.text),
+                  )
+                ),
+              )),
             ),
           ),
-        Container(
-          color: Colors.grey.shade300,
-          child: TextField(
-            decoration: const InputDecoration(
-              contentPadding: EdgeInsets.all(12),
-              hintText: 'Type your message here....',
+          Container(
+            color: Colors.grey.shade300,
+            child: TextField(
+              decoration: const InputDecoration(
+                contentPadding: EdgeInsets.all(12),
+                hintText: 'Type your message here....',
+              ),
+              onSubmitted: (text) {
+                final message = Message(
+                  text: text,
+                  date: DateTime.now(),
+                  isSentByMe: true,
+                );
+                
+                setState(() => _messages.add(message));
+              },
             ),
-            onSubmitted: (text) {
-              final message = Message(
-                text: text,
-                date: DateTime.now(),
-                isSentByMe: true,
-              );
-              
-              setState(() =>
-                _messages.add(message)
-              );
-            },
           ),
-        ),
-        
-      ],),
+        ],
+      ),
     );
   }
 }

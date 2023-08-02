@@ -16,21 +16,21 @@ class ContinueScreen extends StatefulWidget {
 }
 
 class _ContinueScreenState extends State<ContinueScreen> {
-  final TextEditingController nomerController = TextEditingController();
-  final TextEditingController alamatController = TextEditingController();
+  final TextEditingController numberController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
 
   registerData() async {
     if (widget.name.isNotEmpty &&
         widget.email.isNotEmpty &&
         widget.password.isNotEmpty &&
-        nomerController.text.isNotEmpty &&
-        alamatController.text.isNotEmpty) {
+        numberController.text.isNotEmpty &&
+        addressController.text.isNotEmpty) {
       var response = await http.post(Uri.parse("http://zukilaundry.bardiman.com/api/register"), body: {
-        "name": "${widget.name}",
         "email": "${widget.email}",
+        "name": "${widget.name}",
         "password": "${widget.password}",
-        "nomer": "${nomerController.text}",
-        "alamat": "${alamatController.text}"
+        "number": "${numberController.text}",
+        "address": "${addressController.text}"
       });
       print("Status Code : ${response.statusCode}");
       print(response.body);
@@ -92,14 +92,14 @@ class _ContinueScreenState extends State<ContinueScreen> {
 
                           /// Name Input
                           TextFormGlobal(
-                              controller: nomerController,
+                              controller: numberController,
                               text: 'Nomer Hp',
                               textInputType: TextInputType.emailAddress,
                               obscure: false),
 
                           /// Email Input
                           TextFormGlobal(
-                              controller: alamatController,
+                              controller: addressController,
                               text: 'Alamat',
                               textInputType: TextInputType.emailAddress,
                               obscure: false),

@@ -1,54 +1,53 @@
-// // To parse this JSON data, do
-// //
-// //     final userModel = userModelFromJson(jsonString);
+// To parse this JSON data, do
+//
+//     final userModel = userModelFromJson(jsonString);
 
-// import 'package:meta/meta.dart';
-// import 'dart:convert';
+import 'dart:convert';
 
-// UserModel userModelFromJson(String str) => UserModel.fromJson(json.decode(str));
+List<UserModel> userModelFromJson(String str) => List<UserModel>.from(json.decode(str).map((x) => UserModel.fromJson(x)));
 
-// String userModelToJson(UserModel data) => json.encode(data.toJson());
+String userModelToJson(List<UserModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-// class UserModel {
-//   String message;
-//   User user;
-//   String token;
+class UserModel {
+    int id;
+    String name;
+    String email;
+    String role;
+    String number;
+    String address;
+    DateTime? createdAt;
+    DateTime? updatedAt;
 
-//   UserModel({
-//     required this.message,
-//     required this.user,
-//     required this.token,
-//   });
+    UserModel({
+        required this.id,
+        required this.name,
+        required this.email,
+        required this.role,
+        required this.number,
+        required this.address,
+        this.createdAt,
+        this.updatedAt,
+    });
 
-//   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-//     message: json["message"],
-//     user: json["name"],
-//     token: json["token"],
-//   );
+    factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
+        id: json["id"],
+        name: json["name"],
+        email: json["email"],
+        role: json["role"],
+        number: json["number"],
+        address: json["address"],
+        createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
+        updatedAt: json["updated_at"] == null ? null : DateTime.parse(json["updated_at"]),
+    );
 
-//   Map<String, dynamic> toJson() => {
-//     "message": message,
-//     "name": user.toJson(),
-//     "token": token,
-//   };
-// }
-
-// class User {
-//   String username;
-//   String email;
-
-//   User({
-//     required this.username,
-//     required this.email,
-//   });
-
-//   factory User.fromJson(Map<String, dynamic> json) => User(
-//     username: json["name"],
-//     email: json["email"],
-//   );
-
-//   Map<String, dynamic> toJson() => {
-//     "name": username,
-//     "email": email,
-//   };
-// }
+    Map<String, dynamic> toJson() => {
+        "id": id,
+        "name": name,
+        "email": email,
+        "role": role,
+        "number": number,
+        "address": address,
+        "created_at": createdAt?.toIso8601String(),
+        "updated_at": updatedAt?.toIso8601String(),
+    };
+}

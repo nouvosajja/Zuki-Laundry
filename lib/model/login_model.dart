@@ -18,10 +18,13 @@ class LoginModel {
         required this.data,
     });
 
-    factory LoginModel.fromJson(Map<String, dynamic> json) => LoginModel(
-        success: json["success"],
-        data: Data.fromJson(json["data"]?? ""   ),
-    );
+    factory LoginModel.fromJson(Map<String, dynamic> json) {
+  return LoginModel(
+    success: json["success"] ?? false,
+    data: json["data"] != null ? Data.fromJson(json["data"]) : Data(token: "", name: ""),
+  );
+}
+
 
     Map<String, dynamic> toJson() => {
         "success": success,

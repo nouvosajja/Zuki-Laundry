@@ -48,77 +48,30 @@ class _alamatState extends State<alamat> {
                       ),
                     ),
                   ),
-                  Column(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.fromLTRB(40, 95, 0, 19),
-                        constraints: BoxConstraints(
-                          maxWidth: 283,
-                        ),
-                        child: Text(
-                          'Tambahkan alamat Anda dengan memilih dari peta',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 13,
-                            fontWeight: FontWeight.w500,
-                            height: 1.5,
-                            color: Color(0xff000000),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
                   Expanded(
                     child: SizedBox(
                       width: double.infinity,
                       child: Column(
                         children: [
                           SizedBox(
-                            height: 300,
+                            height: 100,
                           ),
                           Container(
-                            margin: EdgeInsets.fromLTRB(0, 0, 60, 0),
+                            margin: EdgeInsets.fromLTRB(20, 10, 10, 30),
                             child: Text(
-                              'Tambahkan Alamat',
+                              'Nouvo chrisna Ariyanto | Gg. 7 No.34, Besito Kulon, Besito, Kec.Gebog, Kabupaten Kudus, Jawa Tengah 59333, Indonesia',
                               style: TextStyle(
-                                fontSize: 25,
+                                fontSize: 13,
                                 fontWeight: FontWeight.w500,
                                 height: 1.5,
                                 color: Color(0xff000000),
                               ),
                             ),
                           ),
-                          Row(
-                            children: [
-                              Container(
-                                margin: EdgeInsets.fromLTRB(35, 0, 0, 0),
-                                child: Icon(
-                                  Icons.location_on,
-                                  size: 34,
-                                  color: Color.fromRGBO(0, 0, 0, 1),
-                                ),
-                              ),
-                              Container(
-                                margin: EdgeInsets.fromLTRB(0, 2, 0, 0),
-                                child: Text(
-                                  'Gg. 7 No.34',
-                                  style: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.w700,
-                                    height: 1.5,
-                                    color: Color(0xff000000),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
                           Container(
-                            margin: EdgeInsets.fromLTRB(40, 8, 0, 30),
-                            constraints: BoxConstraints(
-                              maxWidth: 310,
-                            ),
+                            margin: EdgeInsets.fromLTRB(20, 0, 15, 30),
                             child: Text(
-                              'Gg. 7 No.34, Besito Kulon, Besito, Kec.\nGebog, Kabupaten Kudus, Jawa Tengah 59333, Indonesia',
+                              'Nouvo chrisna Ariyanto | Gg. 7 No.34, Besito Kulon, Besito, Kec.Gebog, Kabupaten Kudus, Jawa Tengah 59333, Indonesia',
                               style: TextStyle(
                                 fontSize: 13,
                                 fontWeight: FontWeight.w500,

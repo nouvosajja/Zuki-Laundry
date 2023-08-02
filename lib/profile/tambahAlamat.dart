@@ -62,7 +62,7 @@ class _tambahAlamatState extends State<tambahAlamat> {
                 ),
                 TextField(
                   decoration: InputDecoration(
-                    labelText: 'Enter your name',
+                    labelText: 'Masukkan Kode Pos',
                     border: OutlineInputBorder(),
                   ),
                 ),

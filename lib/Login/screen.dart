@@ -4,6 +4,7 @@ import 'package:zuki_laundry/Home/homepage.dart';
 import 'package:zuki_laundry/Register/screen.dart';
 import 'package:zuki_laundry/Widgets/text.form.global.dart';
 import 'package:http/http.dart' as http;
+import 'package:zuki_laundry/bottomnav.dart';
 import 'package:zuki_laundry/model/login_model.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -18,13 +19,14 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController ctremail = new TextEditingController();
   TextEditingController ctrpassword = new TextEditingController();
 
-  postData() async {
+  postData(BuildContext context) async {
     if (ctremail.text.isNotEmpty && ctrpassword.text.isNotEmpty) {
       var response = await http
           .post(Uri.parse("http://zukilaundry.bardiman.com/api/login"), body: {
         "email": "${ctremail.text}",
         "password": "${ctrpassword.text}"
       });
+
       print("Status Code : ${response.statusCode}");
       print(response.body);
 
@@ -32,7 +34,17 @@ class _LoginScreenState extends State<LoginScreen> {
         LoginModel user = loginModelFromJson(response.body);
         SharedPreferences pref = await SharedPreferences.getInstance();
         pref.setString('token', user.data.token);
-        Navigator.pushNamed(context, HomePage.routeName);
+        print(response.body);
+        if (user.success == true) {
+          print("Login Berhasil");
+            Navigator.pushNamed(context, bottom_nav.routeName);
+        }
+        else{
+          print("Login Gagal");
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Email atau Password tidak valid")));
+        }
+      
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text("Email atau Password tidak valid")));
@@ -104,12 +116,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             width: 300,
                             child: ElevatedButton(
                               onPressed: () {
-                                postData();
-                                // Navigator.push(
-                                //   context,
-                                //   MaterialPageRoute(
-                                //       builder: (context) => const bottom_nav()),
-                                // );
+                                postData(context);
+                            
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: const Color.fromRGBO(0, 163, 255, 1),

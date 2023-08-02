@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iconly/iconly.dart';
 import 'package:zuki_laundry/Guest/homepage_guest.dart';
 import 'package:zuki_laundry/beforeLogin.dart';
 
@@ -78,6 +79,15 @@ class _bottom_navState extends State<bottom_nav_guest> {
                 child: Icon(Icons.history),
               ),
             ),
+            BottomNavigationBarItem(
+                icon: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 4),
+                    child: Icon(IconlyLight.chat)),
+                label: 'Chat',
+                activeIcon: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 4),
+                    child: Icon(IconlyLight.chat)),
+              ),
             BottomNavigationBarItem(
               icon: Padding(
                 padding: EdgeInsets.symmetric(vertical: 4),

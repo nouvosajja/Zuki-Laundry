@@ -44,27 +44,6 @@ class _HomePageState extends State<HomePage> {
                                   fontFamily: 'Poppins'),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 37),
-                            child: InkWell(
-                              child: Container(
-                                alignment: Alignment.topRight,
-                                height: 35,
-                                width: 35,
-                                child: const Icon(
-                                  IconlyLight.chat,
-                                  size: 30,
-                                ),
-                              ),
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const chat_screen()),
-                                );
-                              },
-                            ),
-                          ),
                         ],
                       ),
                     ])),
