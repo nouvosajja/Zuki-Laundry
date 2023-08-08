@@ -35,68 +35,101 @@ class _bottom_navState extends State<bottom_nav> {
     }
   }
 
+      void _onBottomNavItemPressed(int index) {
+      if (index == 0) {
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const bottom_nav()));
+      } else {
+        setState(() {
+          currentIndex = index;
+        });
+      }
+    }
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        extendBody: true,
         body: _body(),
-        // body: _widgetOptions.elementAt(isLogin ? 2 : _selectedIndex),
-        bottomNavigationBar: Container(
-          color: Colors.white,
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: BottomNavigationBar(
-            currentIndex: currentIndex,
-            onTap: (value) {
-              setState(() {
-                currentIndex = value;
-              });
-            },
-            elevation: 0,
-            backgroundColor: Colors.white,
-            type: BottomNavigationBarType.fixed,
-            iconSize: 24,
-            showUnselectedLabels: false,
-            unselectedItemColor: Colors.grey,
-            selectedItemColor: const Color.fromRGBO(25, 164, 206, 1),
-            items: const [
-              BottomNavigationBarItem(
-                icon: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 4),
-                    child: Icon(Icons.home)),
-                label: 'Home',
-                activeIcon: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 4),
-                    child: Icon(Icons.home)),
-              ),
-              BottomNavigationBarItem(
-                icon: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 4),
-                    child: Icon(Icons.history)),
-                label: 'History',
-                activeIcon: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 4),
-                    child: Icon(Icons.history)),
-              ),
-              BottomNavigationBarItem(
-                icon: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 4),
-                    child: Icon(IconlyLight.chat)),
-                label: 'Chat',
-                activeIcon: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 4),
-                    child: Icon(IconlyLight.chat)),
-              ),
-              BottomNavigationBarItem(
-                icon: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 4),
-                    child: Icon(Icons.person)),
-                label: 'Akun',
-                activeIcon: Padding(
-                    padding: EdgeInsets.symmetric(vertical: 4),
-                    child: Icon(Icons.person)),
+        bottomNavigationBar: DecoratedBox(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(16),
+              topRight: Radius.circular(16),
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                blurRadius: 10,
+                spreadRadius: 1,
+                offset: Offset(0, -3),
               ),
             ],
           ),
-        ));
+          child: ClipRRect(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(16),
+              topRight: Radius.circular(16),
+            ),
+            child: BottomNavigationBar(
+              currentIndex: currentIndex,
+              onTap: _onBottomNavItemPressed,
+              elevation: 0,
+              backgroundColor: Colors.white,
+              type: BottomNavigationBarType.fixed,
+              iconSize: 24,
+              showUnselectedLabels: false,
+              unselectedItemColor: Colors.grey,
+              selectedItemColor: const Color.fromRGBO(25, 164, 206, 1),
+              items: const [
+                BottomNavigationBarItem(
+                  icon: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 4),
+                    child: Icon(Icons.home),
+                  ),
+                  label: 'Home',
+                  activeIcon: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 4),
+                    child: Icon(Icons.home),
+                  ),
+                ),
+                BottomNavigationBarItem(
+                  icon: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 4),
+                    child: Icon(Icons.history),
+                  ),
+                  label: 'History',
+                  activeIcon: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 4),
+                    child: Icon(Icons.history),
+                  ),
+                ),
+                BottomNavigationBarItem(
+                  icon: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 4),
+                    child: Icon(IconlyLight.chat),
+                  ),
+                  label: 'Chat',
+                  activeIcon: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 4),
+                    child: Icon(IconlyLight.chat),
+                  ),
+                ),
+                BottomNavigationBarItem(
+                  icon: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 4),
+                    child: Icon(Icons.person),
+                  ),
+                  label: 'Akun',
+                  activeIcon: Padding(
+                    padding: EdgeInsets.symmetric(vertical: 4),
+                    child: Icon(Icons.person),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
   }
 }

@@ -38,9 +38,11 @@ dependencies:
   grouped_list: ^5.1.2
   intl: ^0.18.1
   shared_preferences: 
-  http: 
-
-
+  http:
+  firebase_core: ^2.15.0
+  firebase_messaging: ^14.6.5
+  url_launcher: ^6.1.10
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -80,6 +82,7 @@ flutter:
     - asset/images/keamanan.png
     - asset/images/GoPay.png
     - asset/images/lightning.png
+    - asset/images/logo.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
@@ -99,6 +102,9 @@ flutter:
         - asset: asset/fonts/Poppins/Poppins-Regular.ttf
         - asset: asset/fonts/Poppins/Poppins-Bold.ttf
           weight: 900
+    - family: Bernoru
+      fonts:
+        - asset: asset/fonts/Bernoru/Bernoru-black.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

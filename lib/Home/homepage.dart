@@ -52,7 +52,7 @@ class _HomePageState extends State<HomePage> {
             padding: const EdgeInsets.only(left: 30, top: 50),
             child: (Container(
               margin: const EdgeInsets.only(),
-              child: Image.asset("asset/image/zuki.png"),
+              child: Image.asset("asset/images/poster.png"),
             )),
           ),
           const Padding(

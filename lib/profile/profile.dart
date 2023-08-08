@@ -30,10 +30,10 @@ class _profileState extends State<profile> {
         profil_api = value;
       });
     });
-  super.initState();
-}
+    super.initState();
+  }
 
-Future getprofil() async {
+  Future getprofil() async {
     final endPointUrl = 'profile/';
     final url = 'http://zukilaundry.bardiman.com/api/user';
 
@@ -42,8 +42,6 @@ Future getprofil() async {
     //call token from set pref
     final SharedPreferences pref = await SharedPreferences.getInstance();
     final token = pref.getString('token')!;
-    
-    print('token : $token');
 
     try {
       final response = await http.get(
@@ -57,7 +55,6 @@ Future getprofil() async {
       print('token : $token');
       print('status code : ${response.statusCode}');
 
-
       if (response.statusCode == 200) {
         print(url);
 
@@ -67,271 +64,263 @@ Future getprofil() async {
         throw Exception("Failed to fetch data from API");
       }
     } catch (e) {
-      print(e.toString()); 
+      print(e.toString());
+    }
   }
-}
-
-
 
   @override
   Widget build(BuildContext context) {
-        if (profil_api?.name == null || profil_api?.number == null) {
+    if (profil_api?.name == null || profil_api?.number == null) {
       return Center(
         child: CircularProgressIndicator(),
       );
     }
     return Scaffold(
-        body: SingleChildScrollView(
-      child: SafeArea(
-        child: Container(
-          padding: EdgeInsets.only(left: 24),
-          child: FutureBuilder(
-            future: getprofil(),
-            builder: (context, snapshot) {
-              return
-             Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 60, right: 40),
-                    child: Container(
-                      width: 290,
-                      child: Text(
-                        "Profil",
-                        style:
-                            TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+        body: SafeArea(
+          child: Container(
+            padding: EdgeInsets.only(left: 24),
+            child: FutureBuilder(
+              future: getprofil(),
+              builder: (context, snapshot) {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 40),
+                      child: Container(
+                        child: Text(
+                          "Profil",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 30),
+                        ),
                       ),
                     ),
-                  ),
-                ),
-                SizedBox(
-                  height: 40,
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
                     SizedBox(
-                      width: 10,
+                      height: 60,
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Text(
+                                  profil_api?.name ?? 'Data tidak ada',
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 30,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                IconButton(
+                                  padding: EdgeInsets.only(right: 15, bottom: 30),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const EditProfile()),
+                                    );
+                                  },
+                                  icon: Icon(
+                                    Icons.settings,
+                                    size: 25,
+                                    color: Color.fromRGBO(25, 164, 206, 1),
+                                  ),
+                                ),
+                              ],
+                            ),
                             Text(
-                              profil_api?.name ?? 'Data tidak ada',
+                              profil_api?.number ?? 'Data tidak ada',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 30,
-                                color: Colors.black,
-                              ),
-                            ),
-                            IconButton(
-                              padding: EdgeInsets.only(right: 15, bottom: 30),
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const editProfile()),
-                                );
-                              },
-                              icon: Icon(
-                                Icons.settings,
-                                size: 25,
-                                color: Color.fromRGBO(25, 164, 206, 1),
+                                fontSize: 20,
+                                color: Color(0xFF515151),
                               ),
                             ),
                           ],
                         ),
-                        Text(
-                          profil_api?.number ?? 'Data tidak ada',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            color: Color(0xFF515151),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 16,
+                    ),
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          child: Icon(
+                            Icons.location_on,
+                            size: 38,
+                            color: Color.fromRGBO(25, 164, 206, 1),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => alamat()),
+                            );
+                          },
+                          child: Container(
+                            child: Text(
+                              'Alamat',
+                              style: TextStyle(
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          child: Icon(
+                            Icons.credit_card_rounded,
+                            size: 38,
+                            color: Color.fromRGBO(25, 164, 206, 1),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const metodePembayaran()),
+                            );
+                          },
+                          child: Container(
+                            child: Text(
+                              'Metode Pembayaran',
+                              style: TextStyle(
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          child: Icon(
+                            Icons.password,
+                            size: 38,
+                            color: Color.fromRGBO(25, 164, 206, 1),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const gantiPass()),
+                            );
+                          },
+                          child: Text(
+                            'Ganti Password',
+                            style: TextStyle(
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          child: const Icon(Icons.logout,
+                              size: 38, color: Colors.red),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        GestureDetector(
+                          onTap: () async {
+                            final SharedPreferences prefs =
+                                await SharedPreferences.getInstance();
+                            prefs.remove("token");
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const bottom_nav_guest()),
+                            );
+                          },
+                          child: const Text(
+                            'Keluar',
+                            style: TextStyle(
+                              fontSize: 20,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 50,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          child: Icon(
+                            Icons.privacy_tip,
+                            size: 32,
+                            color: Color.fromRGBO(25, 164, 206, 1),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const kebijakan()),
+                            );
+                          },
+                          child: Text(
+                            'Keamanan & kebijakan privasi',
+                            style: TextStyle(
+                              fontSize: 18,
+                            ),
                           ),
                         ),
                       ],
                     ),
                   ],
-                ),
-                SizedBox(
-                  height: 16,
-                ),
-                
-                SizedBox(
-                  height: 40,
-                ),
-                Row(
-                  children: [
-                    Container(
-                      child: Icon(
-                        Icons.location_on,
-                        size: 38,
-                        color: Color.fromRGBO(25, 164, 206, 1),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) =>  alamat()),
-                        );
-                      },
-                      child: Container(
-                        child: Text(
-                          'Alamat',
-                          style: TextStyle(
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  children: [
-                    Container(
-                      child: Icon(
-                        Icons.credit_card_rounded,
-                        size: 38,
-                        color: Color.fromRGBO(25, 164, 206, 1),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const metodePembayaran()),
-                        );
-                      },
-                      child: Container(
-                        child: Text(
-                          'Metode Pembayaran',
-                          style: TextStyle(
-                            fontSize: 20,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  children: [
-                    Container(
-                      child: Icon(
-                        Icons.password,
-                        size: 38,
-                        color: Color.fromRGBO(25, 164, 206, 1),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const gantiPass()),
-                        );
-                      },
-                      child: Text(
-                        'Ganti Password',
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  children: [
-                    Container(
-                      child:
-                          const Icon(Icons.logout, size: 38, color: Colors.red),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    GestureDetector(
-                      onTap: () async {
-                        final SharedPreferences prefs =
-                            await SharedPreferences.getInstance();
-                        prefs.remove("token");
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const bottom_nav_guest()),
-                        );
-                      },
-                      child: const Text(
-                        'Keluar',
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  height: 50,
-                ),
-                Row(
-                  children: [
-                    Container(
-                      child: Icon(
-                        Icons.privacy_tip,
-                        size: 32,
-                        color: Color.fromRGBO(25, 164, 206, 1),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const kebijakan()),
-                        );
-                      },
-                      child: Text(
-                        'Keamanan & kebijakan privasi',
-                        style: TextStyle(
-                          fontSize: 18,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            );
-            },
+                );
+              },
+            ),
           ),
-        ),
-      ),
-    ));
+        ));
   }
 }
 

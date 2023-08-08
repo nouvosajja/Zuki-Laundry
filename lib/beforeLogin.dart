@@ -40,7 +40,7 @@ class _before_loginState extends State<before_login> {
                   child: SizedBox(
                       width: 131,
                       height: 131,
-                      child: Image.asset("asset/image/before_login.png")),
+                      child: Image.asset("asset/images/before_login.png")),
                 ),
               ),
               const SizedBox(
@@ -167,7 +167,7 @@ class _before_loginState extends State<before_login> {
               Padding(
                 padding: const EdgeInsets.all(9.0),
                 child: Image.asset(
-                  "asset/image/keamanan.png",
+                  "asset/images/keamanan.png",
                   width: 25,
                   height: 28,
                 ),

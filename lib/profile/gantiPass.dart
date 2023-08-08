@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:zuki_laundry/model/update_model.dart';
 
 class gantiPass extends StatefulWidget {
   const gantiPass({super.key});
@@ -8,6 +12,48 @@ class gantiPass extends StatefulWidget {
 }
 
 class _gantiPassState extends State<gantiPass> {
+  final TextEditingController oldPasswordController = TextEditingController();
+  final TextEditingController newPasswordController = TextEditingController();
+
+  // Fungsi untuk mengirim data profil yang diperbarui ke API
+  void _changePassword() async {
+    String oldPassword = oldPasswordController.text;
+    String newPassword = newPasswordController.text;
+
+    // Simpan data ke server melalui API
+    final url =
+        'http://zukilaundry.bardiman.com/api/user/update'; // Ganti dengan URL API Anda
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    final token = pref.getString('token')!;
+
+    try {
+      final response = await http.post(
+        Uri.parse(url),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+        body: json.encode({
+          'old_password': oldPassword,
+          'new_password': newPassword,
+        }),
+      );
+      print('token : $token');
+      print('status code : ${response.statusCode}');
+
+      if (response.statusCode == 200) {
+        // Jika pembaruan berhasil, kembali ke halaman sebelumnya
+      } else {
+        // Tangani kesalahan jika pembaruan gagal
+        print('Failed to update profile on the server.');
+      }
+    } catch (e) {
+      // Tangani exception jika ada masalah dengan koneksi atau API
+      print('Error while updating profile: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,8 +89,7 @@ class _gantiPassState extends State<gantiPass> {
                                   child: Container(
                                     child: const Icon(Icons.arrow_back_ios,
                                         size: 40,
-                                        color:
-                                            Color.fromARGB(255, 0, 0, 0)),
+                                        color: Color.fromARGB(255, 0, 0, 0)),
                                   ),
                                 ),
                               ),
@@ -73,6 +118,8 @@ class _gantiPassState extends State<gantiPass> {
                     Container(
                       margin: EdgeInsets.fromLTRB(13, 0, 0, 10),
                       child: TextField(
+                        controller: oldPasswordController,
+                        obscureText: true, // Display dots for the password
                         decoration: InputDecoration(
                           border: UnderlineInputBorder(),
                           hintText: 'Masukkan Password lama',
@@ -94,6 +141,8 @@ class _gantiPassState extends State<gantiPass> {
                     Container(
                       margin: EdgeInsets.fromLTRB(13, 0, 0, 40),
                       child: TextField(
+                        controller: newPasswordController,
+                        obscureText: true, // Display dots for the password
                         decoration: InputDecoration(
                           border: UnderlineInputBorder(),
                           hintText: 'Masukkan Password Baru',
@@ -103,7 +152,9 @@ class _gantiPassState extends State<gantiPass> {
                     Container(
                       margin: EdgeInsets.fromLTRB(0, 0, 150, 310),
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          _changePassword();
+                        },
                         style: TextButton.styleFrom(
                           padding: EdgeInsets.zero,
                         ),

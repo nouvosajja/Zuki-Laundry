@@ -7,7 +7,6 @@ import 'package:zuki_laundry/profile/kebijakanPrivasi.dart';
 import 'package:http/http.dart' as http;
 
 
-
 class ContinueScreen extends StatefulWidget {
   ContinueScreen({Key? key, required this.name, required  this.email, required  this.password}) : super(key: key);
   final String name, email, password;
@@ -78,7 +77,7 @@ class _ContinueScreenState extends State<ContinueScreen> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Image.asset('asset/image/wp.png'),
+                              Image.asset('asset/images/wp.png'),
                               const SizedBox(height: 45),
                               const Text(
                                 "Daftar",
@@ -115,11 +114,6 @@ class _ContinueScreenState extends State<ContinueScreen> {
                               child: ElevatedButton(
                                 onPressed: () {
                                   registerData();
-                                  // Navigator.push(
-                                  //   context,
-                                  //   MaterialPageRoute(
-                                  //       builder: (context) => const bottom_nav()),
-                                  // );
                                 },
                                 child: Text(
                                   'Register',

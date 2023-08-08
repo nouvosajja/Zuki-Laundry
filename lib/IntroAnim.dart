@@ -33,26 +33,15 @@ class _SplashScreenState extends State<intro_anim> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              'asset/image/splash 1.png',
-              width: 200,
-              height: 200,
-            ),
-            const SizedBox(height: 5),
-            const Text(
-              'Zuki Laundry',
-              style: TextStyle(
-                fontSize: 30,
-                fontWeight: FontWeight.w900,
-                fontFamily: 'Poppins'
+        child: Stack(
+          alignment: Alignment.center,
+            children: [
+              Image.asset(
+                'asset/images/logo.png',
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
-    );
+      );
   }
 }

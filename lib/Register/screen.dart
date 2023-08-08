@@ -53,7 +53,7 @@ TextEditingController ctrusername = new TextEditingController();
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Image.asset('asset/image/wp.png'),
+                                Image.asset('asset/images/wp.png'),
                                 const SizedBox(height: 45),
                                 const Text(
                                   "Daftar",

@@ -1,3 +1,4 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zuki_laundry/Home/homepage.dart';
@@ -6,6 +7,7 @@ import 'package:zuki_laundry/Widgets/text.form.global.dart';
 import 'package:http/http.dart' as http;
 import 'package:zuki_laundry/bottomnav.dart';
 import 'package:zuki_laundry/model/login_model.dart';
+import 'package:zuki_laundry/firebase_options.dart';
 
 class LoginScreen extends StatefulWidget {
   static String routeName = "/loginscreen";
@@ -21,6 +23,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
   postData(BuildContext context) async {
     if (ctremail.text.isNotEmpty && ctrpassword.text.isNotEmpty) {
+      String devicetoken;
+
+      devicetoken = await getDeviceToken();
+      print('deviceToken = $devicetoken');
+
       var response = await http
           .post(Uri.parse("http://zukilaundry.bardiman.com/api/login"), body: {
         "email": "${ctremail.text}",
@@ -32,19 +39,21 @@ class _LoginScreenState extends State<LoginScreen> {
 
       if (response.statusCode == 200) {
         LoginModel user = loginModelFromJson(response.body);
+
+        // post save token
+
         SharedPreferences pref = await SharedPreferences.getInstance();
         pref.setString('token', user.data.token);
+        pref.setString('devicetoken', devicetoken);
         print(response.body);
         if (user.success == true) {
           print("Login Berhasil");
-            Navigator.pushNamed(context, bottom_nav.routeName);
-        }
-        else{
+          Navigator.pushNamed(context, bottom_nav.routeName);
+        } else {
           print("Login Gagal");
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text("Email atau Password tidak valid")));
+              const SnackBar(content: Text("Email atau Password tidak valid")));
         }
-      
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text("Email atau Password tidak valid")));
@@ -52,6 +61,23 @@ class _LoginScreenState extends State<LoginScreen> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Isi Semua Kolom dengan benar")));
+    }
+  }
+
+  Future<void> saveToken(String token) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setString('token', token);
+  }
+
+  Future<String> getDeviceToken() async {
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+    String? deviceToken = await messaging.getToken();
+
+    if (deviceToken != null) {
+      debugPrint('token = $deviceToken');
+      return deviceToken;
+    } else {
+      throw Exception('Gagal membuat device token');
     }
   }
 
@@ -82,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Image.asset('asset/image/wp.png'),
+                            Image.asset('asset/images/wp.png'),
                             const SizedBox(height: 45),
                             const Text(
                               "Masuk",
@@ -117,10 +143,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: ElevatedButton(
                               onPressed: () {
                                 postData(context);
-                            
                               },
                               style: ElevatedButton.styleFrom(
-                                backgroundColor: const Color.fromRGBO(0, 163, 255, 1),
+                                backgroundColor:
+                                    const Color.fromRGBO(0, 163, 255, 1),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10),
                                 ),
@@ -160,7 +186,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const RegisterScreen()),
+                                        builder: (context) =>
+                                            const RegisterScreen()),
                                   );
                                 },
                               ),

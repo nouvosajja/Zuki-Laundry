@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>803057968015-qccth104b4dq9uj08d19on8h6dufn7iq.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.803057968015-qccth104b4dq9uj08d19on8h6dufn7iq</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD2i-TwrwuHCWkRVrO1-aFM_7kdqgxXokI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>803057968015</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.zukiLaundry</string>
+	<key>PROJECT_ID</key>
+	<string>zuki-laundry</string>
+	<key>STORAGE_BUCKET</key>
+	<string>zuki-laundry.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:803057968015:ios:fce6f5ed2df3c4d35161fa</string>
+</dict>
+</plist>

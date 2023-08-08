@@ -20,7 +20,7 @@ class _introState extends State<intro> {
         width: MediaQuery.of(context).size.width,
         decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("asset/image/splash.png"),
+            image: AssetImage("asset/images/splash.png"),
             fit: BoxFit.cover,
           ),
         ),
@@ -29,7 +29,7 @@ class _introState extends State<intro> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(height: 160,),
-              Image.asset('asset/image/splash 1.png'),
+              Image.asset('asset/images/splash 1.png'),
               Container(
                 margin: const EdgeInsets.only(top: 45),
                 child: const Text(

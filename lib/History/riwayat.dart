@@ -143,7 +143,7 @@ class _MyWidgetState extends State<Riwayat> {
                     ),
                     onPressed: () {},
                     child: const Text(
-                      "Dapatkan Promo",
+                      "Dapatkan Bonus",
                       style: TextStyle(
                         color: Color(0xffffffff),
                         fontSize: 16,

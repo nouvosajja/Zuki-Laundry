@@ -55,28 +55,28 @@ class _bubbleState extends State<bubble> {
                     left: 155,
                     child: Container(
                       margin: const EdgeInsets.only(),
-                      child: Image.asset("asset/image/bubble2.png"),
+                      child: Image.asset("asset/images/bubble2.png"),
                     )),
                 Positioned(
                     top: 30,
                     left: 170,
                     child: Container(
                       margin: const EdgeInsets.only(),
-                      child: Image.asset("asset/image/bubble1.png"),
+                      child: Image.asset("asset/images/bubble1.png"),
                     )),
                 Positioned(
                     top: 190,
                     left: 35,
                     child: Container(
                       margin: const EdgeInsets.only(),
-                      child: Image.asset("asset/image/bubble1.png"),
+                      child: Image.asset("asset/images/bubble1.png"),
                     )),
                 Positioned(
                     top: 210,
                     left: 65,
                     child: Container(
                       margin: const EdgeInsets.only(),
-                      child: Image.asset("asset/image/bubble3.png"),
+                      child: Image.asset("asset/images/bubble3.png"),
                     )),
                 Positioned(
                   top: 45,
@@ -106,35 +106,35 @@ class _bubbleState extends State<bubble> {
                     left: 200,
                     child: Container(
                       margin: const EdgeInsets.only(),
-                      child: Image.asset("asset/image/bubble3.png"),
+                      child: Image.asset("asset/images/bubble3.png"),
                     )),
                 Positioned(
                     top: 140,
                     left: 220,
                     child: Container(
                       margin: const EdgeInsets.only(),
-                      child: Image.asset("asset/image/bubble1.png"),
+                      child: Image.asset("asset/images/bubble1.png"),
                     )),
                 Positioned(
                     top: 145,
                     left: 260,
                     child: Container(
                       margin: const EdgeInsets.only(),
-                      child: Image.asset("asset/image/bubble2.png"),
+                      child: Image.asset("asset/images/bubble2.png"),
                     )),
                 Positioned(
                     top: 340,
                     left: 300,
                     child: Container(
                       margin: const EdgeInsets.only(),
-                      child: Image.asset("asset/image/bubble2.png"),
+                      child: Image.asset("asset/images/bubble2.png"),
                     )),
                 Positioned(
                     top: 350,
                     left: 265,
                     child: Container(
                       margin: const EdgeInsets.only(),
-                      child: Image.asset("asset/image/bubble1.png"),
+                      child: Image.asset("asset/images/bubble1.png"),
                     )),
                 Positioned(
                   top: 180,

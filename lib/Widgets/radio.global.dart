@@ -11,8 +11,8 @@ class RadioWidget extends StatefulWidget {
     Key? key,
     this.value,
     this.groupValue,
-    this.color = Colors.white,
-    this.selectColor = Colors.black,
+    this.color = Colors.grey, // Default color
+    this.selectColor = Colors.white,
     this.onChanged,
   }) : super(key: key);
 
@@ -45,13 +45,27 @@ class RadioWidgetState extends State<RadioWidget> {
         });
       },
       child: Container(
-        height: 20,
-        width: 20,
+        height: 20, // Increase the height for padding
+        width: 20, // Increase the width for padding
         decoration: BoxDecoration(
-          color: _isSelected
-              ? widget.selectColor // Active
-              : widget.color, // Inactive
           shape: BoxShape.circle,
+          border: _isSelected
+              ? Border.all(
+                  color: Colors.white, // Border color for selected
+                  width: 1.0, // Border width
+                )
+              : null, // No border for unselected
+          color: Colors.transparent, // Transparent center
+        ),
+        padding: EdgeInsets.all(1.5), // Adjust the padding as needed
+        child: Container(
+          margin: EdgeInsets.all(1.5), // Adjust the margin as needed
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            color: _isSelected
+                ? widget.selectColor // Active
+                : Color.fromARGB(255, 207, 207, 207), // Softer shade of grey for inactive
+          ),
         ),
       ),
     );
