@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:iconly/iconly.dart';
-import 'package:zuki_laundry/Chat/screen.dart';
 import 'package:zuki_laundry/Home/homepage.dart';
+import 'package:zuki_laundry/bonus.dart';
 import 'package:zuki_laundry/profile/profile.dart';
 import 'package:zuki_laundry/tabbar.dart';
 
@@ -29,7 +28,7 @@ class _bottom_navState extends State<bottom_nav> {
       case 1:
         return const Tabbar();
       case 2:
-        return const chat_screen();
+        return const Bonus();
       default:
         return const profile();
     }
@@ -53,7 +52,7 @@ class _bottom_navState extends State<bottom_nav> {
         body: _body(),
         bottomNavigationBar: DecoratedBox(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(16),
               topRight: Radius.circular(16),
             ),
@@ -62,12 +61,12 @@ class _bottom_navState extends State<bottom_nav> {
                 color: Colors.black.withOpacity(0.2),
                 blurRadius: 10,
                 spreadRadius: 1,
-                offset: Offset(0, -3),
+                offset: const Offset(0, -3),
               ),
             ],
           ),
           child: ClipRRect(
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(16),
               topRight: Radius.circular(16),
             ),
@@ -107,12 +106,12 @@ class _bottom_navState extends State<bottom_nav> {
                 BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.symmetric(vertical: 4),
-                    child: Icon(IconlyLight.chat),
+                    child: Icon(Icons.card_giftcard),
                   ),
-                  label: 'Chat',
+                  label: 'Bonus',
                   activeIcon: Padding(
                     padding: EdgeInsets.symmetric(vertical: 4),
-                    child: Icon(IconlyLight.chat),
+                    child: Icon(Icons.card_giftcard),
                   ),
                 ),
                 BottomNavigationBarItem(

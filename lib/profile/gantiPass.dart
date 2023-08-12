@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:zuki_laundry/model/update_model.dart';
 
 class gantiPass extends StatefulWidget {
   const gantiPass({super.key});
@@ -21,7 +20,7 @@ class _gantiPassState extends State<gantiPass> {
     String newPassword = newPasswordController.text;
 
     // Simpan data ke server melalui API
-    final url =
+    const url =
         'http://zukilaundry.bardiman.com/api/user/update'; // Ganti dengan URL API Anda
     final SharedPreferences pref = await SharedPreferences.getInstance();
     final token = pref.getString('token')!;
@@ -63,19 +62,19 @@ class _gantiPassState extends State<gantiPass> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                padding: EdgeInsets.fromLTRB(17, 40, 17, 16),
+                padding: const EdgeInsets.fromLTRB(17, 40, 17, 16),
                 width: double.infinity,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
-                      margin: EdgeInsets.fromLTRB(0, 0, 0, 40),
+                      margin: const EdgeInsets.fromLTRB(0, 0, 0, 40),
                       width: double.infinity,
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
-                            margin: EdgeInsets.fromLTRB(0, 0, 25, 0),
+                            margin: const EdgeInsets.fromLTRB(0, 0, 25, 0),
                             child: TextButton(
                               onPressed: () {},
                               style: TextButton.styleFrom(
@@ -95,7 +94,7 @@ class _gantiPassState extends State<gantiPass> {
                               ),
                             ),
                           ),
-                          Text(
+                          const Text(
                             "Ganti Password",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold, fontSize: 23),
@@ -104,8 +103,8 @@ class _gantiPassState extends State<gantiPass> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.fromLTRB(0, 0, 160, 0),
-                      child: Text(
+                      margin: const EdgeInsets.fromLTRB(0, 0, 160, 0),
+                      child: const Text(
                         'Password Lama',
                         style: TextStyle(
                           fontSize: 20,
@@ -116,19 +115,19 @@ class _gantiPassState extends State<gantiPass> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.fromLTRB(13, 0, 0, 10),
+                      margin: const EdgeInsets.fromLTRB(13, 0, 0, 10),
                       child: TextField(
                         controller: oldPasswordController,
                         obscureText: true, // Display dots for the password
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: UnderlineInputBorder(),
                           hintText: 'Masukkan Password lama',
                         ),
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.fromLTRB(0, 0, 160, 0),
-                      child: Text(
+                      margin: const EdgeInsets.fromLTRB(0, 0, 160, 0),
+                      child: const Text(
                         'Password baru',
                         style: TextStyle(
                           fontSize: 21.5,
@@ -139,18 +138,18 @@ class _gantiPassState extends State<gantiPass> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.fromLTRB(13, 0, 0, 40),
+                      margin: const EdgeInsets.fromLTRB(13, 0, 0, 40),
                       child: TextField(
                         controller: newPasswordController,
                         obscureText: true, // Display dots for the password
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           border: UnderlineInputBorder(),
                           hintText: 'Masukkan Password Baru',
                         ),
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.fromLTRB(0, 0, 150, 310),
+                      margin: const EdgeInsets.fromLTRB(0, 0, 150, 310),
                       child: TextButton(
                         onPressed: () {
                           _changePassword();
@@ -162,10 +161,10 @@ class _gantiPassState extends State<gantiPass> {
                           width: 140,
                           height: 40,
                           decoration: BoxDecoration(
-                            color: Color(0xff00a3ff),
+                            color: const Color(0xff00a3ff),
                             borderRadius: BorderRadius.circular(12),
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Text(
                               'Verifikasi',
                               style: TextStyle(
@@ -180,24 +179,24 @@ class _gantiPassState extends State<gantiPass> {
                       ),
                     ),
                     Container(
-                      margin: EdgeInsets.fromLTRB(37, 0, 37, 0),
+                      margin: const EdgeInsets.fromLTRB(37, 0, 37, 0),
                       width: double.infinity,
                       child: Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
-                            margin: EdgeInsets.fromLTRB(0, 3, 0, 0),
+                            margin: const EdgeInsets.fromLTRB(0, 3, 0, 0),
                             width: 65,
                             height: 2,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(2),
-                              color: Color(0xff000000),
+                              color: const Color(0xff000000),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 14,
                           ),
-                          Text(
+                          const Text(
                             'Zuki Laundry',
                             style: TextStyle(
                               fontSize: 15,
@@ -206,16 +205,16 @@ class _gantiPassState extends State<gantiPass> {
                               color: Color(0xff000000),
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 14,
                           ),
                           Container(
-                            margin: EdgeInsets.fromLTRB(0, 3, 0, 0),
+                            margin: const EdgeInsets.fromLTRB(0, 3, 0, 0),
                             width: 65,
                             height: 2,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(2),
-                              color: Color(0xff000000),
+                              color: const Color(0xff000000),
                             ),
                           ),
                         ],

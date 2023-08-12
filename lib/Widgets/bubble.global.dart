@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:zuki_laundry/model/paket_model.dart';
 import 'package:zuki_laundry/model/price_model.dart';
 
 class bubble extends StatefulWidget {
@@ -29,7 +28,7 @@ class _bubbleState extends State<bubble> {
         future: fetchPackages(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
         child: CircularProgressIndicator(),
       );
           } else if (snapshot.hasError) {
@@ -90,8 +89,8 @@ class _bubbleState extends State<bubble> {
                     ),
                     child: Center(
                       child: Text(
-                        'Reguler \nCuci Setrika / ${regulerPackages[0].waktu} hari :\nRp. ${regulerPackages[0].harga} \n Cuci / ${regulerPackages[1].waktu} hari :\nRp. ${regulerPackages[1].harga} \n Setrika / ${regulerPackages[2].waktu} hari :\nRp. ${regulerPackages[2].harga}',
-                        style: TextStyle(
+                        'Reguler \n${regulerPackages[0].waktu} \nRp. ${regulerPackages[0].harga} \n  ${regulerPackages[1].waktu}\nRp. ${regulerPackages[1].harga} \n ${regulerPackages[2].waktu}\nRp. ${regulerPackages[2].harga}',
+                        style: const TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.bold,
                           color: Colors.white,
@@ -148,8 +147,8 @@ class _bubbleState extends State<bubble> {
                     ),
                     child: Center(
                       child: Text(
-                        'Kilat  \nCuci Setrika / ${kilatPackages[0].waktu} jam :\nRp. ${kilatPackages[0].harga} \nCuci / ${kilatPackages[1].waktu} hari :\nRp. ${kilatPackages[1].harga} \nSetrika / ${kilatPackages[2].waktu} hari :\nRp. ${kilatPackages[2].harga}',
-                        style: TextStyle(
+                        'Kilat  \n ${kilatPackages[0].waktu}\nRp. ${kilatPackages[0].harga} \n ${kilatPackages[1].waktu}\nRp. ${kilatPackages[1].harga} \n ${kilatPackages[2].waktu} \nRp. ${kilatPackages[2].harga}',
+                        style: const TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.bold,
                             color: Colors.white),

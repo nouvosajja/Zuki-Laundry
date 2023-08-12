@@ -32,18 +32,13 @@ Future<List<PriceModel>> fetchPackages() async {
         future: fetchPackages(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else {
             final packages = snapshot.data ?? [];
-
-            // Filter paket reguler dengan paketId = 1
-            final regulerPackages =
-                packages.where((package) => package.paketId == '1').toList();
-
             // Filter paket kilat dengan paketId = 2
             final kilatPackages =
                 packages.where((package) => package.paketId == '2').toList();
@@ -135,8 +130,8 @@ Future<List<PriceModel>> fetchPackages() async {
                                 ),
                                 const Spacer(),
                                 Text(
-                                  'Cuci Setrika / ${kilatPackages[0].waktu} jam : Rp. ${kilatPackages[0].harga}',
-                                  style: TextStyle(
+                                  '${kilatPackages[0].waktu} : Rp. ${kilatPackages[0].harga}',
+                                  style: const TextStyle(
                                       color: Colors.white, fontSize: 15),
                                 ),
                               ]),
@@ -157,8 +152,8 @@ Future<List<PriceModel>> fetchPackages() async {
                                 ),
                                 const Spacer(),
                                 Text(
-                                  'Cuci / ${kilatPackages[1].waktu} hari : Rp. ${kilatPackages[1].harga}',
-                                    style: TextStyle(
+                                  '${kilatPackages[1].waktu} : Rp. ${kilatPackages[1].harga}',
+                                    style: const TextStyle(
                                         color: Colors.white, fontSize: 15)),
                               ]),
                             ),
@@ -178,8 +173,8 @@ Future<List<PriceModel>> fetchPackages() async {
                                 ),
                                 const Spacer(),
                                 Text(
-                                  'Setrika / ${kilatPackages[2].waktu} hari : Rp. ${kilatPackages[2].harga}',
-                                  style: TextStyle(
+                                  '${kilatPackages[2].waktu} : Rp. ${kilatPackages[2].harga}',
+                                  style: const TextStyle(
                                       color: Colors.white, fontSize: 15),
                                 ),
                               ]),
@@ -216,35 +211,33 @@ Future<List<PriceModel>> fetchPackages() async {
                               ),
                               const Spacer(),
                               Text(
-                                'Sepatu : Rp. ${kilatPackages[1].harga}/kg',
-                                style: TextStyle(
+                                  '${kilatPackages[3].waktu} : Rp. ${kilatPackages[3].harga}',
+                                style: const TextStyle(
                                     color: Colors.white, fontSize: 15),
                               ),
                             ]),
                           ),
-
-                          SizedBox(
-                            height: 40,
-                            width: 290,
-                            child: Row(children: [
-                              RadioWidget(
-                                value: 5,
-                                groupValue: _value,
-                                onChanged: (int? value) {
-                                  setState(() {
-                                    _value = _value == value ? null : value;
-                                  });
-                                },
-                              ),
-                              const Spacer(),
-                              Text(
-                                'Boneka : Rp. ${kilatPackages[0].harga}/kg',
-                                style: TextStyle(
-                                    color: Colors.white, fontSize: 15),
-                              ),
-                            ]),
-                          ),
-
+                          // SizedBox(
+                          //   height: 40,
+                          //   width: 290,
+                          //   child: Row(children: [
+                          //     RadioWidget(
+                          //       value: 5,
+                          //       groupValue: _value,
+                          //       onChanged: (int? value) {
+                          //         setState(() {
+                          //           _value = _value == value ? null : value;
+                          //         });
+                          //       },
+                          //     ),
+                          //     const Spacer(),
+                          //     Text(
+                          //       'Boneka : Rp. ${kilatPackages[0].harga}/kg',
+                          //       style: TextStyle(
+                          //           color: Colors.white, fontSize: 15),
+                          //     ),
+                          //   ]),
+                          // ),
                           Padding(
                             padding: const EdgeInsets.only(
                                 top: 60, left: 38, right: 38),

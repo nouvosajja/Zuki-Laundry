@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -5,9 +7,7 @@ import 'package:zuki_laundry/Home/homepage.dart';
 import 'package:zuki_laundry/Register/screen.dart';
 import 'package:zuki_laundry/Widgets/text.form.global.dart';
 import 'package:http/http.dart' as http;
-import 'package:zuki_laundry/bottomnav.dart';
 import 'package:zuki_laundry/model/login_model.dart';
-import 'package:zuki_laundry/firebase_options.dart';
 
 class LoginScreen extends StatefulWidget {
   static String routeName = "/loginscreen";
@@ -18,8 +18,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController ctremail = new TextEditingController();
-  TextEditingController ctrpassword = new TextEditingController();
+  TextEditingController ctremail = TextEditingController();
+  TextEditingController ctrpassword = TextEditingController();
 
   postData(BuildContext context) async {
     if (ctremail.text.isNotEmpty && ctrpassword.text.isNotEmpty) {
@@ -30,8 +30,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
       var response = await http
           .post(Uri.parse("http://zukilaundry.bardiman.com/api/login"), body: {
-        "email": "${ctremail.text}",
-        "password": "${ctrpassword.text}"
+        "email": ctremail.text,
+        "password": ctrpassword.text
       });
 
       print("Status Code : ${response.statusCode}");
@@ -41,19 +41,34 @@ class _LoginScreenState extends State<LoginScreen> {
         LoginModel user = loginModelFromJson(response.body);
 
         // post save token
+        try {
+        var saveTokenResponse = await http.post(
+          Uri.parse("http://zukilaundry.bardiman.com/api/login"),
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ${user.data.token}',
+          },
+          body: json.encode({
+            "token": devicetoken,
+            "id_user": user.data.token,
+          }),
+        );
+
+        if (saveTokenResponse.statusCode == 200) {
+          print("Device token saved to server successfully");
+        } else {
+          print("Failed to save device token to server");
+        }
+      } catch (error) {
+        print("Error saving device token to server: $error");
+      }
+            
 
         SharedPreferences pref = await SharedPreferences.getInstance();
         pref.setString('token', user.data.token);
         pref.setString('devicetoken', devicetoken);
         print(response.body);
-        if (user.success == true) {
-          print("Login Berhasil");
-          Navigator.pushNamed(context, bottom_nav.routeName);
-        } else {
-          print("Login Gagal");
-          ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text("Email atau Password tidak valid")));
-        }
+        Navigator.pushReplacementNamed(context, HomePage.routeName);
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text("Email atau Password tidak valid")));

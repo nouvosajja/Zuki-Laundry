@@ -10,7 +10,7 @@ class TextFormGlobal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 55,
       child: TextFormField(
         controller: controller,

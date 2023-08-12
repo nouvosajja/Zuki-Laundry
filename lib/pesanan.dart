@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:zuki_laundry/pembayaran.dart';
 
+List<String> get list {
+  return ['GoPay', 'metode1', 'metode2', 'metode3'];
+}
+
 class Pesanan extends StatefulWidget {
   const Pesanan({super.key});
 
@@ -9,6 +13,7 @@ class Pesanan extends StatefulWidget {
 }
 
 class _PesananState extends State<Pesanan> {
+  String selectedValue = "GoPay";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,26 +60,26 @@ class _PesananState extends State<Pesanan> {
             ),
           ),
           const Padding(
-            padding: EdgeInsets.only(top: 30, left: 40),
+            padding: EdgeInsets.only(top: 20, left: 40),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Tanggal Pengambilan',
+                'Ringkasan Pembayaran',
                 style: TextStyle(
-                  fontSize: 23,
+                  fontSize: 20,
                   fontWeight: FontWeight.w700,
                 ),
               ),
             ),
           ),
-          const SizedBox(height: 30),
+          const SizedBox(height: 15),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Row(
               // make text diambil & selesai
               children: const [
                 Text(
-                  'Diambil',
+                  'Subtotal',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w400,
@@ -82,7 +87,7 @@ class _PesananState extends State<Pesanan> {
                 ),
                 Spacer(),
                 Text(
-                  'Selesai',
+                  'Rp36.000',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w400,
@@ -91,21 +96,46 @@ class _PesananState extends State<Pesanan> {
               ],
             ),
           ),
+          const SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Row(
               // make text diambil & selesai
               children: const [
                 Text(
-                  '08 Mei 2023',
+                  'bonus',
                   style: TextStyle(
                     fontSize: 20,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
                 Spacer(),
                 Text(
-                  '15 Mei 2023',
+                  'Rp0',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40),
+            child: Row(
+              // make text diambil & selesai
+              children: const [
+                Text(
+                  'Total',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                Spacer(),
+                Text(
+                  'Rp36.000',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
@@ -116,37 +146,11 @@ class _PesananState extends State<Pesanan> {
           ),
           // make text info pesanan
           const Padding(
-            padding: EdgeInsets.only(top: 30, left: 40),
+            padding: EdgeInsets.only(top: 20, left: 40),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                'Info Pesanan',
-                style: TextStyle(
-                  fontSize: 23,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-          ),
-          const Padding(
-            padding: EdgeInsets.only(top: 30, left: 40),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Total Berat',
-                style: TextStyle(
-                  fontSize: 23,
-                  fontWeight: FontWeight.normal,
-                ),
-              ),
-            ),
-          ),
-          const Padding(
-            padding: EdgeInsets.only(top: 5, left: 40),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                '3 Kg',
+                'Tanggal Pemesanan',
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w700,
@@ -154,34 +158,80 @@ class _PesananState extends State<Pesanan> {
               ),
             ),
           ),
-          const Padding(
-            padding: EdgeInsets.only(top: 30, left: 40),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Total Harga',
-                style: TextStyle(
-                  fontSize: 23,
-                  fontWeight: FontWeight.normal,
+          const SizedBox(height: 15),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40),
+            child: Row(
+              // make text diambil & selesai
+              children: const [
+                Text(
+                  'Pengambilan',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
-              ),
+                Spacer(),
+                Text(
+                  '08 Mei 2024',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40),
+            child: Row(
+              // make text diambil & selesai
+              children: const [
+                Text(
+                  'Pengantaran',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                Spacer(),
+                Text(
+                  '15 Mei 2024',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 40),
+            child: Row(
+              // make text diambil & selesai
+              children: const [
+                Text(
+                  'Berat',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+                Spacer(),
+                Text(
+                  '3 kg',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w400,
+                  ),
+                ),
+              ],
             ),
           ),
           const Padding(
-            padding: EdgeInsets.only(top: 5, left: 40),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Text(
-                'Rp 36.000',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-          ),
-          const Padding(
-            padding: EdgeInsets.only(top: 30, left: 40),
+            padding: EdgeInsets.only(top: 20, left: 40),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -206,8 +256,72 @@ class _PesananState extends State<Pesanan> {
               ),
             ),
           ),
+          Container(
+            // autogroupctyivMk (UTvPypu7bc1GzyxyJ3cTYi)
+            margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+            height: 71,
+            width: double.infinity,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  margin: const EdgeInsets.fromLTRB(38, 12, 0, 0),
+                  // gopayeHk (338:198)
+                  width: 50,
+                  height: 50,
+                  child: Image.asset(
+                    ("asset/images/GoPay.png"),
+                    width: 50,
+                    height: 50,
+                  ),
+                ),
+                Container(
+                  // autogroup4nqtMxr (UTvQ6A3uAUmA6MomTQ4nqt)
+                  margin: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+                  width: 150,
+                  height: double.infinity,
+                  child: Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.topLeft,
+                        child: DropdownButton(
+                          value: selectedValue,
+                          onChanged: (String? newValue) {
+                            setState(() {
+                              selectedValue = newValue!;
+                            });
+                          },
+                          items: list
+                              .map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                      Container(
+                        // saldorp50000q7L (338:202)
+                        margin: const EdgeInsets.fromLTRB(2, 0, 0, 0),
+                        width: double.infinity,
+                        child: const Text(
+                          'Saldo :  Rp 50.000',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w600,
+                            height: 1,
+                            color: Color(0xff000000),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
           Padding(
-            padding: const EdgeInsets.only(top: 30),
+            padding: const EdgeInsets.only(top: 10),
             child: Align(
               alignment: Alignment.center,
               child: ElevatedButton(

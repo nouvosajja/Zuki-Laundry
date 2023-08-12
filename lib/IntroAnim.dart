@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:zuki_laundry/bottomnav.dart';
 import 'dart:async';
 
 import 'package:zuki_laundry/intro.dart';
@@ -13,19 +15,29 @@ class intro_anim extends StatefulWidget {
   const intro_anim({super.key});
 
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  _intro_animState createState() => _intro_animState();
 }
 
-class _SplashScreenState extends State<intro_anim> {
+class _intro_animState extends State<intro_anim> {
+  bool hasToken = false;
+  // make check token void
+  void checkToken() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    String? token = pref.getString('token');
+
+    setState(() {
+      hasToken = token != null && token.isNotEmpty;
+    });
+  }
+
+
+
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 3), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const intro()),
-      );
-    });
+    checkToken();
+    Timer(const Duration(seconds: 3), () => hasToken ? Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const bottom_nav(),)) : Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const intro(),)));
+
   }
 
   @override

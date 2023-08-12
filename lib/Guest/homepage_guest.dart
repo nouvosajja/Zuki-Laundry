@@ -33,8 +33,8 @@ class _HomePageState extends State<HomePage_guest> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
-                        children: [
-                          const SizedBox(
+                        children: const [
+                          SizedBox(
                             width: 240,
                             child: Text(
                               "Selamat datang di Zuki Laundry!",
@@ -46,6 +46,19 @@ class _HomePageState extends State<HomePage_guest> {
                             ),
                           ),
                         ],
+                      ),
+                      IconButton(
+                        padding: const EdgeInsets.only(right: 30),
+                        icon: const Icon(
+                          IconlyLight.chat,
+                          size: 30,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const before_login()));
+                        },
                       ),
                     ])),
           ]),

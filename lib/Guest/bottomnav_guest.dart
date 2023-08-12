@@ -1,6 +1,5 @@
   import 'package:flutter/material.dart';
-  import 'package:iconly/iconly.dart';
-  import 'package:zuki_laundry/Guest/homepage_guest.dart';
+        import 'package:zuki_laundry/Guest/homepage_guest.dart';
   import 'package:zuki_laundry/beforeLogin.dart';
 
   class bottom_nav_guest extends StatefulWidget {
@@ -30,7 +29,7 @@
     }
 
     void _onBottomNavItemPressed(int index) {
-      if (index == 1) {
+      if (index == 1 || index == 2) {
         Navigator.push(context, MaterialPageRoute(builder: (context) => const before_login()));
       } else {
         setState(() {
@@ -46,7 +45,7 @@
         body: _body(),
         bottomNavigationBar: DecoratedBox(
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(16),
               topRight: Radius.circular(16),
             ),
@@ -55,12 +54,12 @@
                 color: Colors.black.withOpacity(0.2),
                 blurRadius: 10,
                 spreadRadius: 1,
-                offset: Offset(0, -3),
+                offset: const Offset(0, -3),
               ),
             ],
           ),
           child: ClipRRect(
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
               topLeft: Radius.circular(16),
               topRight: Radius.circular(16),
             ),
@@ -100,12 +99,12 @@
                 BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.symmetric(vertical: 4),
-                    child: Icon(IconlyLight.chat),
+                    child: Icon(Icons.card_giftcard),
                   ),
-                  label: 'Chat',
+                  label: 'Bonus',
                   activeIcon: Padding(
                     padding: EdgeInsets.symmetric(vertical: 4),
-                    child: Icon(IconlyLight.chat),
+                    child: Icon(Icons.card_giftcard),
                   ),
                 ),
                 BottomNavigationBarItem(

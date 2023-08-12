@@ -44,6 +44,19 @@ class _HomePageState extends State<HomePage> {
                                   fontFamily: 'Poppins'),
                             ),
                           ),
+                          IconButton(
+                        padding: const EdgeInsets.only(left: 35),
+                        icon: const Icon(
+                          IconlyLight.chat,
+                          size: 30,
+                        ),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const chat_screen()));
+                        },
+                      ),
                         ],
                       ),
                     ])),

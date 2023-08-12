@@ -13,16 +13,16 @@ class PriceModel {
     String waktu;
     String paketId;
     String harga;
-    dynamic createdAt;
-    dynamic updatedAt;
+    DateTime createdAt;
+    DateTime updatedAt;
 
     PriceModel({
         required this.id,
         required this.waktu,
         required this.paketId,
         required this.harga,
-        this.createdAt,
-        this.updatedAt,
+        required this.createdAt,
+        required this.updatedAt,
     });
 
     factory PriceModel.fromJson(Map<String, dynamic> json) => PriceModel(
@@ -30,8 +30,8 @@ class PriceModel {
         waktu: json["waktu"],
         paketId: json["paket_id"],
         harga: json["harga"],
-        createdAt: json["created_at"],
-        updatedAt: json["updated_at"],
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
     );
 
     Map<String, dynamic> toJson() => {
@@ -39,7 +39,7 @@ class PriceModel {
         "waktu": waktu,
         "paket_id": paketId,
         "harga": harga,
-        "created_at": createdAt,
-        "updated_at": updatedAt,
+        "created_at": createdAt.toIso8601String(),
+        "updated_at": updatedAt.toIso8601String(),
     };
 }

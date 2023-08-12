@@ -13,7 +13,7 @@ class Paket_guest extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 50),
           child: Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(40),
                 topRight: Radius.circular(40),
@@ -27,7 +27,7 @@ class Paket_guest extends StatelessWidget {
               child: Center(
                 child: Column(
                   children: [
-                    Text(
+                    const Text(
                       'Silahkan pilih paket yang telah kami sediakan',
                       style: TextStyle(
                           fontSize: 13,
@@ -35,8 +35,8 @@ class Paket_guest extends StatelessWidget {
                           color: Colors.white),
                       textAlign: TextAlign.center,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 20),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 20),
                       child: Divider(
                         thickness: 3,
                         color: Colors.white,
@@ -59,7 +59,7 @@ class Paket_guest extends StatelessWidget {
                                   color: Colors.grey.withOpacity(0.5),
                                   spreadRadius: 2,
                                   blurRadius: 7,
-                                  offset: Offset(0, 3),
+                                  offset: const Offset(0, 3),
                                 ),
                               ],
                             ),
@@ -86,8 +86,8 @@ class Paket_guest extends StatelessWidget {
                                     );
                                   },
                                 ),
-                                Padding(
-                                    padding: const EdgeInsets.only(
+                                const Padding(
+                                    padding: EdgeInsets.only(
                                         top: 80, left: 27),
                                     child: Text(
                                       "Reguler",
@@ -98,8 +98,8 @@ class Paket_guest extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 40, left: 20),
+                        const Padding(
+                          padding: EdgeInsets.only(top: 40, left: 20),
                           child: SizedBox(
                             width: 155,
                             child: Text(
@@ -116,8 +116,8 @@ class Paket_guest extends StatelessWidget {
                       ],
                     ),
                     Row(children: [
-                      Padding(
-                        padding: const EdgeInsets.only(top: 5, left: 30),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 5, left: 30),
                         child: SizedBox(
                           width: 155,
                           child: Text(
@@ -144,7 +144,7 @@ class Paket_guest extends StatelessWidget {
                                 color: Colors.grey.withOpacity(0.5),
                                 spreadRadius: 2,
                                 blurRadius: 7,
-                                offset: Offset(0, 3),
+                                offset: const Offset(0, 3),
                               ),
                             ],
                           ),
@@ -171,9 +171,9 @@ class Paket_guest extends StatelessWidget {
                                   );
                                 },
                               ),
-                              Padding(
+                              const Padding(
                                   padding:
-                                      const EdgeInsets.only(top: 80, left: 35),
+                                      EdgeInsets.only(top: 80, left: 35),
                                   child: Text(
                                     "Kilat",
                                     style:

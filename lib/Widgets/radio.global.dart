@@ -57,14 +57,14 @@ class RadioWidgetState extends State<RadioWidget> {
               : null, // No border for unselected
           color: Colors.transparent, // Transparent center
         ),
-        padding: EdgeInsets.all(1.5), // Adjust the padding as needed
+        padding: const EdgeInsets.all(1.5), // Adjust the padding as needed
         child: Container(
-          margin: EdgeInsets.all(1.5), // Adjust the margin as needed
+          margin: const EdgeInsets.all(1.5), // Adjust the margin as needed
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: _isSelected
                 ? widget.selectColor // Active
-                : Color.fromARGB(255, 207, 207, 207), // Softer shade of grey for inactive
+                : const Color.fromARGB(255, 207, 207, 207), // Softer shade of grey for inactive
           ),
         ),
       ),

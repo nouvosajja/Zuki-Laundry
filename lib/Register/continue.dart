@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zuki_laundry/Login/screen.dart';
@@ -8,7 +11,7 @@ import 'package:http/http.dart' as http;
 
 
 class ContinueScreen extends StatefulWidget {
-  ContinueScreen({Key? key, required this.name, required  this.email, required  this.password}) : super(key: key);
+  const ContinueScreen({Key? key, required this.name, required  this.email, required  this.password}) : super(key: key);
   final String name, email, password;
   @override
   State<ContinueScreen> createState() => _ContinueScreenState();
@@ -24,12 +27,18 @@ class _ContinueScreenState extends State<ContinueScreen> {
         widget.password.isNotEmpty &&
         numberController.text.isNotEmpty &&
         addressController.text.isNotEmpty) {
+
+      String devicetoken;
+
+      devicetoken = await getDeviceToken();
+      print('deviceToken = $devicetoken');
+
       var response = await http.post(Uri.parse("http://zukilaundry.bardiman.com/api/register"), body: {
-        "email": "${widget.email}",
-        "name": "${widget.name}",
-        "password": "${widget.password}",
-        "number": "${numberController.text}",
-        "address": "${addressController.text}"
+        "email": widget.email,
+        "name": widget.name,
+        "password": widget.password,
+        "number": numberController.text,
+        "address": addressController.text
       });
       print("Status Code : ${response.statusCode}");
       print(response.body);
@@ -37,16 +46,58 @@ class _ContinueScreenState extends State<ContinueScreen> {
       if (response.statusCode == 200) {
                RegisterModel user = registerModelFromJson(response.body);
 
+
+        try {
+        var saveTokenResponse = await http.post(
+          Uri.parse("http://zukilaundry.bardiman.com/api/login"),
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ${user.data.token}',
+          },
+          body: json.encode({
+            "token": devicetoken,
+            "id_user": user.data.token,
+          }),
+        );
+
+        if (saveTokenResponse.statusCode == 200) {
+          print("Device token saved to server successfully");
+        } else {
+          print("Failed to save device token to server");
+        }
+      } catch (error) {
+        print("Error saving device token to server: $error");
+      }
+
         SharedPreferences pref = await SharedPreferences.getInstance();
         pref.setString('token', user.data.token);
+        pref.setString('devicetoken', devicetoken);
+        print(response.body);
         //pindah page
       } else {
         ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text("Email Sudah Terdaftar")));
+            .showSnackBar(const SnackBar(content: Text("Email Sudah Terdaftar")));
       }
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Isi Semua Kolom dengan benar")));
+          const SnackBar(content: Text("Isi Semua Kolom dengan benar")));
+    }
+  }
+
+    Future<void> saveToken(String token) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    pref.setString('token', token);
+  }
+
+  Future<String> getDeviceToken() async {
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+    String? deviceToken = await messaging.getToken();
+
+    if (deviceToken != null) {
+      debugPrint('token = $deviceToken');
+      return deviceToken;
+    } else {
+      throw Exception('Gagal membuat device token');
     }
   }
 
@@ -105,27 +156,27 @@ class _ContinueScreenState extends State<ContinueScreen> {
 
                           const SizedBox(height: 10),
                           Padding(
-                            padding: EdgeInsets.only(
+                            padding: const EdgeInsets.only(
                               top: 50,
                             ),
-                            child: Container(
+                            child: SizedBox(
                               height: 50,
                               width: 300,
                               child: ElevatedButton(
                                 onPressed: () {
                                   registerData();
                                 },
-                                child: Text(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color.fromRGBO(0, 163, 255, 1),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                ),
+                                child: const Text(
                                   'Register',
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w900,
-                                  ),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  primary: Color.fromRGBO(0, 163, 255, 1),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
                                   ),
                                 ),
                               ),
@@ -140,7 +191,7 @@ class _ContinueScreenState extends State<ContinueScreen> {
                               const Text(
                                 'Sudah punya akun?',
                               ),
-                              SizedBox(width: 2.5,),
+                              const SizedBox(width: 2.5,),
                               InkWell(
                                 child: const Text(
                                   'Login',
@@ -153,7 +204,7 @@ class _ContinueScreenState extends State<ContinueScreen> {
                                 onTap: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => LoginScreen()
+                                    MaterialPageRoute(builder: (context) => const LoginScreen()
                                     ),
                                  );
                                 },
@@ -165,7 +216,7 @@ class _ContinueScreenState extends State<ContinueScreen> {
                           Center(
                             child: Column(
                               children: [
-                                Text(
+                                const Text(
                                   'Dengan melanjutkan, anda menyetujui',
                                 ),
                                 InkWell(
@@ -181,7 +232,7 @@ class _ContinueScreenState extends State<ContinueScreen> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => kebijakan()),
+                                          builder: (context) => const kebijakan()),
                                     );
                                   },
                                 ),

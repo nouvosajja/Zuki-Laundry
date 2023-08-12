@@ -32,7 +32,7 @@ class detail_regulerState extends State<detail_reguler_guest> {
         future: fetchPackages(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           } else if (snapshot.hasError) {
@@ -136,8 +136,8 @@ class detail_regulerState extends State<detail_reguler_guest> {
                                   ),
                                   const Spacer(),
                                   Text(
-                                    'Cuci Setrika / ${regulerPackages[0].waktu} hari : Rp. ${regulerPackages[0].harga}',
-                                    style: TextStyle(
+                                    '${regulerPackages[0].waktu} : Rp. ${regulerPackages[0].harga}',
+                                    style: const TextStyle(
                                         color: Colors.white, fontSize: 15),
                                   ),
                                 ],
@@ -160,8 +160,8 @@ class detail_regulerState extends State<detail_reguler_guest> {
                                   ),
                                   const Spacer(),
                                   Text(
-                                    'Cuci / ${regulerPackages[0].waktu} hari : Rp. ${regulerPackages[1].harga}',
-                                    style: TextStyle(
+                                    '${regulerPackages[1].waktu} : Rp. ${regulerPackages[1].harga}',
+                                    style: const TextStyle(
                                         color: Colors.white, fontSize: 15),
                                   ),
                                 ],
@@ -184,8 +184,8 @@ class detail_regulerState extends State<detail_reguler_guest> {
                                   ),
                                   const Spacer(),
                                   Text(
-                                    'Setrika / ${regulerPackages[0].waktu} hari : Rp. ${regulerPackages[2].harga}',
-                                    style: TextStyle(
+                                    '${regulerPackages[2].waktu} : Rp. ${regulerPackages[2].harga}',
+                                    style: const TextStyle(
                                         color: Colors.white, fontSize: 15),
                                   ),
                                 ],
@@ -225,37 +225,37 @@ class detail_regulerState extends State<detail_reguler_guest> {
                                   ),
                                   const Spacer(),
                                   Text(
-                                    'Sepatu : Rp. ${regulerPackages[1].harga}/kg',
-                                    style: TextStyle(
+                                    '${regulerPackages[3].waktu} : Rp. ${regulerPackages[3].harga}',
+                                    style: const TextStyle(
                                         color: Colors.white, fontSize: 15),
                                   ),
                                 ],
                               ),
                             ),
-                            SizedBox(
-                              height: 40,
-                              width: 290,
-                              child: Row(
-                                children: [
-                                  RadioWidget(
-                                    value: 5,
-                                    groupValue: _value,
-                                    onChanged: (int? value) {
-                                      setState(() {
-                                        // Toggle the _value between null and selected value
-                                        _value = _value == value ? null : value;
-                                      });
-                                    },
-                                  ),
-                                  const Spacer(),
-                                  Text(
-                                    'Boneka : Rp. ${regulerPackages[0].harga}/kg',
-                                    style: TextStyle(
-                                        color: Colors.white, fontSize: 15),
-                                  ),
-                                ],
-                              ),
-                            ),
+                            // SizedBox(
+                            //   height: 40,
+                            //   width: 290,
+                            //   child: Row(
+                            //     children: [
+                            //       RadioWidget(
+                            //         value: 5,
+                            //         groupValue: _value,
+                            //         onChanged: (int? value) {
+                            //           setState(() {
+                            //             // Toggle the _value between null and selected value
+                            //             _value = _value == value ? null : value;
+                            //           });
+                            //         },
+                            //       ),
+                            //       const Spacer(),
+                            //       Text(
+                            //         '${regulerPackages[4].waktu} : Rp. ${regulerPackages[4].harga}',
+                            //         style: TextStyle(
+                            //             color: Colors.white, fontSize: 15),
+                            //       ),
+                            //     ],
+                            //   ),
+                            // ),
                             Padding(
                               padding: const EdgeInsets.only(
                                   top: 60, left: 38, right: 38),

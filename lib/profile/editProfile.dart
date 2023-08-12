@@ -5,16 +5,16 @@ import 'dart:convert';
 import 'package:zuki_laundry/model/update_model.dart';
 
 class EditProfile extends StatefulWidget {
-  const EditProfile();
+  const EditProfile({super.key});
 
   @override
   State<EditProfile> createState() => _EditProfileState();
 }
 
 class _EditProfileState extends State<EditProfile> {
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _numberController = TextEditingController();
-  TextEditingController _addressController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _numberController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
 
   UpdateModel? _userProfile;
 
@@ -28,7 +28,7 @@ class _EditProfileState extends State<EditProfile> {
   // Fungsi untuk mengambil data profil dari API
   Future<void> _fetchUserProfile() async {
     // Ganti URL dengan endpoint API yang mengembalikan data profil pengguna
-    final url = 'http://zukilaundry.bardiman.com/api/user'; // Ganti dengan URL API Anda
+    const url = 'http://zukilaundry.bardiman.com/api/user'; // Ganti dengan URL API Anda
 
     final SharedPreferences pref = await SharedPreferences.getInstance();
     final token = pref.getString('token')!;
@@ -72,7 +72,7 @@ class _EditProfileState extends State<EditProfile> {
     String newAddress = _addressController.text;
 
     // Simpan data ke server melalui API
-    final url = 'http://zukilaundry.bardiman.com/api/user/update'; // Ganti dengan URL API Anda
+    const url = 'http://zukilaundry.bardiman.com/api/user/update'; // Ganti dengan URL API Anda
     final SharedPreferences pref = await SharedPreferences.getInstance();
     final token = pref.getString('token')!;
 

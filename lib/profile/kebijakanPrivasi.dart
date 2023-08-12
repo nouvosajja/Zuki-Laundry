@@ -19,9 +19,6 @@ class _kebijakanState extends State<kebijakan> {
               Stack(
                 children: [
                   const SizedBox(height: 140, width: double.infinity),
-                  Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: []),
                   Padding(
                     padding: const EdgeInsets.only(top: 40, left: 20),
                     child: Material(
@@ -29,10 +26,8 @@ class _kebijakanState extends State<kebijakan> {
                         onTap: () {
                           Navigator.pop(context);
                         },
-                        child: Container(
-                          child: const Icon(Icons.arrow_back_ios,
-                              size: 40, color: Color.fromARGB(255, 0, 0, 0)),
-                        ),
+                        child: const Icon(Icons.arrow_back_ios,
+                            size: 40, color: Color.fromARGB(255, 0, 0, 0)),
                       ),
                     ),
                   ),

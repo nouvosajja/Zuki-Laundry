@@ -1,5 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
-import 'package:zuki_laundry/profile/tambahAlamat.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
+import '../model/user_model.dart';
 
 class alamat extends StatefulWidget {
   const alamat({super.key});
@@ -9,6 +13,53 @@ class alamat extends StatefulWidget {
 }
 
 class _alamatState extends State<alamat> {
+  UserModel? profil_api;
+
+  void initState() {
+    getprofil();
+    getprofil().then((value) {
+      setState(() {
+        profil_api = value;
+      });
+    });
+    super.initState();
+  }
+
+  Future getprofil() async {
+    final endPointUrl = 'profile/';
+    final url = 'http://zukilaundry.bardiman.com/api/user';
+
+    print('-----------user-------------');
+
+    //call token from set pref
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    final token = pref.getString('token')!;
+
+    try {
+      final response = await http.get(
+        Uri.parse(url),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+      );
+      print('token : $token');
+      print('status code : ${response.statusCode}');
+
+      if (response.statusCode == 200) {
+        print(url);
+
+        UserModel model = UserModel.fromJson(json.decode(response.body));
+        return model;
+      } else {
+        throw Exception("Failed to fetch data from API");
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +110,8 @@ class _alamatState extends State<alamat> {
                           Container(
                             margin: EdgeInsets.fromLTRB(20, 10, 10, 30),
                             child: Text(
-                              'Nouvo chrisna Ariyanto | Gg. 7 No.34, Besito Kulon, Besito, Kec.Gebog, Kabupaten Kudus, Jawa Tengah 59333, Indonesia',
+                              '${profil_api?.name ?? 'Data tidak ada'} | ${profil_api?.address ?? 'Alamat tidak ada'}',
+                              // 'Nouvo chrisna Ariyanto | Gg. 7 No.34, Besito Kulon, Besito, Kec.Gebog, Kabupaten Kudus, Jawa Tengah 59333, Indonesia',
                               style: TextStyle(
                                 fontSize: 13,
                                 fontWeight: FontWeight.w500,
@@ -67,28 +119,6 @@ class _alamatState extends State<alamat> {
                                 color: Color(0xff000000),
                               ),
                             ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.fromLTRB(20, 0, 15, 30),
-                            child: Text(
-                              'Nouvo chrisna Ariyanto | Gg. 7 No.34, Besito Kulon, Besito, Kec.Gebog, Kabupaten Kudus, Jawa Tengah 59333, Indonesia',
-                              style: TextStyle(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w500,
-                                height: 1.5,
-                                color: Color(0xff000000),
-                              ),
-                            ),
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const tambahAlamat()),
-                              );
-                            },
-                            child: const Text('buat alamat baru'),
                           ),
                         ],
                       ),
@@ -103,4 +133,3 @@ class _alamatState extends State<alamat> {
     );
   }
 }
-

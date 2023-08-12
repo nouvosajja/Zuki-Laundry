@@ -31,7 +31,7 @@ class _TabbarState extends State<Tabbar>with SingleTickerProviderStateMixin {
       child: Scaffold(
         appBar: AppBar(
           toolbarHeight: 100,
-          title: const Text('Riwayat', style: TextStyle(color: Colors.black, fontWeight: FontWeight.w900, fontSize: 30),),
+          title: const Text('Riwayat', style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 25),),
           backgroundColor: Colors.transparent,
           elevation: 0,
           automaticallyImplyLeading: false,
@@ -53,15 +53,15 @@ class _TabbarState extends State<Tabbar>with SingleTickerProviderStateMixin {
                   unselectedLabelColor: Colors.grey,
                   labelColor: Colors.black,
                   controller: controller,
-                  tabs: [
-                  Container(
+                  tabs: const [
+                  SizedBox(
                     height: 50,
                     child: 
-                  const Center(child: Text('Riwayat', style: TextStyle(fontWeight: FontWeight.w600),))), 
-                  Container(
+                  Center(child: Text('Riwayat', style: TextStyle(fontWeight: FontWeight.w600),))), 
+                  SizedBox(
                     height: 50,
                     child: 
-                  const Center(child: Text('Dalam Proses', style: TextStyle(fontWeight: FontWeight.w600),))), ],
+                  Center(child: Text('Dalam Proses', style: TextStyle(fontWeight: FontWeight.w600),))), ],
                 ),
                 automaticallyImplyLeading: false,
               ),

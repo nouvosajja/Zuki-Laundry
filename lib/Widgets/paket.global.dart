@@ -26,13 +26,13 @@ class _PaketState extends State<Paket> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 425,
       child: FutureBuilder<List<PaketModel>>(
         future: getpaket(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else {
@@ -119,11 +119,11 @@ class _PaketState extends State<Paket> {
                                       ),
                                       Padding(
                                         padding: const EdgeInsets.only(
-                                            top: 80, left: 27),
+                                            top: 80, left: 12),
                                         child: Text(
                                           paketList[0]
                                               .namaPkt, // Tampilkan nama paket Reguler dari model
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontWeight: FontWeight.bold),
                                         ),
                                       )
@@ -131,12 +131,12 @@ class _PaketState extends State<Paket> {
                                   ),
                                 ),
                               ),
-                              Padding(
+                              const Padding(
                                 padding:
-                                    const EdgeInsets.only(top: 40, left: 20),
-                                child: Container(
+                                    EdgeInsets.only(top: 40, left: 20),
+                                child: SizedBox(
                                   width: 155,
-                                  child: const Text(
+                                  child: Text(
                                     "Pakaian bersih dan wangi maksimal",
                                     textAlign: TextAlign.left,
                                     maxLines: 2,
@@ -150,11 +150,11 @@ class _PaketState extends State<Paket> {
                             ],
                           ),
                           Row(children: [
-                            Padding(
-                              padding: const EdgeInsets.only(top: 0, left: 30),
-                              child: Container(
+                            const Padding(
+                              padding: EdgeInsets.only(top: 0, left: 30),
+                              child: SizedBox(
                                 width: 155,
-                                child: const Text(
+                                child: Text(
                                   "Solusi untuk kebutuhan mendadak anda",
                                   textAlign: TextAlign.right,
                                   maxLines: 2,
@@ -208,11 +208,11 @@ class _PaketState extends State<Paket> {
                                     ),
                                     Padding(
                                       padding: const EdgeInsets.only(
-                                          top: 80, left: 35),
+                                          top: 80, left: 20),
                                       child: Text(
                                         paketList[1]
                                             .namaPkt, // Tampilkan nama paket Reguler dari model
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                             fontWeight: FontWeight.bold),
                                       ),
                                     )

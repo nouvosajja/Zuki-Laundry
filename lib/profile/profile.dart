@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zuki_laundry/Guest/bottomnav_guest.dart';
@@ -23,6 +22,7 @@ class _profileState extends State<profile> {
 
   UserModel? profil_api;
 
+  @override
   void initState() {
     getprofil();
     getprofil().then((value) {
@@ -34,8 +34,7 @@ class _profileState extends State<profile> {
   }
 
   Future getprofil() async {
-    final endPointUrl = 'profile/';
-    final url = 'http://zukilaundry.bardiman.com/api/user';
+    const url = 'http://zukilaundry.bardiman.com/api/user';
 
     print('-----------user-------------');
 
@@ -71,37 +70,35 @@ class _profileState extends State<profile> {
   @override
   Widget build(BuildContext context) {
     if (profil_api?.name == null || profil_api?.number == null) {
-      return Center(
+      return const Center(
         child: CircularProgressIndicator(),
       );
     }
     return Scaffold(
+        appBar: AppBar(
+          title: const Text("Profil", 
+          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 25, color: Colors.black),),
+          backgroundColor: Colors.transparent,
+          automaticallyImplyLeading: false,
+          toolbarHeight: 80,
+          elevation: 0,
+        ),
         body: SafeArea(
           child: Container(
-            padding: EdgeInsets.only(left: 24),
+            padding: const EdgeInsets.only(left: 24),
             child: FutureBuilder(
               future: getprofil(),
               builder: (context, snapshot) {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40),
-                      child: Container(
-                        child: Text(
-                          "Profil",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 30),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
+                    const SizedBox(
                       height: 60,
                     ),
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Column(
@@ -113,14 +110,14 @@ class _profileState extends State<profile> {
                               children: [
                                 Text(
                                   profil_api?.name ?? 'Data tidak ada',
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    fontSize: 30,
+                                    fontSize: 20,
                                     color: Colors.black,
                                   ),
                                 ),
                                 IconButton(
-                                  padding: EdgeInsets.only(right: 15, bottom: 30),
+                                  padding: const EdgeInsets.only(right: 15, bottom: 30),
                                   onPressed: () {
                                     Navigator.push(
                                       context,
@@ -129,9 +126,9 @@ class _profileState extends State<profile> {
                                               const EditProfile()),
                                     );
                                   },
-                                  icon: Icon(
+                                  icon: const Icon(
                                     Icons.settings,
-                                    size: 25,
+                                    size: 22,
                                     color: Color.fromRGBO(25, 164, 206, 1),
                                   ),
                                 ),
@@ -139,9 +136,9 @@ class _profileState extends State<profile> {
                             ),
                             Text(
                               profil_api?.number ?? 'Data tidak ada',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 20,
+                                fontSize: 16,
                                 color: Color(0xFF515151),
                               ),
                             ),
@@ -149,55 +146,52 @@ class _profileState extends State<profile> {
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: 16,
-                    ),
-                    SizedBox(
-                      height: 40,
+                    const SizedBox(
+                      height: 60,
                     ),
                     Row(
                       children: [
                         Container(
-                          child: Icon(
+                          child: const Icon(
                             Icons.location_on,
-                            size: 38,
+                            size: 32,
                             color: Color.fromRGBO(25, 164, 206, 1),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         GestureDetector(
                           onTap: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => alamat()),
+                              MaterialPageRoute(builder: (context) => const alamat()),
                             );
                           },
                           child: Container(
-                            child: Text(
+                            child: const Text(
                               'Alamat',
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 16,
                               ),
                             ),
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Row(
                       children: [
                         Container(
-                          child: Icon(
+                          child: const Icon(
                             Icons.credit_card_rounded,
-                            size: 38,
+                            size: 32,
                             color: Color.fromRGBO(25, 164, 206, 1),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         GestureDetector(
@@ -209,29 +203,29 @@ class _profileState extends State<profile> {
                             );
                           },
                           child: Container(
-                            child: Text(
+                            child: const Text(
                               'Metode Pembayaran',
                               style: TextStyle(
-                                fontSize: 20,
+                                fontSize: 16,
                               ),
                             ),
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Row(
                       children: [
                         Container(
-                          child: Icon(
+                          child: const Icon(
                             Icons.password,
-                            size: 38,
+                            size: 32,
                             color: Color.fromRGBO(25, 164, 206, 1),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         GestureDetector(
@@ -242,25 +236,25 @@ class _profileState extends State<profile> {
                                   builder: (context) => const gantiPass()),
                             );
                           },
-                          child: Text(
+                          child: const Text(
                             'Ganti Password',
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 16,
                             ),
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Row(
                       children: [
                         Container(
                           child: const Icon(Icons.logout,
-                              size: 38, color: Colors.red),
+                              size: 32, color: Colors.red),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         GestureDetector(
@@ -277,25 +271,25 @@ class _profileState extends State<profile> {
                           child: const Text(
                             'Keluar',
                             style: TextStyle(
-                              fontSize: 20,
+                              fontSize: 16,
                             ),
                           ),
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: 50,
+                    const SizedBox(
+                      height: 140,
                     ),
                     Row(
                       children: [
                         Container(
-                          child: Icon(
+                          child: const Icon(
                             Icons.privacy_tip,
                             size: 32,
                             color: Color.fromRGBO(25, 164, 206, 1),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         GestureDetector(
@@ -306,7 +300,7 @@ class _profileState extends State<profile> {
                                   builder: (context) => const kebijakan()),
                             );
                           },
-                          child: Text(
+                          child: const Text(
                             'Keamanan & kebijakan privasi',
                             style: TextStyle(
                               fontSize: 18,

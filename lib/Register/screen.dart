@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zuki_laundry/Login/screen.dart';
 import 'package:zuki_laundry/Register/continue.dart';
 import 'package:zuki_laundry/Widgets/text.form.global.dart';
@@ -18,9 +17,9 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-TextEditingController ctrusername = new TextEditingController();
-  TextEditingController ctremail = new TextEditingController();
-  TextEditingController ctrpassword = new TextEditingController();
+TextEditingController ctrusername = TextEditingController();
+  TextEditingController ctremail = TextEditingController();
+  TextEditingController ctrpassword = TextEditingController();
 
 
 
@@ -86,10 +85,10 @@ TextEditingController ctrusername = new TextEditingController();
                           obscure: true
                         ),
                         Padding(
-                            padding: EdgeInsets.only(
+                            padding: const EdgeInsets.only(
                               top: 30,
                             ),
-                            child: Container(
+                            child: SizedBox(
                               height: 50,
                               width: 300,
                               child: ElevatedButton(
@@ -101,17 +100,17 @@ TextEditingController ctrusername = new TextEditingController();
                                         builder: (context) =>  ContinueScreen(name: ctrusername.text, email: ctremail.text, password: ctrpassword.text,)),
                                   );
                                 },
-                                child: Text(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: const Color.fromRGBO(0, 163, 255, 1),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                ),
+                                child: const Text(
                                   'Continue',
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.w900,
-                                  ),
-                                ),
-                                style: ElevatedButton.styleFrom(
-                                  primary: Color.fromRGBO(0, 163, 255, 1),
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
                                   ),
                                 ),
                               ),
@@ -126,7 +125,7 @@ TextEditingController ctrusername = new TextEditingController();
                               const Text(
                                 'Sudah punya akun?',
                               ),
-                              SizedBox(width: 2.5,),
+                              const SizedBox(width: 2.5,),
                               InkWell(
                                 child: const Text(
                                   'Login',
@@ -139,7 +138,7 @@ TextEditingController ctrusername = new TextEditingController();
                                 onTap: () {
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => LoginScreen()
+                                    MaterialPageRoute(builder: (context) => const LoginScreen()
                                     ),
                                  );
                                 },

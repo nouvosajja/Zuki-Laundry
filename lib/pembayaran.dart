@@ -86,7 +86,7 @@ class _paymentState extends State<Pembayaran> {
                     ),
                     Container(
                       // autogrouprsdc7xi (UTvPgW4eaA3Hb7M7GsRSdc)
-                      margin: const EdgeInsets.fromLTRB(0, 0, 0, 63),
+                      margin: const EdgeInsets.fromLTRB(0, 0, 0, 20),
                       width: double.infinity,
                       height: 148,
                       child: Stack(
@@ -163,8 +163,8 @@ class _paymentState extends State<Pembayaran> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     color: const Color(0xff19a7ce),
-                                    boxShadow: [
-                                      const BoxShadow(
+                                    boxShadow: const [
+                                      BoxShadow(
                                         color: Color(0x3f000000),
                                         offset: Offset(0, 4),
                                         blurRadius: 2,
@@ -315,66 +315,6 @@ class _paymentState extends State<Pembayaran> {
                         ],
                       ),
                     ),
-                    Container(
-                      // autogroupctyivMk (UTvPypu7bc1GzyxyJ3cTYi)
-                      margin: const EdgeInsets.fromLTRB(0, 0, 103, 32),
-                      width: double.infinity,
-                      height: 53,
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Container(
-                            // gopayeHk (338:198)
-                            margin: const EdgeInsets.fromLTRB(0, 0, 5, 1),
-                            width: 50,
-                            height: 50,
-                            child: Image.asset(
-                              ("asset/image/GoPay.png"),
-                              width: 50,
-                              height: 50,
-                            ),
-                          ),
-                          Container(
-                            // autogroup4nqtMxr (UTvQ6A3uAUmA6MomTQ4nqt)
-                            width: 134,
-                            height: double.infinity,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  // gopaytxn (338:201)
-                                  width: double.infinity,
-                                  child: const Text(
-                                    'GoPay',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w800,
-                                      height: 1.5,
-                                      color: Color(0xff000000),
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  // saldorp50000q7L (338:202)
-                                  width: double.infinity,
-                                  child: const Text(
-                                    'Saldo :  Rp 50.000',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w600,
-                                      height: 1.5,
-                                      color: Color(0xff000000),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
                     const Text(
                       // totaltagihanZZ8 (338:214)
                       'Total tagihan',
@@ -406,18 +346,18 @@ class _paymentState extends State<Pembayaran> {
                           onPressed: () {
                             
                           },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color.fromRGBO(25, 164, 206, 1),
+                            minimumSize: const Size(150, 50),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                          ),
                           child: const Text(
                             'Bayar',
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          style: ElevatedButton.styleFrom(
-                            primary: const Color.fromRGBO(25, 164, 206, 1),
-                            minimumSize: const Size(150, 50),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
                             ),
                           ),
                         ),
