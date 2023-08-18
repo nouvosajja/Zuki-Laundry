@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:iconly/iconly.dart';
+import 'package:zuki_laundry/Chat/screen.dart';
 import 'package:zuki_laundry/Home/homepage.dart';
-import 'package:zuki_laundry/bonus.dart';
 import 'package:zuki_laundry/profile/profile.dart';
 import 'package:zuki_laundry/tabbar.dart';
 
@@ -28,7 +29,7 @@ class _bottom_navState extends State<bottom_nav> {
       case 1:
         return const Tabbar();
       case 2:
-        return const Bonus();
+        return const chat_screen();
       default:
         return const profile();
     }
@@ -106,12 +107,12 @@ class _bottom_navState extends State<bottom_nav> {
                 BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.symmetric(vertical: 4),
-                    child: Icon(Icons.card_giftcard),
+                    child: Icon(IconlyLight.chat),
                   ),
-                  label: 'Bonus',
+                  label: 'Chat',
                   activeIcon: Padding(
                     padding: EdgeInsets.symmetric(vertical: 4),
-                    child: Icon(Icons.card_giftcard),
+                    child: Icon(IconlyLight.chat),
                   ),
                 ),
                 BottomNavigationBarItem(

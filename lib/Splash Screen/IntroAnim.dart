@@ -3,7 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zuki_laundry/bottomnav.dart';
 import 'dart:async';
 
-import 'package:zuki_laundry/intro.dart';
+import 'package:zuki_laundry/Splash%20Screen/intro.dart';
 
 void main() {
   runApp(const MaterialApp(

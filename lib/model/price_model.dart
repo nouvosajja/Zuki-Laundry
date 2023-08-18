@@ -10,6 +10,7 @@ String priceModelToJson(List<PriceModel> data) => json.encode(List<dynamic>.from
 
 class PriceModel {
     int id;
+    String nama;
     String waktu;
     String paketId;
     String harga;
@@ -18,6 +19,7 @@ class PriceModel {
 
     PriceModel({
         required this.id,
+        required this.nama,
         required this.waktu,
         required this.paketId,
         required this.harga,
@@ -27,6 +29,7 @@ class PriceModel {
 
     factory PriceModel.fromJson(Map<String, dynamic> json) => PriceModel(
         id: json["id"],
+        nama: json["nama"],
         waktu: json["waktu"],
         paketId: json["paket_id"],
         harga: json["harga"],
@@ -36,10 +39,11 @@ class PriceModel {
 
     Map<String, dynamic> toJson() => {
         "id": id,
+        "nama": nama,
         "waktu": waktu,
         "paket_id": paketId,
         "harga": harga,
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
+        "created_at": createdAt!.toIso8601String(),
+        "updated_at": updatedAt!.toIso8601String(),
     };
 }

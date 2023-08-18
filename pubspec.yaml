@@ -42,6 +42,7 @@ dependencies:
   firebase_core: ^2.15.0
   firebase_messaging: ^14.6.5
   url_launcher: ^6.1.10
+  percent_indicator: ^4.2.3
   
 dev_dependencies:
   flutter_test:
@@ -52,7 +53,6 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -72,7 +72,8 @@ flutter:
     - asset/images/kilat.png
     - asset/images/wp.png
     - asset/images/splash.png
-    - asset/images/poster.png
+    - asset/images/P1.png
+    - asset/images/P2.png
     - asset/images/splash 1.png
     - asset/images/bubble3.png
     - asset/images/bubble2.png
@@ -83,6 +84,22 @@ flutter:
     - asset/images/GoPay.png
     - asset/images/lightning.png
     - asset/images/logo.png
+    - asset/images/bonus.png
+    - asset/images/R1.png
+    - asset/images/R2.png
+    - asset/images/R3.png
+    - asset/images/R0.png
+    - asset/images/R01.png
+    - asset/images/R02.png
+    - asset/images/Ellipse.png
+    - asset/images/bc.png
+    - asset/images/wa.png
+    - asset/images/setrika.png
+    - asset/images/sepatu.png
+    - asset/images/cuci.png
+    - asset/images/cs.png
+    - asset/images/E.png
+    - asset/images/F.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

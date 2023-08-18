@@ -19,7 +19,7 @@ class _ProsesState extends State<Proses> {
             children: [
               Center(
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 50),
+                  padding: const EdgeInsets.only(top: 40),
                   child: InkWell(
                     onTap: () {
                       Navigator.push(
@@ -57,10 +57,10 @@ class _ProsesState extends State<Proses> {
                                 child: Align(
                                   alignment: Alignment.centerLeft,
                                   child: Text(
-                                    "Rp 36.000",
+                                    "Siap diambil",
                                     style: TextStyle(
                                         fontSize: 15,
-                                        fontWeight: FontWeight.w300,
+                                        fontWeight: FontWeight.w400,
                                         color: Colors.white),
                                   ),
                                 ),
@@ -72,7 +72,7 @@ class _ProsesState extends State<Proses> {
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                "3 kg",
+                                "08 Mei",
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w300,
@@ -81,24 +81,11 @@ class _ProsesState extends State<Proses> {
                             ),
                           ),
                           const Padding(
-                            padding: EdgeInsets.only(top: 5, left: 20),
+                            padding: EdgeInsets.only(top: 25, left: 20),
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
-                                "Siap Diambil",
-                                style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                    color: Colors.white),
-                              ),
-                            ),
-                          ),
-                          const Padding(
-                            padding: EdgeInsets.only(top: 5, left: 20),
-                            child: Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                "08 Mei",
+                                "3 kg",
                                 style: TextStyle(
                                     fontSize: 15,
                                     fontWeight: FontWeight.w300,
@@ -106,7 +93,6 @@ class _ProsesState extends State<Proses> {
                               ),
                             ),
                           ),
-                          //make line
                           Padding(
                             padding: const EdgeInsets.only(
                                 top: 10, right: 20, left: 20),
@@ -116,8 +102,24 @@ class _ProsesState extends State<Proses> {
                               color: Colors.white,
                             ),
                           ),
+                          Row(
+                            children: [
+                              const Padding(
+                                padding: EdgeInsets.only(top: 10, left: 20),
+                                child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    "Rp. 36.000",
+                                    style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.normal,
+                                        color: Colors.white),
+                                  ),
+                                ),
+                              ),
+                            
                           const Padding(
-                            padding: EdgeInsets.only(top: 10, left: 160),
+                            padding: EdgeInsets.only(top: 10, left: 70),
                             child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
@@ -128,6 +130,8 @@ class _ProsesState extends State<Proses> {
                                     color: Colors.white),
                               ),
                             ),
+                          ),
+                          ],
                           ),
                         ],
                       ),

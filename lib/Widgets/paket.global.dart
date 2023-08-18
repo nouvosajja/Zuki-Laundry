@@ -13,6 +13,7 @@ class Paket extends StatefulWidget {
 }
 
 class _PaketState extends State<Paket> {
+  PaketModel? paket;
   Future<List<PaketModel>> getpaket() async {
     final response =
         await http.get(Uri.parse('http://zukilaundry.bardiman.com/api/paket'));
@@ -112,8 +113,8 @@ class _PaketState extends State<Paket> {
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const detail_reguler()),
+                                                builder: (context) =>new 
+                                                    detail_reguler(data: paketList[0],)),
                                           );
                                         },
                                       ),
@@ -121,8 +122,7 @@ class _PaketState extends State<Paket> {
                                         padding: const EdgeInsets.only(
                                             top: 80, left: 12),
                                         child: Text(
-                                          paketList[0]
-                                              .namaPkt, // Tampilkan nama paket Reguler dari model
+                                          paketList[0].namaPkt!, // Tampilkan nama paket Reguler dari model
                                           style: const TextStyle(
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -202,7 +202,7 @@ class _PaketState extends State<Paket> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  const detail_kilat()),
+                                                  detail_kilat(data: paketList[1],)),
                                         );
                                       },
                                     ),
@@ -210,8 +210,7 @@ class _PaketState extends State<Paket> {
                                       padding: const EdgeInsets.only(
                                           top: 80, left: 20),
                                       child: Text(
-                                        paketList[1]
-                                            .namaPkt, // Tampilkan nama paket Reguler dari model
+                                        paketList[1].namaPkt!, // Tampilkan nama paket Reguler dari model
                                         style: const TextStyle(
                                             fontWeight: FontWeight.bold),
                                       ),

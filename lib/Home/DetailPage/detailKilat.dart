@@ -6,8 +6,12 @@ import 'package:http/http.dart' as http;
 import 'package:zuki_laundry/model/paket_model.dart';
 import 'package:zuki_laundry/model/price_model.dart';
 
+import '../../order.dart';
+
 class detail_kilat extends StatefulWidget {
-  const detail_kilat({super.key});
+  detail_kilat({super.key, required this.data});
+    PaketModel? data;
+
 
   @override
   State<detail_kilat> createState() => _detail_kilatState();
@@ -16,18 +20,7 @@ class detail_kilat extends StatefulWidget {
 class _detail_kilatState extends State<detail_kilat> {
   int? _value = 1;
 
-  Future<List<PaketModel>> fetchPaket() async {
-    final response =
-        await http.get(Uri.parse('http://zukilaundry.bardiman.com/api/paket'));
-    if (response.statusCode == 200) {
-      List<dynamic> jsonResponse = json.decode(response.body);
-      return jsonResponse.map((data) => PaketModel.fromJson(data)).toList();
-    } else {
-      throw Exception('Failed to load data from API');
-    }
-  }
-
-  Future<List<PriceModel>> fetchPackages() async {
+  Future<List<PriceModel>> getPrice() async {
     final response = await http
         .get(Uri.parse('http://zukilaundry.bardiman.com/api/price/all'));
     if (response.statusCode == 200) {
@@ -37,264 +30,272 @@ class _detail_kilatState extends State<detail_kilat> {
       throw Exception('Gagal memuat data paket dari API');
     }
   }
-
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<PriceModel>>(
-        future: fetchPackages(),
-        builder: (context, snapshot) {
+    return Scaffold(
+      backgroundColor: Color.fromRGBO(25, 167, 206, 1),
+        appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back, color: Colors.white, size: 30,),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+          title: Text(
+            widget.data!.namaPkt!,
+            style: const TextStyle(
+              fontSize: 35,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+          centerTitle: true,
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          bottom: const PreferredSize(
+            preferredSize: Size.fromHeight(55),
+            child: SizedBox(),
+          ),
+        ),
+        body: FutureBuilder<List<PriceModel>>(
+          future: getPrice(),
+          builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else {
-            final packages = snapshot.data ?? [];
-
-            return FutureBuilder<List<PaketModel>>(
-                future: fetchPaket(),
-                builder: (context, paketSnapshot) {
-                  if (paketSnapshot.connectionState ==
-                      ConnectionState.waiting) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  } else if (paketSnapshot.hasError) {
-                    return Text('Error: ${paketSnapshot.error}');
-                  } else {
-                    final paketList = paketSnapshot.data ?? [];
-                    // Filter paket kilat dengan paketId = 2
-                    final kilatPackages = packages
-                        .where((package) => package.paketId == '2')
-                        .toList();
-                    return Scaffold(
-                        appBar: AppBar(
-                          leading: IconButton(
-                            icon: const Icon(Icons.arrow_back),
-                            onPressed: () {
-                              Navigator.pop(
-                                context,
-                              );
-                            },
-                            color: Colors.black,
-                            iconSize: 30,
-                          ),
-                          title: Text(
-                            paketList[1].namaPkt,
-                            style: const TextStyle(
-                                fontSize: 35,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.black),
-                          ),
-                          centerTitle: true,
-                          backgroundColor: Colors.white,
-                          elevation: 0,
-                          bottom: const PreferredSize(
-                            preferredSize: Size.fromHeight(55),
-                            child: SizedBox(),
-                          ),
+            List<PriceModel> priceList = snapshot.data!; // Use snapshot.data to get the List<PaketModel>
+            return Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(40),
+              topRight: Radius.circular(40),
+            ),
+            color: Colors.white,
+          ),
+          width: double.infinity,
+          height: double.infinity,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 30),
+            child: Center(
+              child: Column(children: [
+                const Text(
+                  'Silahkan pilih paket yang telah \nkami sediakan',
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(top: 20),
+                  child: Divider(
+                    thickness: 3,
+                    color: Colors.black,
+                    indent: 30,
+                    endIndent: 30,
+                  ),
+                ),
+                const SizedBox(
+                  height: 20  ,
+                ),
+                Column(
+                  children: [
+                    const Center(
+                      child: Text(
+                        'Pakaian',
+                        style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
                         ),
-                        body: Container(
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(40),
-                                topRight: Radius.circular(40)),
-                            color: Color.fromRGBO(25, 164, 206, 1),
-                          ),
-                          width: double.infinity, // mengatur lebar maksimal
-                          height: double.infinity, // mengatur tinggi
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 30),
-                            child: Center(
-                              child: Column(children: [
-                                const Text(
-                                  'Silahkan pilih paket yang telah \nkami sediakan',
-                                  style: TextStyle(
-                                      fontSize: 17,
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white),
-                                  textAlign: TextAlign.center,
-                                ),
-                                const Padding(
-                                  padding: EdgeInsets.only(top: 20),
-                                  child: Divider(
-                                    thickness: 3,
-                                    color: Colors.white,
-                                    indent: 30,
-                                    endIndent: 30,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 21,
-                                ),
-                                Column(
-                                  children: [
-                                    const Center(
-                                      child: Text(
-                                        'Pakaian',
-                                        style: TextStyle(
-                                            fontSize: 17,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white),
-                                      ),
-                                    ),
-                                    const SizedBox(height: 21),
-                                    SizedBox(
-                                      height: 40,
-                                      width: 290,
-                                      child: Row(children: [
-                                        RadioWidget(
-                                          value: 1,
-                                          groupValue: _value,
-                                          onChanged: (int? value) {
-                                            setState(() {
-                                              // Toggle the _value between null and selected value
-                                              _value = _value == value
-                                                  ? null
-                                                  : value;
-                                            });
-                                          },
-                                        ),
-                                        const Spacer(),
-                                        Text(
-                                          '${kilatPackages[0].waktu} : Rp. ${kilatPackages[0].harga}',
-                                          style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 15),
-                                        ),
-                                      ]),
-                                    ),
-                                    SizedBox(
-                                      height: 40,
-                                      width: 290,
-                                      child: Row(children: [
-                                        RadioWidget(
-                                          value: 2,
-                                          groupValue: _value,
-                                          onChanged: (int? value) {
-                                            setState(() {
-                                              // Toggle the _value between null and selected value
-                                              _value = _value == value
-                                                  ? null
-                                                  : value;
-                                            });
-                                          },
-                                        ),
-                                        const Spacer(),
-                                        Text(
-                                            '${kilatPackages[1].waktu} : Rp. ${kilatPackages[1].harga}',
-                                            style: const TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 15)),
-                                      ]),
-                                    ),
-                                    SizedBox(
-                                      height: 40,
-                                      width: 290,
-                                      child: Row(children: [
-                                        RadioWidget(
-                                          value: 3,
-                                          groupValue: _value,
-                                          onChanged: (int? value) {
-                                            setState(() {
-                                              // Toggle the _value between null and selected value
-                                              _value = _value == value
-                                                  ? null
-                                                  : value;
-                                            });
-                                          },
-                                        ),
-                                        const Spacer(),
-                                        Text(
-                                          '${kilatPackages[2].waktu} : Rp. ${kilatPackages[2].harga}',
-                                          style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 15),
-                                        ),
-                                      ]),
-                                    ),
-                                  ],
-                                ),
-                                const SizedBox(
-                                  height: 21,
-                                ),
-                                Column(children: [
-                                  //make text pakaian
-                                  const Center(
-                                    child: Text(
-                                      'Lainnya',
-                                      style: TextStyle(
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.bold,
-                                          color: Colors.white),
-                                    ),
-                                  ),
-                                  const SizedBox(height: 21),
-
-                                  SizedBox(
-                                    width: 290,
-                                    child: Row(children: [
-                                      RadioWidget(
-                                        value: 4,
-                                        groupValue: _value,
-                                        onChanged: (int? value) {
-                                          setState(() {
-                                            _value =
-                                                _value == value ? null : value;
-                                          });
-                                        },
-                                      ),
-                                      const Spacer(),
-                                      Text(
-                                        '${kilatPackages[3].waktu} : Rp. ${kilatPackages[3].harga}',
-                                        style: const TextStyle(
-                                            color: Colors.white, fontSize: 15),
-                                      ),
-                                    ]),
-                                  ),
-                                  // SizedBox(
-
-                                  Padding(
-                                    padding: const EdgeInsets.only(
-                                        top: 60, left: 38, right: 38),
-                                    child: SizedBox(
-                                      height: 55,
-                                      width: MediaQuery.of(context).size.width,
-                                      child: ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    const bottom_nav()),
-                                          );
-                                        },
-                                        style: ElevatedButton.styleFrom(
-                                          backgroundColor: Colors.white,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                          ),
-                                        ),
-                                        child: const Text(
-                                          'Pesan',
-                                          style: TextStyle(
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black),
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ]),
-                              ]),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    Card(
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Order(data: widget.data, price: priceList[5])),
+                          );
+                        },
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 100,
+                              height: 60,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  image: DecorationImage(
+                                    image:
+                                        AssetImage('asset/images/cs.png'),
+                                  )),
                             ),
-                          ),
-                        ));
-                  }
-                });
+                            Center(
+                              child: Text(
+                                '${priceList[5].waktu.toString()} \n : Rp ${priceList[5].harga.toString()}/kg',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Card(
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Order(data: widget.data, price: priceList[6])),
+                          );
+                        },
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 100,
+                              height: 60,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  image: DecorationImage(
+                                    image:
+                                        AssetImage('asset/images/cuci.png'),
+                                  )),
+                            ),
+                            Center(
+                              child: Text(
+                               '${priceList[6].waktu.toString()} \n : Rp ${priceList[6].harga.toString()}/kg',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Card(
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Order(data: widget.data, price: priceList[7])),
+                          );
+                        },
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 100,
+                              height: 60,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  image: DecorationImage(
+                                    image:
+                                        AssetImage('asset/images/setrika.png'),
+                                  )),
+                            ),
+                            Center(
+                              child: Text(
+                                '${priceList[7].waktu.toString()} \n : Rp ${priceList[7].harga.toString()}/kg',
+                                // 'Setrika / 3 hari \n: Rp 6.000/kg',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    const Center(
+                      child: Text(
+                        'Lainnya',
+                        style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20,),
+                    Card(
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 10),
+                      elevation: 5,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Order(data: widget.data, price: priceList[8])),
+                          );
+                        },
+                        child: Row(
+                          children: [
+                            Container(
+                              width: 100,
+                              height: 60,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(15),
+                                  image: DecorationImage(
+                                    image:
+                                        AssetImage('asset/images/sepatu.png'),
+                                  )),
+                            ),
+                            Center(
+                              child: Text(
+                                '${priceList[8].waktu.toString()} \n : Rp ${priceList[8].harga.toString()}/kg',
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ]),
+            ),
+          ),
+        );
           }
-        });
+        },
+        )
+        );
   }
 }

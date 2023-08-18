@@ -9,10 +9,10 @@ List<PaketModel> paketModelFromJson(String str) => List<PaketModel>.from(json.de
 String paketModelToJson(List<PaketModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class PaketModel {
-    int id;
-    String namaPkt;
-    dynamic createdAt;
-    dynamic updatedAt;
+    int? id;
+    String? namaPkt;
+    String? createdAt;
+    String? updatedAt;
 
     PaketModel({
         required this.id,

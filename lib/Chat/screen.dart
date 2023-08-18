@@ -9,9 +9,6 @@ class chat_screen extends StatefulWidget {
 }
 
 class _chat_screenState extends State<chat_screen> {
-  // final Uri whatsapp = Uri.parse(
-  //     'https://wa.me/6281238865335?text=Terima+kasih+sudah+menghubungi+Zuki+Laundry+admin+kami+akan+segera+membalas+chat+anda.&type=phone_number&app_absent=0');
-
   void _openWhatsAppChat() async {
     var url =
         'https://wa.me/6281238865335?text=Terima+kasih+sudah+menghubungi+Zuki+Laundry,+admin+kami+akan+segera+membalas+chat+anda.&type=phone_number&app_absent=0';
@@ -21,89 +18,49 @@ class _chat_screenState extends State<chat_screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // make text chat in body
+      backgroundColor: const Color.fromRGBO(25, 167, 206, 1),
+      appBar: AppBar(
+          title: const Text("Chat", 
+          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 25, color: Colors.white),),
+          backgroundColor: Colors.transparent,
+          automaticallyImplyLeading: false,
+          toolbarHeight: 80,
+          elevation: 0,
+      ),
       body: SafeArea(
         child: Container(
           padding: const EdgeInsets.only(left: 24, top: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Row(
-                children: [
-                  IconButton(
-                    icon: const Icon(Icons.arrow_back),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                    color: Colors.black,
-                    iconSize: 30,
-                  ),
-                  const Expanded(
-                    child: Align(
-                      alignment: Alignment.center,
-                      child: FractionallySizedBox(
-                        widthFactor: 0.4,
-                        child: Text(
-                          "Chat",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 25),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const Center(
-                child: Padding(
-                  padding: EdgeInsets.only(top: 250, right: 20),
-                  child: SizedBox(
-                    width: 290,
-                    child: Text(
-                      "Info lebih lanjut tolong untuk menghubungi link di bawah ini!",
-                      textAlign: TextAlign.center,
-                      maxLines: 3,
-                      style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
-                    ),
-                  ),
-                ),
-              ),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 20, right: 20),
-                  child: SizedBox(
-                    width: 150,
-                    child: ElevatedButton(
-                      onPressed: _openWhatsAppChat,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color.fromRGBO(92, 184, 92, 1),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(13),
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Icon(
-                            Icons.whatsapp,
-                            size: 25,
-                            color: Colors.white,
-                          ),
-                          SizedBox(width: 10), // Jarak antara ikon dan teks
-                          Text(
-                            "WhatsApp",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ],
+          child: Center(
+            child: Column(
+              children: [
+                const Center(
+                  child: Padding(
+                    padding: EdgeInsets.only(top: 190, right: 20),
+                    child: SizedBox(
+                      width: 290,
+                      child: Text(
+                        "Info lebih lanjut tolong untuk menghubungi link di bawah ini!",
+                        textAlign: TextAlign.center,
+                        maxLines: 3,
+                        style:
+                            TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
+                 const SizedBox(height: 20),
+                Center(
+                  child: GestureDetector(
+                    onTap: _openWhatsAppChat,
+                    child: Image.asset(
+                      'asset/images/wa.png',
+                      width: 100,
+                      height: 100,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),

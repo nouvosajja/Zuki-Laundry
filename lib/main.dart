@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zuki_laundry/IntroAnim.dart';
+import 'package:zuki_laundry/Splash%20Screen/IntroAnim.dart';
 import 'package:zuki_laundry/route/routes.dart';
 
 import 'package:firebase_core/firebase_core.dart';

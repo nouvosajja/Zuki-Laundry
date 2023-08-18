@@ -29,8 +29,8 @@ class _bubbleState extends State<bubble> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
-        child: CircularProgressIndicator(),
-      );
+              child: CircularProgressIndicator(),
+            );
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else {
@@ -47,116 +47,298 @@ class _bubbleState extends State<bubble> {
             return Stack(
               children: [
                 Container(
-                  height: 380,
+                  height: 420,
                 ),
                 Positioned(
-                    top: 20,
-                    left: 155,
+                    top: 160,
+                    
                     child: Container(
                       margin: const EdgeInsets.only(),
-                      child: Image.asset("asset/images/bubble2.png"),
+                      child: Image.asset("asset/images/F.png"),
                     )),
-                Positioned(
-                    top: 30,
-                    left: 170,
-                    child: Container(
-                      margin: const EdgeInsets.only(),
-                      child: Image.asset("asset/images/bubble1.png"),
-                    )),
-                Positioned(
-                    top: 190,
-                    left: 35,
-                    child: Container(
-                      margin: const EdgeInsets.only(),
-                      child: Image.asset("asset/images/bubble1.png"),
-                    )),
-                Positioned(
-                    top: 210,
-                    left: 65,
-                    child: Container(
-                      margin: const EdgeInsets.only(),
-                      child: Image.asset("asset/images/bubble3.png"),
-                    )),
-                Positioned(
-                  top: 45,
-                  left: 40,
-                  child: Container(
-                    width: 160, // Menyesuaikan ukuran lingkaran
-                    height: 160, // Menyesuaikan ukuran lingkaran
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color.fromRGBO(25, 164, 206, 1),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Reguler \n${regulerPackages[0].waktu} \nRp. ${regulerPackages[0].harga} \n  ${regulerPackages[1].waktu}\nRp. ${regulerPackages[1].harga} \n ${regulerPackages[2].waktu}\nRp. ${regulerPackages[2].harga}',
-                        style: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        ),
-                        textAlign: TextAlign.center,
+                Padding(
+                  padding: const EdgeInsets.only(top: 224, left: 15),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Image.asset(
+                        'asset/images/R02.png', // Replace with your actual image path
                       ),
-                    ),
+                      Positioned.fill(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Text(
+                            "${regulerPackages[2].nama}\n / ${regulerPackages[2].waktu} : \nRp. ${regulerPackages[2].harga}",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Positioned(
-                    top: 170,
-                    left: 200,
+                    top: 40,
+                    left: 6,
                     child: Container(
                       margin: const EdgeInsets.only(),
-                      child: Image.asset("asset/images/bubble3.png"),
+                      child: Image.asset("asset/images/E.png"),
                     )),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20, left: 10),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Image.asset(
+                        'asset/images/R01.png', // Replace with your actual image path
+                      ),
+                      Positioned.fill(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Text(
+                            "${regulerPackages[0].nama}\n / ${regulerPackages[0].waktu} : \nRp. ${regulerPackages[0].harga}",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 Positioned(
-                    top: 140,
-                    left: 220,
+                    top: 40,
+                    left: 85,
                     child: Container(
                       margin: const EdgeInsets.only(),
-                      child: Image.asset("asset/images/bubble1.png"),
+                      child: Image.asset("asset/images/F.png"),
                     )),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20, left: 140),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Image.asset(
+                        'asset/images/R0.png', // Replace with your actual image path
+                        fit: BoxFit.cover,
+                      ),
+                      Positioned.fill(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Text(
+                            "${regulerPackages[1].nama}\n / ${regulerPackages[1].waktu} : \nRp. ${regulerPackages[1].harga}",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 105, left: 60),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Image.asset(
+                        'asset/images/Ellipse.png', // Replace with your actual image path
+                        fit: BoxFit.cover,
+                      ),
+                      Positioned.fill(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 50),
+                          child: Text(
+                            "Reguler",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
                 Positioned(
-                    top: 145,
-                    left: 260,
-                    child: Container(
-                      margin: const EdgeInsets.only(),
-                      child: Image.asset("asset/images/bubble2.png"),
-                    )),
-                Positioned(
-                    top: 340,
+                    top: 100,
                     left: 300,
                     child: Container(
                       margin: const EdgeInsets.only(),
                       child: Image.asset("asset/images/bubble2.png"),
                     )),
                 Positioned(
-                    top: 350,
-                    left: 265,
+                    top: 90,
+                    left: 260,
                     child: Container(
                       margin: const EdgeInsets.only(),
                       child: Image.asset("asset/images/bubble1.png"),
                     )),
                 Positioned(
-                  top: 180,
-                  left: 190,
-                  child: Container(
-                    width: 160, // Menyesuaikan ukuran lingkaran
-                    height: 160, // Menyesuaikan ukuran lingkaran
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color.fromRGBO(25, 164, 206, 1),
-                    ),
-                    child: Center(
-                      child: Text(
-                        'Kilat  \n ${kilatPackages[0].waktu}\nRp. ${kilatPackages[0].harga} \n ${kilatPackages[1].waktu}\nRp. ${kilatPackages[1].harga} \n ${kilatPackages[2].waktu} \nRp. ${kilatPackages[2].harga}',
-                        style: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                        textAlign: TextAlign.center,
+                    top: 115,
+                    left: 240,
+                    child: Container(
+                      margin: const EdgeInsets.only(),
+                      child: Image.asset("asset/images/bubble3.png"),
+                    )),
+                    Positioned(
+                    top: 260,
+                    left: 115,
+                    child: Container(
+                      margin: const EdgeInsets.only(),
+                      child: Image.asset("asset/images/F.png"),
+                    )),
+                Padding(
+                  padding: const EdgeInsets.only(top: 325, left: 110),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Image.asset(
+                        'asset/images/R02.png', // Replace with your actual image path
+                        fit: BoxFit.cover,
                       ),
-                    ),
+                      Positioned.fill(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Text(
+                            "${kilatPackages[2].nama}\n / ${kilatPackages[2].waktu} : \nRp. ${kilatPackages[2].harga}",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                )
+                ),
+                Positioned(
+                    top: 280,
+                    left: 200,
+                    child: Container(
+                      margin: const EdgeInsets.only(),
+                      child: Image.asset("asset/images/E.png"),
+                    )),
+                Padding(
+                  padding: const EdgeInsets.only(top: 350, left: 250),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Image.asset(
+                        'asset/images/R01.png', // Replace with your actual image path
+                        fit: BoxFit.cover,
+                      ),
+                      Positioned.fill(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Text(
+                            "${kilatPackages[1].nama}\n / ${kilatPackages[1].waktu} : \nRp. ${kilatPackages[1].harga}",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Positioned(
+                    top: 150,
+                    left: 200,
+                    child: Container(
+                      margin: const EdgeInsets.only(),
+                      child: Image.asset("asset/images/F.png"),
+                    )),
+                Padding(
+                  padding: const EdgeInsets.only(top: 125, left: 250),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Image.asset(
+                        'asset/images/R0.png', // Replace with your actual image path
+                        fit: BoxFit.cover,
+                      ),
+                      Positioned.fill(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 20),
+                          child: Text(
+                            "${kilatPackages[0].nama}\n / ${kilatPackages[0].waktu} : \nRp. ${kilatPackages[0].harga}",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 220, left: 180),
+                  child: Stack(
+                    alignment: Alignment.center,
+                    children: [
+                      Image.asset(
+                        'asset/images/Ellipse.png', // Replace with your actual image path
+                        fit: BoxFit.cover,
+                      ),
+                      Positioned.fill(
+                        child: Padding(
+                          padding: const EdgeInsets.only(top: 50),
+                          child: Text(
+                            "Kilat",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Positioned(
+                    top: 310,
+                    left: 40,
+                    child: Container(
+                      margin: const EdgeInsets.only(),
+                      child: Image.asset("asset/images/bubble2.png"),
+                    )),
+                Positioned(
+                    top: 320,
+                    left: 60,
+                    child: Container(
+                      margin: const EdgeInsets.only(),
+                      child: Image.asset("asset/images/bubble1.png"),
+                    )),
+                Positioned(
+                    top: 330,
+                    left: 25,
+                    child: Container(
+                      margin: const EdgeInsets.only(),
+                      child: Image.asset("asset/images/bubble3.png"),
+                    )),
               ],
             );
           }

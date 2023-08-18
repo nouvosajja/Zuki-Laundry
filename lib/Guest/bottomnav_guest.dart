@@ -1,4 +1,5 @@
   import 'package:flutter/material.dart';
+import 'package:iconly/iconly.dart';
         import 'package:zuki_laundry/Guest/homepage_guest.dart';
   import 'package:zuki_laundry/beforeLogin.dart';
 
@@ -99,12 +100,12 @@
                 BottomNavigationBarItem(
                   icon: Padding(
                     padding: EdgeInsets.symmetric(vertical: 4),
-                    child: Icon(Icons.card_giftcard),
+                    child: Icon(IconlyLight.chat),
                   ),
-                  label: 'Bonus',
+                  label: 'Chat',
                   activeIcon: Padding(
                     padding: EdgeInsets.symmetric(vertical: 4),
-                    child: Icon(Icons.card_giftcard),
+                    child: Icon(IconlyLight.chat),
                   ),
                 ),
                 BottomNavigationBarItem(

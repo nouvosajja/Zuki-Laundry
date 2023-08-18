@@ -4,9 +4,9 @@
 
 import 'dart:convert';
 
-List<UserModel> userModelFromJson(String str) => List<UserModel>.from(json.decode(str).map((x) => UserModel.fromJson(x)));
+UserModel userModelFromJson(String str) => UserModel.fromJson(json.decode(str));
 
-String userModelToJson(List<UserModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String userModelToJson(UserModel data) => json.encode(data.toJson());
 
 class UserModel {
     int id;
@@ -15,8 +15,10 @@ class UserModel {
     String role;
     String number;
     String address;
-    DateTime? createdAt;
-    DateTime? updatedAt;
+    dynamic deviceToken;
+    dynamic profilePhotoPath;
+    DateTime createdAt;
+    DateTime updatedAt;
 
     UserModel({
         required this.id,
@@ -25,8 +27,10 @@ class UserModel {
         required this.role,
         required this.number,
         required this.address,
-        this.createdAt,
-        this.updatedAt,
+        required this.deviceToken,
+        required this.profilePhotoPath,
+        required this.createdAt,
+        required this.updatedAt,
     });
 
     factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
@@ -36,8 +40,10 @@ class UserModel {
         role: json["role"],
         number: json["number"],
         address: json["address"],
-        createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
-        updatedAt: json["updated_at"] == null ? null : DateTime.parse(json["updated_at"]),
+        deviceToken: json["device_token"],
+        profilePhotoPath: json["profile_photo_path"],
+        createdAt: DateTime.parse(json["created_at"]),
+        updatedAt: DateTime.parse(json["updated_at"]),
     );
 
     Map<String, dynamic> toJson() => {
@@ -47,7 +53,9 @@ class UserModel {
         "role": role,
         "number": number,
         "address": address,
-        "created_at": createdAt?.toIso8601String(),
-        "updated_at": updatedAt?.toIso8601String(),
+        "device_token": deviceToken,
+        "profile_photo_path": profilePhotoPath,
+        "created_at": createdAt.toIso8601String(),
+        "updated_at": updatedAt.toIso8601String(),
     };
 }

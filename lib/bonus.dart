@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 const List<String> list = [
   'Pilih',
@@ -21,17 +22,35 @@ class _BonusState extends State<Bonus> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Bonus", 
-          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 25, color: Colors.black),),
-          backgroundColor: Colors.transparent,
-          automaticallyImplyLeading: false,
-          toolbarHeight: 80,
-          elevation: 0,
+        title: const Text(
+          "Bonus",
+          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 25, color: Colors.black),
         ),
+        backgroundColor: Colors.transparent,
+        toolbarHeight: 80,
+        automaticallyImplyLeading: false,
+        elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, color: Colors.black), // Back button with black color
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
         body: SafeArea(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const Padding(
+              padding: EdgeInsets.only(top: 60, left: 30),
+              child: Text(
+                "Tentukan bulan untuk mengambil bonus",
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontSize: 15,
+                ),
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.only(top: 30, left: 30, right: 180),
               child: InputDecorator(
@@ -71,52 +90,70 @@ class _BonusState extends State<Bonus> {
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 60, left: 30),
-              child: Text(
-                "Reguler",
-                textAlign: TextAlign.left,
-                maxLines: 3,
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 20,
-                ),
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(top: 20, left: 30),
-              child: Text(
-                "3 kg",
-                textAlign: TextAlign.left,
-                maxLines: 3,
-                style: TextStyle(
-                  fontWeight: FontWeight.normal,
-                  fontSize: 15,
-                ),
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(top: 30, left: 30),
-              child: Text(
-                "Kilat",
-                textAlign: TextAlign.left,
-                maxLines: 3,
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                  fontSize: 20,
-                ),
-              ),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(top: 20, left: 30),
-              child: Text(
-                "0 Kg",
-                textAlign: TextAlign.left,
-                maxLines: 3,
-                style: TextStyle(
-                  fontWeight: FontWeight.normal,
-                  fontSize: 15,
-                ),
+             Padding(
+              padding: const EdgeInsets.only(top: 30, left: 30),
+              child: Row(
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Reguler",
+                        maxLines: 3,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 20,
+                        ),
+                      ),
+                      SizedBox(height: 20,),
+                      CircularPercentIndicator(
+                        radius: 40.0,
+                        lineWidth: 5.0,
+                        animation: true,
+                        percent: 0.3,
+                        center: Text(
+                          "3 kg",
+                          style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 20,
+                          ),
+                        ),
+                        circularStrokeCap: CircularStrokeCap.round,
+                        progressColor: Colors.purple,
+                      ),
+                    ],
+                  ),
+                  SizedBox(width: 60), // Add spacing between columns
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Kilat",
+                        maxLines: 3,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          fontSize: 20,
+                        ),
+                      ),
+                      SizedBox(height: 20,),
+                      CircularPercentIndicator(
+                        radius: 40.0,
+                        lineWidth: 5.0,
+                        animation: true,
+                        percent: 0.0,
+                        center: Text(
+                          "0 kg",
+                          style: TextStyle(
+                            fontWeight: FontWeight.normal,
+                            fontSize: 20,
+                          ),
+                        ),
+                        circularStrokeCap: CircularStrokeCap.round,
+                        progressColor: Colors.purple,
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
             Padding(
