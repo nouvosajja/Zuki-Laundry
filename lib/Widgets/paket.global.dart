@@ -14,6 +14,7 @@ class Paket extends StatefulWidget {
 
 class _PaketState extends State<Paket> {
   PaketModel? paket;
+  
   Future<List<PaketModel>> getpaket() async {
     final response =
         await http.get(Uri.parse('http://zukilaundry.bardiman.com/api/paket'));

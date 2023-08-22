@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:zuki_laundry/pembayaran.dart';
+import 'package:zuki_laundry/History/Proses/Pembayaran/pembayaran.dart';
 
-List<String> get list {
-  return ['GoPay', 'metode1', 'metode2', 'metode3'];
-}
+
 
 class Pesanan extends StatefulWidget {
   const Pesanan({super.key});
@@ -13,7 +11,6 @@ class Pesanan extends StatefulWidget {
 }
 
 class _PesananState extends State<Pesanan> {
-  String selectedValue = "GoPay";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,12 +52,26 @@ class _PesananState extends State<Pesanan> {
                 style: TextStyle(
                   fontSize: 35,
                   fontWeight: FontWeight.w900,
+                  color: Color.fromRGBO(25, 164, 206, 1),
                 ),
               ),
             ),
           ),
           const Padding(
-            padding: EdgeInsets.only(top: 20, left: 40),
+            padding: EdgeInsets.only(top: 10, left: 40),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Cuci Setrika/ 3 hari',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.normal,
+                ),
+              ),
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(top: 30, left: 40),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -100,7 +111,6 @@ class _PesananState extends State<Pesanan> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Row(
-              // make text diambil & selesai
               children: const [
                 Text(
                   'bonus',
@@ -124,7 +134,6 @@ class _PesananState extends State<Pesanan> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Row(
-              // make text diambil & selesai
               children: const [
                 Text(
                   'Total',
@@ -146,7 +155,7 @@ class _PesananState extends State<Pesanan> {
           ),
           // make text info pesanan
           const Padding(
-            padding: EdgeInsets.only(top: 20, left: 40),
+            padding: EdgeInsets.only(top: 30, left: 40),
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -256,72 +265,9 @@ class _PesananState extends State<Pesanan> {
               ),
             ),
           ),
-          Container(
-            // autogroupctyivMk (UTvPypu7bc1GzyxyJ3cTYi)
-            margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-            height: 71,
-            width: double.infinity,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  margin: const EdgeInsets.fromLTRB(38, 12, 0, 0),
-                  // gopayeHk (338:198)
-                  width: 50,
-                  height: 50,
-                  child: Image.asset(
-                    ("asset/images/GoPay.png"),
-                    width: 50,
-                    height: 50,
-                  ),
-                ),
-                Container(
-                  // autogroup4nqtMxr (UTvQ6A3uAUmA6MomTQ4nqt)
-                  margin: const EdgeInsets.fromLTRB(10, 0, 0, 0),
-                  width: 150,
-                  height: double.infinity,
-                  child: Column(
-                    children: [
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: DropdownButton(
-                          value: selectedValue,
-                          onChanged: (String? newValue) {
-                            setState(() {
-                              selectedValue = newValue!;
-                            });
-                          },
-                          items: list
-                              .map<DropdownMenuItem<String>>((String value) {
-                            return DropdownMenuItem<String>(
-                              value: value,
-                              child: Text(value),
-                            );
-                          }).toList(),
-                        ),
-                      ),
-                      Container(
-                        // saldorp50000q7L (338:202)
-                        margin: const EdgeInsets.fromLTRB(2, 0, 0, 0),
-                        width: double.infinity,
-                        child: const Text(
-                          'Saldo :  Rp 50.000',
-                          style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600,
-                            height: 1,
-                            color: Color(0xff000000),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
+          
           Padding(
-            padding: const EdgeInsets.only(top: 10),
+            padding: const EdgeInsets.only(top: 50),
             child: Align(
               alignment: Alignment.center,
               child: ElevatedButton(

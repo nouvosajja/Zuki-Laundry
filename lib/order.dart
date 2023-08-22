@@ -1,39 +1,104 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:zuki_laundry/Widgets/paket.global.dart';
-import 'package:zuki_laundry/bottomnav.dart';
-import 'package:zuki_laundry/model/login_model.dart';
 import 'package:zuki_laundry/model/price_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:zuki_laundry/model/user_model.dart';
 import 'model/paket_model.dart';
 
 class Order extends StatefulWidget {
-  Order({Key? key, required this.data, required this.price}) : super(key: key);
+  Order(
+      {Key? key,
+      required this.data,
+      required this.price,
+      required this.selectedPackageIndex})
+      : super(key: key);
   PaketModel? data;
   PriceModel? price;
+  int? selectedPackageIndex;
 
   @override
   State<Order> createState() => _OrderState();
 }
 
 class _OrderState extends State<Order> {
-  
+  UserModel? user;
+
+  @override
+  void initState() {
+    getprofil();
+    getprofil().then((value) {
+      setState(() {
+        user = value;
+      });
+    });
+    super.initState();
+  }
+
+  Future getprofil() async {
+    const url = 'http://zukilaundry.bardiman.com/api/user';
+
+    print('-----------user-------------');
+
+    //call token from set pref
+    final SharedPreferences pref = await SharedPreferences.getInstance();
+    final token = pref.getString('token')!;
+
+    try {
+      final response = await http.get(
+        Uri.parse(url),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $token',
+        },
+      );
+      print('token : $token');
+      print('status code : ${response.statusCode}');
+
+      if (response.statusCode == 200) {
+        print(url);
+
+        UserModel model = UserModel.fromJson(json.decode(response.body));
+        return model;
+      } else {
+        throw Exception("Failed to fetch data from API");
+      }
+    } catch (e) {
+      print(e.toString());
+    }
+  }
 
 
-Future<void> postData() async {
-   SharedPreferences pref = await SharedPreferences.getInstance();
+  String getImageUrl() {
+    if (widget.selectedPackageIndex == 0) {
+      return 'https://zukilaundry.bardiman.com/public/images/menu/cs.png';
+    } else if (widget.selectedPackageIndex == 1) {
+      return 'https://zukilaundry.bardiman.com/public/images/menu/cuci.png';
+    } else if (widget.selectedPackageIndex == 2) {
+      return 'https://zukilaundry.bardiman.com/public/images/menu/setrika.png';
+    } else if (widget.selectedPackageIndex == 3) {
+      return 'https://zukilaundry.bardiman.com/public/images/menu/sepatu.png';
+    } else {
+      return ''; // Handle the case if index is out of range
+    }
+  }
+
+  Future<void> postData() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
     String token = pref.getString("token") ?? "";
     Future.delayed(Duration(seconds: 3), () async {
       final url = Uri.parse("http://zukilaundry.bardiman.com/api/order");
       // Create the request body
       final Map<String, dynamic> requestBody = {
-      "user_id": "3",
-      "paket_id": "1",
-      "price_id": "1",
+        "user_id": user!.id.toString(),
+        "paket_id": widget.data!.id.toString(),
+        "price_id": widget.price!.id.toString(),
         // Add more fields as necessary
       };
 
-       final Map<String, String> requestHeader = {
+      final requestHeader = {
         'Authorization': 'Bearer ${token}',
       };
 
@@ -48,12 +113,11 @@ Future<void> postData() async {
         // x
       } else {
         print('POST Data Transaction request failed.');
-        print('Status code: ${response.statusCode}');
+        print('Status code: ${requestBody}');
       }
     });
     // Define the API endpoint URL
-}
-
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -133,7 +197,7 @@ Future<void> postData() async {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(15),
                         image: DecorationImage(
-                          image: AssetImage('asset/images/cuci.png'),
+                          image: NetworkImage(getImageUrl()),
                         ),
                       ),
                     ),
@@ -194,7 +258,7 @@ Future<void> postData() async {
                   child: Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      "Kami akan mencuci pakaian anda dalam minimal 3 hari (yang menghasilkan pakaian yang bersih)",
+                      widget.price!.deskripsi,
                       textAlign: TextAlign.left,
                       maxLines: 3,
                       style: TextStyle(

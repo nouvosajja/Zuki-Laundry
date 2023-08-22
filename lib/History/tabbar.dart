@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zuki_laundry/History/dalamProses.dart';
+import 'package:zuki_laundry/History/Proses/dalamproses.dart';
 import 'package:zuki_laundry/History/riwayat.dart';
 
 class Tabbar extends StatefulWidget {

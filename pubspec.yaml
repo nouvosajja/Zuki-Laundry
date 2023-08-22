@@ -43,6 +43,7 @@ dependencies:
   firebase_messaging: ^14.6.5
   url_launcher: ^6.1.10
   percent_indicator: ^4.2.3
+  lottie: ^2.6.0
   
 dev_dependencies:
   flutter_test:
