@@ -43,7 +43,8 @@ dependencies:
   firebase_messaging: ^14.6.5
   url_launcher: ^6.1.10
   percent_indicator: ^4.2.3
-  lottie: ^2.6.0
+  font_awesome_flutter: ^10.5.0
+  lottie: 
   
 dev_dependencies:
   flutter_test:
@@ -101,6 +102,9 @@ flutter:
     - asset/images/cs.png
     - asset/images/E.png
     - asset/images/F.png
+    - asset/images/loading.gif
+    - asset/json/loadin.json
+    - asset/json/done.json
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -36,13 +36,13 @@ class _bottom_navState extends State<bottom_nav> {
   }
 
       void _onBottomNavItemPressed(int index) {
-      if (index == 0) {
-        Navigator.push(context, MaterialPageRoute(builder: (context) => const bottom_nav()));
-      } else {
+      
+     
+      
         setState(() {
           currentIndex = index;
         });
-      }
+  
     }
 
 

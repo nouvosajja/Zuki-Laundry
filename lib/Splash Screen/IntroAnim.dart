@@ -51,6 +51,7 @@ class _intro_animState extends State<intro_anim> {
               Image.asset(
                 'asset/images/logo.png',
               ),
+              // Image.network("https://media.giphy.com/media/XbDp1b0RVoRbVRxkay/giphy.gif")
             ],
           ),
         ),

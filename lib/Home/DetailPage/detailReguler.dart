@@ -6,7 +6,7 @@ import 'package:zuki_laundry/model/price_model.dart';
 import 'package:flutter/material.dart';
 import 'package:zuki_laundry/Widgets/radio.global.dart';
 import 'package:zuki_laundry/bottomnav.dart';
-import 'package:zuki_laundry/order.dart';
+import 'package:zuki_laundry/Home/DetailPage/Order/order.dart';
 
 import '../../model/user_model.dart';
 

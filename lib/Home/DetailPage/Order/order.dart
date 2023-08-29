@@ -1,11 +1,13 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:zuki_laundry/bottomnav.dart';
 import 'package:zuki_laundry/model/price_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:zuki_laundry/model/user_model.dart';
-import 'model/paket_model.dart';
+import '../../../model/paket_model.dart';
 
 class Order extends StatefulWidget {
   Order(
@@ -24,6 +26,16 @@ class Order extends StatefulWidget {
 
 class _OrderState extends State<Order> {
   UserModel? user;
+  bool isOrder = true;
+
+  Future<void> loadingProgressBar() async {
+    await Future.delayed(const Duration(seconds: 1 ), () {
+      setState(() {
+        isOrder = false;
+      });
+      postData();
+    });
+  }
 
   @override
   void initState() {
@@ -110,6 +122,12 @@ class _OrderState extends State<Order> {
       if (response.statusCode == 200) {
         print('POST Data Transaction request was successful.');
         print('Response: ${requestBody}');
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const bottom_nav(),
+          ),
+        );
         // x
       } else {
         print('POST Data Transaction request failed.');
@@ -121,7 +139,8 @@ class _OrderState extends State<Order> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return isOrder ?  Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         leading: IconButton(
           icon: const Icon(
@@ -150,7 +169,7 @@ class _OrderState extends State<Order> {
           child: SizedBox(),
         ),
       ),
-      body: Container(
+      body:Container(
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(40),
@@ -243,7 +262,7 @@ class _OrderState extends State<Order> {
                                 fontSize: 14,
                                 fontWeight: FontWeight.bold,
                               ),
-                            ),
+                            ),  
                           ],
                         ),
                       ],
@@ -277,12 +296,7 @@ class _OrderState extends State<Order> {
                   width: MediaQuery.of(context).size.width,
                   child: ElevatedButton(
                     onPressed: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //       builder: (context) => bottom_nav()),
-                      // );
-                      postData();
+                      loadingProgressBar();
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
@@ -304,7 +318,8 @@ class _OrderState extends State<Order> {
             ],
           ),
         ),
-      ),
-    );
+      ) 
+    ) : Scaffold(backgroundColor: Colors.white,  
+    body: Center(child: Lottie.asset("asset/json/loadin.json")));
   }
 }

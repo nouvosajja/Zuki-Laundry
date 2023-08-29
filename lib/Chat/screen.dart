@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class chat_screen extends StatefulWidget {
-  const chat_screen({super.key});
+  const chat_screen({Key? key}) : super(key: key);
 
   @override
   State<chat_screen> createState() => _chat_screenState();
@@ -20,20 +21,22 @@ class _chat_screenState extends State<chat_screen> {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(25, 167, 206, 1),
       appBar: AppBar(
-          title: const Text("Chat", 
-          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 25, color: Colors.white),),
-          backgroundColor: Colors.transparent,
-          automaticallyImplyLeading: false,
-          toolbarHeight: 80,
-          elevation: 0,
+        title: Text(
+          "WhatsApp",
+          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 25, color: Colors.white),
+        ),
+        backgroundColor: Colors.transparent,
+        automaticallyImplyLeading: false,
+        toolbarHeight: 80,
+        elevation: 0,
       ),
       body: SafeArea(
         child: Container(
-          padding: const EdgeInsets.only(left: 24, top: 20),
+          padding: EdgeInsets.only(top: 20),
           child: Center(
             child: Column(
               children: [
-                const Center(
+                Center(
                   child: Padding(
                     padding: EdgeInsets.only(top: 190, right: 20),
                     child: SizedBox(
@@ -42,20 +45,37 @@ class _chat_screenState extends State<chat_screen> {
                         "Info lebih lanjut tolong untuk menghubungi link di bawah ini!",
                         textAlign: TextAlign.center,
                         maxLines: 3,
-                        style:
-                            TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white),
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white),
                       ),
                     ),
                   ),
                 ),
-                 const SizedBox(height: 20),
-                Center(
-                  child: GestureDetector(
-                    onTap: _openWhatsAppChat,
-                    child: Image.asset(
-                      'asset/images/wa.png',
-                      width: 100,
-                      height: 100,
+                Container(
+                  margin: EdgeInsets.only(top: 20, left: 20, right: 20),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      _openWhatsAppChat();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color.fromRGBO(84, 191, 98, 1),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        FaIcon(FontAwesomeIcons.whatsapp, color: Colors.white), // FontAwesome icon here
+                        SizedBox(width: 10),
+                        Text(
+                          'WhatsApp',
+                          style: TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),

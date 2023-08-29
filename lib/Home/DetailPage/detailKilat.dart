@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:zuki_laundry/Widgets/radio.global.dart';
-import 'package:zuki_laundry/bottomnav.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:zuki_laundry/Home/DetailPage/Order/order.dart';
 import 'package:zuki_laundry/model/paket_model.dart';
 import 'package:zuki_laundry/model/price_model.dart';
 
-import '../../order.dart';
 
 class detail_kilat extends StatefulWidget {
   detail_kilat({super.key, required this.data});
