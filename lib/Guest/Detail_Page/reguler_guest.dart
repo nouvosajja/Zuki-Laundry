@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:zuki_laundry/beforeLogin.dart';
+import 'package:zuki_laundry/Splash%20Screen/beforeLogin.dart';
 import 'package:zuki_laundry/model/paket_model.dart';
 import 'package:zuki_laundry/model/price_model.dart';
 import 'package:flutter/material.dart';

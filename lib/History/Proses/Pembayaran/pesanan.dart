@@ -3,14 +3,18 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:zuki_laundry/History/Proses/Pembayaran/pembayaran.dart';
+import 'package:zuki_laundry/History/Proses/Pembayaran/snap_screen.dart';
 import 'package:zuki_laundry/model/getorder_model.dart';
 import 'package:zuki_laundry/model/price_model.dart';
 import 'package:zuki_laundry/model/user_model.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../model/getorderuser_model.dart';
+
 class Pesanan extends StatefulWidget {
- Pesanan({super.key, required this.transactions});
- Transactions transactions;
+ Pesanan({super.key, required this.data});
+ Data data;
+
 
   @override
   State<Pesanan> createState() => _PesananState();
@@ -18,37 +22,14 @@ class Pesanan extends StatefulWidget {
 
 class _PesananState extends State<Pesanan> {
   UserModel? user;
-  PriceModel? price;
   bool isloading = false;
 
-    Future getprice() async {
-    final url = 'http://zukilaundry.bardiman.com/api/price/all';
-
-    final SharedPreferences pref = await SharedPreferences.getInstance();
-    final token = pref.getString('token')!;
-
-    try {
-      final response = await http.get(
-        Uri.parse(url),
-        // headers: {
-        //   'Content-Type': 'application/json',
-        //   'Accept': 'application/json',
-        //   'Authorization': 'Bearer $token',
-        // }
-      );
-
-      print('status code : ${response.statusCode}');
-
-      if (response.statusCode == 200) {
-        print(url);
-        print(response.body);
-        PriceModel model = PriceModel.fromJson(json.decode(response.body));
-        return model;
-      } else {
-        throw Exception("Failed to fetch data from API");
-      }
-    } catch (e) {
-      print(e.toString());
+  int calculateBonus(String weight) {
+    int totalWeight = int.tryParse(weight) ?? 0;
+    if (totalWeight == 10) {
+      return 10000; // Rp 10,000
+    } else {
+      return 0; // No bonus
     }
   }
 
@@ -89,7 +70,9 @@ Future getprofil() async {
   
   @override
   Widget build(BuildContext context) {
+    int bonusAmount = calculateBonus(widget.data.berat!);
     return Scaffold(
+      backgroundColor: Color.fromRGBO(244, 244, 244, 1),
       body: Column(
         children: [
           Container(
@@ -124,7 +107,7 @@ Future getprofil() async {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                widget.transactions.namaPaket!,
+                widget.data.namaPaket!,
                 // widget.price.nama! + ' / ' + widget.price.harga!,
                 style: TextStyle(
                   fontSize: 35,
@@ -139,7 +122,7 @@ Future getprofil() async {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                widget.transactions.namePrices! + "/" + widget.transactions.waktuPrice!,
+                widget.data.namePrices! + "/" + widget.data.waktuPrice!,
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.normal,
@@ -175,7 +158,7 @@ Future getprofil() async {
                 ),
                 Spacer(),
                 Text(
-                  "Rp " + widget.transactions.totalHarga!,
+                  "Rp " + (int.parse(widget.data.totalHarga!) + (widget.data.berat == '10' ? 10000 : 0)).toString(),
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w400,
@@ -188,7 +171,7 @@ Future getprofil() async {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Row(
-              children: const [
+              children: [
                 Text(
                   'bonus',
                   style: TextStyle(
@@ -198,7 +181,7 @@ Future getprofil() async {
                 ),
                 Spacer(),
                 Text(
-                  'Rp0',
+                  "Rp $bonusAmount",
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w400,
@@ -221,7 +204,7 @@ Future getprofil() async {
                 ),
                 Spacer(),
                 Text(
-                  "Rp " + widget.transactions.totalHarga!,
+                  "Rp " + widget.data.totalHarga!,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w700,
@@ -249,7 +232,7 @@ Future getprofil() async {
             padding: const EdgeInsets.symmetric(horizontal: 40),
             child: Row(
               // make text diambil & selesai
-              children: const [
+              children: [
                 Text(
                   'Pengambilan',
                   style: TextStyle(
@@ -259,7 +242,7 @@ Future getprofil() async {
                 ),
                 Spacer(),
                 Text(
-                  '08 Mei 2024',
+                  widget.data.tanggalPesanan!,
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w400,
@@ -307,7 +290,7 @@ Future getprofil() async {
                 ),
                 Spacer(),
                 Text(
-                  widget.transactions.berat! + ' kg',
+                   widget.data.berat! + ' kg',
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.w400,
@@ -334,7 +317,7 @@ Future getprofil() async {
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
-                widget.transactions.statusPesanan!,
+                widget.data.statusPesanan!,
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.normal,
@@ -352,7 +335,7 @@ Future getprofil() async {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const Pembayaran(),
+                      builder: (context) => Snap_screen(snap_token: widget.data.snapToken!,),
                     ),
                   );
                 },

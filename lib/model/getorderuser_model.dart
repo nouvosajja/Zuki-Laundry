@@ -1,27 +1,33 @@
-class GetOrder {
-  List<Transactions>? transactions;
+class GetOrderUser {
+  bool? success;
+  String? message;
+  List<Data>? data;
 
-  GetOrder({this.transactions});
+  GetOrderUser({this.success, this.message, this.data});
 
-  GetOrder.fromJson(Map<String, dynamic> json) {
-    if (json['transactions'] != null) {
-      transactions = <Transactions>[];
-      json['transactions'].forEach((v) {
-        transactions!.add(new Transactions.fromJson(v));
+  GetOrderUser.fromJson(Map<String, dynamic> json) {
+    success = json['success'];
+    message = json['message'];
+    if (json['data'] != null) {
+      data = <Data>[];
+      json['data'].forEach((v) {
+        data!.add(new Data.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    if (this.transactions != null) {
-      data['transactions'] = this.transactions!.map((v) => v.toJson()).toList();
+    data['success'] = this.success;
+    data['message'] = this.message;
+    if (this.data != null) {
+      data['data'] = this.data!.map((v) => v.toJson()).toList();
     }
     return data;
   }
 }
 
-class Transactions {
+class Data {
   String? id;
   String? userId;
   String? paketId;
@@ -36,14 +42,13 @@ class Transactions {
   String? createdAt;
   String? updatedAt;
   String? namaPaket;
-  String? nameUser;
   String? addressUser;
   String? namePrices;
   String? hargaPrice;
   String? waktuPrice;
   String? createdAtOrders;
 
-  Transactions(
+  Data(
       {this.id,
       this.userId,
       this.paketId,
@@ -58,14 +63,13 @@ class Transactions {
       this.createdAt,
       this.updatedAt,
       this.namaPaket,
-      this.nameUser,
       this.addressUser,
       this.namePrices,
       this.hargaPrice,
       this.waktuPrice,
       this.createdAtOrders});
 
-  Transactions.fromJson(Map<String, dynamic> json) {
+  Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     userId = json['user_id'];
     paketId = json['paket_id'];
@@ -80,7 +84,6 @@ class Transactions {
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     namaPaket = json['nama_paket'];
-    nameUser = json['name_user'];
     addressUser = json['address_user'];
     namePrices = json['name_prices'];
     hargaPrice = json['harga_price'];
@@ -104,7 +107,6 @@ class Transactions {
     data['created_at'] = this.createdAt;
     data['updated_at'] = this.updatedAt;
     data['nama_paket'] = this.namaPaket;
-    data['name_user'] = this.nameUser;
     data['address_user'] = this.addressUser;
     data['name_prices'] = this.namePrices;
     data['harga_price'] = this.hargaPrice;

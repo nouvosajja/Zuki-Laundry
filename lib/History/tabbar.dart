@@ -9,7 +9,7 @@ class Tabbar extends StatefulWidget {
   State<Tabbar> createState() => _TabbarState();
 }
 
-class _TabbarState extends State<Tabbar>with SingleTickerProviderStateMixin {
+class _TabbarState extends State<Tabbar> with SingleTickerProviderStateMixin {
   TabController? controller;
 
   @override
@@ -31,15 +31,23 @@ class _TabbarState extends State<Tabbar>with SingleTickerProviderStateMixin {
       child: Scaffold(
         appBar: AppBar(
           toolbarHeight: 100,
-          title: const Text('Riwayat', style: TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 25),),
+          title: const Text(
+            'Riwayat',
+            style: TextStyle(
+                color: Colors.black, 
+                fontWeight: FontWeight.bold, 
+                fontSize: 30,
+                fontFamily: 'Poppins'
+                ),
+          ),
           backgroundColor: Colors.transparent,
           elevation: 0,
           automaticallyImplyLeading: false,
         ),
-        body:  SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+        body: SafeArea(
+            child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
             SizedBox(
               height: 30,
               width: 280,
@@ -54,27 +62,35 @@ class _TabbarState extends State<Tabbar>with SingleTickerProviderStateMixin {
                   labelColor: Colors.black,
                   controller: controller,
                   tabs: const [
-                  SizedBox(
-                    height: 50,
-                    child: 
-                  Center(child: Text('Riwayat', style: TextStyle(fontWeight: FontWeight.w600),))), 
-                  SizedBox(
-                    height: 50,
-                    child: 
-                  Center(child: Text('Dalam Proses', style: TextStyle(fontWeight: FontWeight.w600),))), ],
+                    SizedBox(
+                        height: 50,
+                        child: Center(
+                            child: Text(
+                          'Riwayat',
+                          style: TextStyle(fontWeight: FontWeight.w600),
+                        ))),
+                    SizedBox(
+                        height: 50,
+                        child: Center(
+                            child: Text(
+                          'Dalam Proses',
+                          style: TextStyle(fontWeight: FontWeight.w600),
+                        ))),
+                  ],
                 ),
                 automaticallyImplyLeading: false,
               ),
             ),
             Expanded(
-              child: TabBarView(
-                controller: controller,
-                children: const [
-              Riwayat(),
-              Proses(),
-            ], ))
-          ],)
-        ),
+                child: TabBarView(
+              controller: controller,
+              children: [
+                Riwayat(),
+                proses(),
+              ],
+            ))
+          ],
+        )),
       ),
     );
   }

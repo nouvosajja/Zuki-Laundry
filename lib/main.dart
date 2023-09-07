@@ -3,7 +3,7 @@ import 'package:zuki_laundry/Splash%20Screen/IntroAnim.dart';
 import 'package:zuki_laundry/route/routes.dart';
 
 import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+import 'firebase/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

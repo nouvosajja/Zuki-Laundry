@@ -26,7 +26,6 @@ class _alamatState extends State<alamat> {
   }
 
   Future getprofil() async {
-    final endPointUrl = 'profile/';
     final url = 'http://zukilaundry.bardiman.com/api/user';
 
     print('-----------user-------------');

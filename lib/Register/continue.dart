@@ -9,9 +9,13 @@ import 'package:zuki_laundry/model/register_model.dart';
 import 'package:zuki_laundry/profile/kebijakanPrivasi.dart';
 import 'package:http/http.dart' as http;
 
-
 class ContinueScreen extends StatefulWidget {
-  const ContinueScreen({Key? key, required this.name, required  this.email, required  this.password}) : super(key: key);
+  const ContinueScreen(
+      {Key? key,
+      required this.name,
+      required this.email,
+      required this.password})
+      : super(key: key);
   final String name, email, password;
   @override
   State<ContinueScreen> createState() => _ContinueScreenState();
@@ -27,56 +31,78 @@ class _ContinueScreenState extends State<ContinueScreen> {
         widget.password.isNotEmpty &&
         numberController.text.isNotEmpty &&
         addressController.text.isNotEmpty) {
-
       String devicetoken;
 
       devicetoken = await getDeviceToken();
       print('deviceToken = $devicetoken');
 
-      var response = await http.post(Uri.parse("http://zukilaundry.bardiman.com/api/register"), body: {
-        "email": widget.email,
-        "name": widget.name,
-        "password": widget.password,
-        "number": numberController.text,
-        "address": addressController.text
-      });
+      var response = await http.post(
+          Uri.parse("http://zukilaundry.bardiman.com/api/register"),
+          body: {
+            "email": widget.email,
+            "name": widget.name,
+            "password": widget.password,
+            "number": numberController.text,
+            "address": addressController.text
+          });
       print("Status Code : ${response.statusCode}");
       print(response.body);
 
       if (response.statusCode == 200) {
-               RegisterModel user = registerModelFromJson(response.body);
-
+        RegisterModel user = registerModelFromJson(response.body);
 
         try {
-        var saveTokenResponse = await http.post(
-          Uri.parse("http://zukilaundry.bardiman.com/api/login"),
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ${user.data.token}',
-          },
-          body: json.encode({
-            "token": devicetoken,
-            "id_user": user.data.token,
-          }),
-        );
+          var saveTokenResponse = await http.post(
+            Uri.parse("http://zukilaundry.bardiman.com/api/login"),
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': 'Bearer ${user.data.token}',
+            },
+            body: json.encode({
+              "token": devicetoken,
+              "id_user": user.data.token,
+            }),
+          );
 
-        if (saveTokenResponse.statusCode == 200) {
-          print("Device token saved to server successfully");
-        } else {
-          print("Failed to save device token to server");
+          if (saveTokenResponse.statusCode == 200) {
+            print("Device token saved to server successfully");
+          } else {
+            print("Failed to save device token to server");
+          }
+        } catch (error) {
+          print("Error saving device token to server: $error");
         }
-      } catch (error) {
-        print("Error saving device token to server: $error");
-      }
 
         SharedPreferences pref = await SharedPreferences.getInstance();
         pref.setString('token', user.data.token);
         pref.setString('devicetoken', devicetoken);
         print(response.body);
-        //pindah page
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Registration Successful'),
+              content: const Text(
+                  'Silahkan Login.'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop(); // Close the dialog
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginScreen()),
+                    );
+                  },
+                  child: const Text('OK'),
+                ),
+              ],
+            );
+          },
+        ); //pindah page
       } else {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(const SnackBar(content: Text("Email Sudah Terdaftar")));
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Email Sudah Terdaftar")));
       }
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -84,7 +110,7 @@ class _ContinueScreenState extends State<ContinueScreen> {
     }
   }
 
-    Future<void> saveToken(String token) async {
+  Future<void> saveToken(String token) async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     pref.setString('token', token);
   }
@@ -167,7 +193,8 @@ class _ContinueScreenState extends State<ContinueScreen> {
                                   registerData();
                                 },
                                 style: ElevatedButton.styleFrom(
-                                  backgroundColor: const Color.fromRGBO(0, 163, 255, 1),
+                                  backgroundColor:
+                                      const Color.fromRGBO(0, 163, 255, 1),
                                   shape: RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   ),
@@ -183,35 +210,38 @@ class _ContinueScreenState extends State<ContinueScreen> {
                             ),
                           ),
                           Container(
-                          height: 50,
-                          alignment: Alignment.center,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text(
-                                'Sudah punya akun?',
-                              ),
-                              const SizedBox(width: 2.5,),
-                              InkWell(
-                                child: const Text(
-                                  'Login',
-                                  style: TextStyle(
-                                    color: Colors.blue,
-                                    fontWeight: FontWeight.bold,
-                                    decoration: TextDecoration.underline,
-                                  ),
+                            height: 50,
+                            alignment: Alignment.center,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Text(
+                                  'Sudah punya akun?',
                                 ),
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => const LoginScreen()
+                                const SizedBox(
+                                  width: 2.5,
+                                ),
+                                InkWell(
+                                  child: const Text(
+                                    'Login',
+                                    style: TextStyle(
+                                      color: Colors.blue,
+                                      fontWeight: FontWeight.bold,
+                                      decoration: TextDecoration.underline,
                                     ),
-                                 );
-                                },
-                              ),
-                            ],
+                                  ),
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              const LoginScreen()),
+                                    );
+                                  },
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
 
                           Center(
                             child: Column(
@@ -232,7 +262,8 @@ class _ContinueScreenState extends State<ContinueScreen> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => const kebijakan()),
+                                          builder: (context) =>
+                                              const kebijakan()),
                                     );
                                   },
                                 ),

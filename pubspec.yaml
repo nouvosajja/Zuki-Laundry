@@ -45,10 +45,21 @@ dependencies:
   percent_indicator: ^4.2.3
   font_awesome_flutter: ^10.5.0
   lottie: 
+  webview_flutter: ^2.0.0
+  modal_progress_hud_nsn: ^0.4.0
+  flutter_local_notifications: ^15.1.1
   
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+  flutter_native_splash: ^2.3.2
+
+flutter_native_splash:
+  color: "#ffffff"
+  android: true
+  
+  
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

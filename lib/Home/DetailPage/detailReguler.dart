@@ -1,14 +1,10 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:zuki_laundry/Widgets/paket.global.dart';
 import 'package:zuki_laundry/model/paket_model.dart';
 import 'package:zuki_laundry/model/price_model.dart';
 import 'package:flutter/material.dart';
-import 'package:zuki_laundry/Widgets/radio.global.dart';
-import 'package:zuki_laundry/bottomnav.dart';
 import 'package:zuki_laundry/Home/DetailPage/Order/order.dart';
 
-import '../../model/user_model.dart';
 
 class detail_reguler extends StatefulWidget {
   detail_reguler({super.key, required this.data});

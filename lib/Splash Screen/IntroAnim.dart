@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:zuki_laundry/Splash%20Screen/carousel.dart';
 import 'package:zuki_laundry/bottomnav.dart';
 import 'dart:async';
 
@@ -36,7 +37,7 @@ class _intro_animState extends State<intro_anim> {
   void initState() {
     super.initState();
     checkToken();
-    Timer(const Duration(seconds: 3), () => hasToken ? Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const bottom_nav(),)) : Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const intro(),)));
+    Timer(const Duration(seconds: 3), () => hasToken ? Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const bottom_nav(),)) : Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const IntroCarousel(),)));
 
   }
 

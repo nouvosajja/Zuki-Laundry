@@ -1,10 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:zuki_laundry/Guest/paket_guest.dart';
-import 'package:zuki_laundry/Widgets/bubble.global.dart';
-import 'package:zuki_laundry/Widgets/paket.global.dart';
-import 'package:zuki_laundry/beforeLogin.dart';
-import 'package:zuki_laundry/bonus.dart';
 
 class HomePage_guest extends StatefulWidget {
   static String routeName = "/homepage";
@@ -53,60 +49,41 @@ class _HomePage_guestState extends State<HomePage_guest> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromRGBO(244, 244, 244, 1),
       body: SingleChildScrollView(
         child: SafeArea(
-            child:
-                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          const SizedBox(height: 0, width: double.infinity),
-          Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Padding(
-                padding: const EdgeInsets.only(top: 50, left: 20),
-                child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          const SizedBox(
-                            width: 240,
-                            child: Text(
-                              "Selamat datang di Zuki Laundry!",
-                              maxLines: 2,
-                              style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 22,
-                                  fontFamily: 'Poppins'),
-                            ),
-                          ),
-                          Card(
-                            margin: const EdgeInsets.only(left: 20),
-                            elevation: 5,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const before_login()),
-                                );
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: Image.asset(
-                                  'asset/images/bonus.png', // Replace with your actual asset image path
-                                  width: 30,
-                                  height: 30,
-                                ),
-                              ),
-                            ),
-                          )
-                        ],
+            child: Column(children: [
+          Container(
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomRight: Radius.circular(20),
+                bottomLeft: Radius.circular(20),
+              ),
+              color: Color.fromRGBO(25, 164, 206, 1),
+            ),
+            width: 360,
+            height: 140,
+            padding: EdgeInsets.all(20),
+            child: Column(
+                children: [
+                  SizedBox(height: 20,),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Text(
+                      "Selamat datang kembali \ndi Zuki Laundry!",
+                      maxLines: 2,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        fontFamily: 'Poppins',
+                        color: Colors.white,
                       ),
-                    ])),
-          ]),
+                    ),
+                  ),
+                ]),
+          ),
           Padding(
-            padding: const EdgeInsets.only(left: 20, top: 50),
+            padding: const EdgeInsets.only(top: 30),
             child: SizedBox(
               height: 150, // Adjust the height as needed
               child: PageView.builder(
@@ -137,43 +114,45 @@ class _HomePage_guestState extends State<HomePage_guest> {
                 margin: const EdgeInsets.symmetric(horizontal: 2.0),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: _currentPage == index ? Colors.blue : Colors.grey,
+                  color: _currentPage == index
+                      ? Colors.blue
+                      : Color.fromRGBO(192, 191, 191, 1),
                 ),
               );
             }),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 25, left: 10),
-            child: Stack(
-              alignment: Alignment.center,
-              children: [
-                Image.asset(
-                  'asset/images/bc.png', // Replace with your actual image path
-                  fit: BoxFit.cover,
-                ),
-                Positioned.fill(
-                  child: Padding(
-                    padding: const EdgeInsets.all(30),
-                    child: SizedBox(
-                      width: 292,
-                      child: Text(
-                        "Tempat yang tepat untuk mencuci pakaian dengan cepat dan tetap menjaga kebersihan serta kualitas cucian yang optimal",
-                        textAlign: TextAlign.center,
-                        maxLines: 3,
-                        style: TextStyle(
-                          fontWeight: FontWeight.normal,
-                          fontSize: 13,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.only(top: 25, left: 10),
+          //   child: Stack(
+          //     alignment: Alignment.center,
+          //     children: [
+          //       Image.asset(
+          //         'asset/images/bc.png', // Replace with your actual image path
+          //         fit: BoxFit.cover,
+          //       ),
+          //       Positioned.fill(
+          //         child: Padding(
+          //           padding: const EdgeInsets.all(30),
+          //           child: SizedBox(
+          //             width: 292,
+          //             child: Text(
+          //               "Tempat yang tepat untuk mencuci pakaian dengan cepat dan tetap menjaga kebersihan serta kualitas cucian yang optimal",
+          //               textAlign: TextAlign.center,
+          //               maxLines: 3,
+          //               style: TextStyle(
+          //                 fontWeight: FontWeight.normal,
+          //                 fontSize: 13,
+          //                 color: Colors.white,
+          //               ),
+          //             ),
+          //           ),
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
           const SizedBox(height: 10),
-          const bubble(),
+          // const bubble(),
           const Paket_guest()
         ])),
       ),

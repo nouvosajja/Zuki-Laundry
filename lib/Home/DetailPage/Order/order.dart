@@ -29,9 +29,10 @@ class _OrderState extends State<Order> {
   bool isOrder = true;
 
   Future<void> loadingProgressBar() async {
-    await Future.delayed(const Duration(seconds: 1 ), () {
+    await Future.delayed(const Duration(microseconds: 1 ), () {
       setState(() {
         isOrder = false;
+
       });
       postData();
     });
@@ -101,6 +102,7 @@ class _OrderState extends State<Order> {
     SharedPreferences pref = await SharedPreferences.getInstance();
     String token = pref.getString("token") ?? "";
     Future.delayed(Duration(seconds: 3), () async {
+
       final url = Uri.parse("http://zukilaundry.bardiman.com/api/order");
       // Create the request body
       final Map<String, dynamic> requestBody = {
@@ -296,7 +298,40 @@ class _OrderState extends State<Order> {
                   width: MediaQuery.of(context).size.width,
                   child: ElevatedButton(
                     onPressed: () {
-                      loadingProgressBar();
+                      // loadingProgressBar();
+                      showDialog(
+                                context: context,
+                                barrierDismissible: true,
+
+                                builder: (BuildContext context) {
+                                  return Container(
+                                    width: double.infinity,
+                                    color: Colors.white,
+                                    child: Center(
+                                      //"D:\Admin\Admin_Zuki-1\assets\images\loading.gif"
+                                      child: Lottie.asset("asset/json/loadin.json")
+                                    ),
+                                  );
+                                },
+                              );
+                              Future.delayed(const Duration(seconds: 3), () {
+                              showDialog(
+                                context: context,
+                                barrierDismissible: false,
+                                builder: (BuildContext context) {
+                                  return Container(
+                                    color: Colors.white,
+                                    width: double.infinity ,
+                                    child: Center(
+                                      //"D:\Admin\Admin_Zuki-1\assets\images\loading.gif"
+                                      child: Lottie.asset("asset/json/done.json")
+                                    ),
+                                  );
+                                },
+                              );
+                              postData();
+                              });
+                              
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.white,
@@ -320,6 +355,7 @@ class _OrderState extends State<Order> {
         ),
       ) 
     ) : Scaffold(backgroundColor: Colors.white,  
-    body: Center(child: Lottie.asset("asset/json/loadin.json")));
+    body: Center(child: Lottie.asset("asset/json/loadin.json")
+    ));
   }
 }

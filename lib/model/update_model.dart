@@ -1,53 +1,72 @@
-// To parse this JSON data, do
-//
-//     final updateModel = updateModelFromJson(jsonString);
-
-import 'dart:convert';
-
-UpdateModel updateModelFromJson(String str) => UpdateModel.fromJson(json.decode(str));
-
-String updateModelToJson(UpdateModel data) => json.encode(data.toJson());
-
 class UpdateModel {
-    int id;
-    String name;
-    String email;
-    String role;
-    String number;
-    String address;
-    DateTime createdAt;
-    DateTime updatedAt;
+  bool? success;
+  String? message;
+  Data? data;
 
-    UpdateModel({
-        required this.id,
-        required this.name,
-        required this.email,
-        required this.role,
-        required this.number,
-        required this.address,
-        required this.createdAt,
-        required this.updatedAt,
-    });
+  UpdateModel({this.success, this.message, this.data});
 
-    factory UpdateModel.fromJson(Map<String, dynamic> json) => UpdateModel(
-        id: json["id"],
-        name: json["name"],
-        email: json["email"],
-        role: json["role"],
-        number: json["number"],
-        address: json["address"],
-        createdAt: DateTime.parse(json["created_at"]),
-        updatedAt: DateTime.parse(json["updated_at"]),
-    );
+  UpdateModel.fromJson(Map<String, dynamic> json) {
+    success = json['success'];
+    message = json['message'];
+    data = json['data'] != null ? new Data.fromJson(json['data']) : null;
+  }
 
-    Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-        "email": email,
-        "role": role,
-        "number": number,
-        "address": address,
-        "created_at": createdAt.toIso8601String(),
-        "updated_at": updatedAt.toIso8601String(),
-    };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['success'] = this.success;
+    data['message'] = this.message;
+    if (this.data != null) {
+      data['data'] = this.data!.toJson();
+    }
+    return data;
+  }
+}
+
+class Data {
+  int? id;
+  String? name;
+  String? email;
+  String? role;
+  String? number;
+  String? address;
+  Null? deviceToken;
+  String? createdAt;
+  String? updatedAt;
+
+  Data(
+      {this.id,
+      this.name,
+      this.email,
+      this.role,
+      this.number,
+      this.address,
+      this.deviceToken,
+      this.createdAt,
+      this.updatedAt});
+
+  Data.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    email = json['email'];
+    role = json['role'];
+    number = json['number'];
+    address = json['address'];
+    deviceToken = json['device_token'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['name'] = this.name;
+    data['email'] = this.email;
+    data['role'] = this.role;
+    data['number'] = this.number;
+    data['address'] = this.address;
+    data['device_token'] = this.deviceToken;
+    data['created_at'] = this.createdAt;
+    data['updated_at'] = this.updatedAt;
+    return data;
+  }
 }
